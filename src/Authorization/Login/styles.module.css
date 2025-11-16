@@ -1,0 +1,43 @@
+.login{
+    width: 448px;
+    height: 543px;
+    border-radius: 12px;
+    background-color: white;
+    padding: 40px 32px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+}
+
+.login_logo{
+    width: 214px;
+    object-fit: contain;
+}
+
+.login_header{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.login_title{
+    color: #051513;
+    font-family: 'manrope';
+    font-size: 1.5rem;
+    line-height: 140%;
+    letter-spacing: 0px;
+    margin: 0px;
+}
+
+.login_desc{
+    color: #4C5C59;
+    font-family: 'manrope';
+    font-size: 0.875rem;
+    line-height: 140%;
+    letter-spacing: 0px;
+    margin: 0px;
+}
