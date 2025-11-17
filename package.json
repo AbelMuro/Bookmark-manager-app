@@ -14,12 +14,16 @@
     "dotenv-webpack": "^8.1.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.9.6"
+    "react-router-dom": "^7.9.6",
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
     "@babel/preset-react": "^7.28.5",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.22",
     "babel-loader": "^10.0.0",
     "babel-plugin-root-import": "^6.6.0",

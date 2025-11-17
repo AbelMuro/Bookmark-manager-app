@@ -1,3 +1,3 @@
-import EnterEmail from './EnterEmail.js';
+import EnterEmail from './EnterEmail.tsx';
 
 export default EnterEmail;

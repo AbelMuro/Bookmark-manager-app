@@ -3,6 +3,10 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Login from './Authorization/Login';
 import * as styles from './styles.css';
 
+/* 
+    this is where i left off, i need to finish implementing the features for the EnterEmail component
+*/
+
 function App() {
     return(
         <BrowserRouter>

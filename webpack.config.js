@@ -23,7 +23,12 @@ module.exports = {
     },
     
     module: {
-        rules: [                               
+        rules: [    
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },                     
             {                                 
                 test: /\.js$/, 
                 use: {
@@ -64,5 +69,8 @@ module.exports = {
                 type: 'asset/resource'                                              
             }
         ]
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
     },
 }
