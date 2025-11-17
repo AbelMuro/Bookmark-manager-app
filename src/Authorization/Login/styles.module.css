@@ -2,7 +2,6 @@
     width: 448px;
     height: 543px;
     border-radius: 12px;
-    background-color: white;
     padding: 40px 32px;
     position: absolute;
     inset: 0;
@@ -34,10 +33,46 @@
 }
 
 .login_desc{
-    color: #4C5C59;
     font-family: 'manrope';
     font-size: 0.875rem;
     line-height: 140%;
     letter-spacing: 0px;
     margin: 0px;
+}
+
+@media(prefers-color-scheme: light){
+    .login{
+        background-color: white;
+    }
+
+    .login_title{
+        color: #051513;
+    }
+
+    .login_desc{
+        color: #4C5C59;
+    }
+
+    .login_logo{
+        content: url('./icons/logo-light-theme.svg');
+    }
+}
+
+@media(prefers-color-scheme: dark){
+    .login{
+        background-color: #001f1f;
+        border: 1px solid #004241;
+    }
+
+    .login_title{
+        color: white;
+    }
+
+    .login_desc{
+        color: #b1b9b9;
+    }
+
+    .login_logo{
+        content: url('./icons/logo-dark-theme.svg');
+    }
 }

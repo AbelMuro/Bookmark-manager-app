@@ -1,12 +1,11 @@
 import React from 'react';
 import Form from './Form';
-import icons from './icons';
 import * as styles from  './styles.module.css';
 
 function Login() {
     return(
         <article className={styles.login}>
-            <img className={styles.login_logo} src={icons['lightTheme']}/>
+            <img className={styles.login_logo}/>
             <div className={styles.login_header}>
                 <h1 className={styles.login_title}>
                     Log in to your account
