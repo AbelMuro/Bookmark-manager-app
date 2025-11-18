@@ -67,7 +67,9 @@
         outline-offset: 2px;
     }
 
-
+    .input:hover{
+        background-color: #004241;
+    }
     .label{
         color: white;
     }

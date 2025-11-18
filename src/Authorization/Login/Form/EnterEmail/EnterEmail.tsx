@@ -1,4 +1,5 @@
 import React, {useState, ChangeEvent} from 'react';
+import {motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 
 
@@ -32,11 +33,12 @@ function EnterEmail(){
     }
 
     return (
-        <fieldset className={styles.container}>
-            <label className={styles.label}>
+        <motion.fieldset layout className={styles.container}>
+            <motion.label layout className={styles.label}>
                 Email
-            </label>
-            <input 
+            </motion.label>
+            <motion.input 
+                layout
                 type='email' 
                 value={email}                
                 onChange={handleChange}
@@ -46,17 +48,26 @@ function EnterEmail(){
                 required/>
             {
                 error === 'empty' && 
-                    <div className={styles.errorMessage}>
+                    <motion.div 
+                        initial={{scale: 0}}
+                        animate={{scale: 1}}
+                        layout 
+                        className={styles.errorMessage}>
                         Can't be empty.
-                    </div>
+                    </motion.div>
             }
             {
                 error === 'invalid' &&
-                    <div className={styles.errorMessage}>
+                    <motion.div 
+                        initial={{scale: 0}}
+                        animate={{scale: 1}}
+                        layout 
+                        className={styles.errorMessage}
+                        >
                         Enter a valid email address.
-                    </div>
+                    </motion.div>
             }
-        </fieldset>
+        </motion.fieldset>
     )
 }
 

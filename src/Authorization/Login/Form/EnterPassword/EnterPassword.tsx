@@ -1,4 +1,5 @@
 import React, {useState, ChangeEvent} from 'react';
+import {motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 
 function EnterPassword() {
@@ -27,11 +28,12 @@ function EnterPassword() {
     }
 
     return(
-        <fieldset className={styles.container}>
-            <label className={styles.label}>
+        <motion.fieldset layout className={styles.container}>
+            <motion.label layout className={styles.label}>
                 Password
-            </label>
-            <input 
+            </motion.label>
+            <motion.input 
+                layout
                 type='password' 
                 //pattern={'.{8,}'}
                 className={styles.password}
@@ -42,16 +44,24 @@ function EnterPassword() {
                 required
                 />
             {error === 'empty' && 
-                <div className={styles.errorMessage}>
+                <motion.div 
+                    initial={{scale: 0}}
+                    animate={{scale: 1}}
+                    layout 
+                    className={styles.errorMessage}>
                     Can't be empty.
-                </div>
+                </motion.div>
             }
             {error === 'length' && 
-                <div className={styles.errorMessage}>
+                <motion.div 
+                    initial={{scale: 0}}
+                    animate={{scale: 1}}
+                    layout 
+                    className={styles.errorMessage}>
                     Must be at least 8 characters long.
-                </div>
+                </motion.div>
             }
-        </fieldset>
+        </motion.fieldset>
     )
 }
 
