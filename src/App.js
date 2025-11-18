@@ -4,7 +4,7 @@ import Login from './Authorization/Login';
 import * as styles from './styles.css';
 
 /* 
-    this is where i left off, i need to finish implementing the features for the EnterPassword component
+this is where i left off, i need to continue implementing the framer-motion feature on the <Login/> component
 */
 
 function App() {
