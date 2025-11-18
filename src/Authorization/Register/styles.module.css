@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-.login{
+.register{
     width: 448px;
     border-radius: 12px;
     padding: 40px 32px;
@@ -15,18 +15,18 @@
     gap: 32px;
 }
 
-.login_logo{
+.register_logo{
     width: 214px;
     object-fit: contain;
 }
 
-.login_header{
+.register_header{
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
 
-.login_title{
+.register_title{
     color: #051513;
     font-family: 'manrope';
     font-size: 1.5rem;
@@ -35,7 +35,7 @@
     margin: 0px;
 }
 
-.login_desc{
+.register_desc{
     font-family: 'manrope';
     font-size: 0.875rem;
     line-height: 140%;
@@ -43,7 +43,7 @@
     margin: 0px;
 }
 
-.login_footer{
+.register_footer{
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -52,42 +52,42 @@
 
 
 @media(prefers-color-scheme: light){
-    .login{
+    .register{
         background-color: white;
     }
 
-    .login_title{
+    .register_title{
         color: #051513;
     }
 
-    .login_desc{
+    .register_desc{
         color: #4C5C59;
     }
 
-    .login_logo{
+    .register_logo{
         content: url('../icons/logo-light-theme.svg');
     }
 }
 
 @media(prefers-color-scheme: dark){
-    .login{
+    .register{
         background-color: #001f1f;
         border: 1px solid #004241;
     }
 
-    .login_title{
+    .register_title{
         color: white;
     }
 
-    .login_desc{
+    .register_desc{
         color: #b1b9b9;
     }
 
-    .login_logo{
+    .register_logo{
         content: url('../icons/logo-dark-theme.svg');
     }
 
-    .login_forgot, .login_sign{
+    .register_forgot, .register_sign{
         font-family: 'manrope';
         font-size: 0.875rem;
         line-height: 140%;
@@ -96,8 +96,8 @@
         color: #b1b9b9;
     }
 
-    .login_forgot > button, 
-    .login_sign > button{
+    .register_forgot > button, 
+    .register_sign > button{
         color: white;
         background-color: transparent;
         border: none;
@@ -105,19 +105,19 @@
         cursor: pointer;
     }    
     
-    .login_forgot > button:hover,
-    .login_sign > button:hover{
+    .register_forgot > button:hover,
+    .register_sign > button:hover{
         color: #b1b9b9;
     }
 
-    .login_forgot > button:active,
-    .login_sign > button:active{
+    .register_forgot > button:active,
+    .register_sign > button:active{
         color: #8e8e8e;
     }
 }
 
 @media(max-width: 500px){
-    .login{
+    .register{
         width: 343px;
         padding: 32px 20px;
     }

@@ -34,6 +34,7 @@ function EnterPassword() {
             </motion.label>
             <motion.input 
                 layout
+                name='password'
                 type='password' 
                 //pattern={'.{8,}'}
                 className={styles.password}
