@@ -7,7 +7,7 @@ import ResetPassword from './Authorization/ResetPassword';
 import * as styles from './styles.css';
 
 /* 
-    this is where i left off, i need to finish the forgot password component
+    this is where i left off, i need to finish the ResetPassword component
 */
 
 function App() {
