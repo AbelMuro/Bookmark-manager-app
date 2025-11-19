@@ -25,6 +25,9 @@ function Reset(){
                         </p>                
                     </motion.div>
                     <Form/>
+                    <button className={styles.back}>
+                        Back to login
+                    </button>
                 </motion.article>   
             </LayoutGroup>
         </section>
