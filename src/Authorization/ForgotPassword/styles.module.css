@@ -1,0 +1,124 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forgot{
+    width: 448px;
+    border-radius: 12px;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.forgot_logo{
+    width: 214px;
+    object-fit: contain;
+}
+
+.forgot_header{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.forgot_title{
+    color: #051513;
+    font-family: 'manrope';
+    font-size: 1.5rem;
+    line-height: 140%;
+    letter-spacing: 0px;
+    margin: 0px;
+}
+
+.forgot_desc{
+    font-family: 'manrope';
+    font-size: 0.875rem;
+    line-height: 140%;
+    letter-spacing: 0px;
+    margin: 0px;
+}
+
+.forgot_footer{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+
+@media(prefers-color-scheme: light){
+    .forgot{
+        background-color: white;
+    }
+
+    .forgot_title{
+        color: #051513;
+    }
+
+    .forgot_desc{
+        color: #4C5C59;
+    }
+
+    .forgot_logo{
+        content: url('../icons/logo-light-theme.svg');
+    }
+}
+
+@media(prefers-color-scheme: dark){
+    .forgot{
+        background-color: #001f1f;
+        border: 1px solid #004241;
+    }
+
+    .forgot_title{
+        color: white;
+    }
+
+    .forgot_desc{
+        color: #b1b9b9;
+    }
+
+    .forgot_logo{
+        content: url('../icons/logo-dark-theme.svg');
+    }
+
+    .forgot_forgot, .forgot_sign{
+        font-family: 'manrope';
+        font-size: 0.875rem;
+        line-height: 140%;
+        letter-spacing: 0px;
+        margin: 0px;
+        color: #b1b9b9;
+    }
+
+    .forgot_forgot > button, 
+    .forgot_sign > button{
+        color: white;
+        background-color: transparent;
+        border: none;
+        font-weight: 700;
+        cursor: pointer;
+    }    
+    
+    .forgot_forgot > button:hover,
+    .forgot_sign > button:hover{
+        color: #b1b9b9;
+    }
+
+    .forgot_forgot > button:active,
+    .forgot_sign > button:active{
+        color: #8e8e8e;
+    }
+}
+
+@media(max-width: 500px){
+    .forgot{
+        width: 343px;
+        padding: 32px 20px;
+    }
+}

@@ -1,21 +1,24 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {useState, ChangeEvent} from 'react';
 import {motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 
-function EnterName() {
-    const [name, setName] = useState<string>('');
+function EnterPassword() {
+    const [email, setEmail] = useState<string>('');
     const [error, setError] = useState<string>('');
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setError('');
-        setName(e.target.value);
+        setEmail(e.target.value);
     }
 
     const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
         const isEmpty = e.target.validity.valueMissing;
+        const patternMismatch = e.target.validity.patternMismatch;
 
         if(isEmpty)
             setError('empty');
+        else if(patternMismatch)
+            setError('invalid')
         
     }
 
@@ -24,19 +27,22 @@ function EnterName() {
 
         if(isEmpty)
             setError('empty')
+        else   
+            setError('invalid');
     }
 
     return(
         <motion.fieldset layout className={styles.container}>
             <motion.label layout className={styles.label}>
-                Full name <span>*</span>
+                Password <span>*</span>
             </motion.label>
             <motion.input 
                 layout
-                name='name'
-                type='text' 
+                pattern='.{8,}'
                 style={error ? {borderColor: '#CB0A04'} : {}}
-                value={name}                
+                name='password'
+                type='password' 
+                value={email}                
                 onChange={handleChange}
                 onBlur={handleBlur}
                 onInvalid={handleInvalid}
@@ -51,8 +57,17 @@ function EnterName() {
                         Can't be empty.
                     </motion.div>
             }
+            {
+                error === 'invalid' && 
+                    <motion.div 
+                        initial={{scale: 0}}
+                        animate={{scale: 1}}
+                        className={styles.errorMessage}>
+                            Must be at least 8 characters long.
+                    </motion.div>
+            }
         </motion.fieldset>
     )
 }
 
-export default EnterName;
+export default EnterPassword;

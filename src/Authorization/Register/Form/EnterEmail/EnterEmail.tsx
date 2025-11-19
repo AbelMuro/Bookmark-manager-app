@@ -45,6 +45,7 @@ function EnterEmail(){
                 onBlur={handleBlur}
                 onInvalid={handleInvalid}
                 className={styles.input} 
+                style={error ? {borderColor: '#CB0A04'} : {}}
                 required/>
             {
                 error === 'empty' && 

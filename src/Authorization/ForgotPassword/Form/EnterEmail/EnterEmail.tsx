@@ -1,21 +1,24 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {useState, ChangeEvent} from 'react';
 import {motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 
-function EnterName() {
-    const [name, setName] = useState<string>('');
+function EnterEmail() {
+    const [email, setEmail] = useState<string>('');
     const [error, setError] = useState<string>('');
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setError('');
-        setName(e.target.value);
+        setEmail(e.target.value);
     }
 
     const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
         const isEmpty = e.target.validity.valueMissing;
+        const isInvalid = e.target.validity.typeMismatch;
 
         if(isEmpty)
             setError('empty');
+        else if(isInvalid) 
+            setError('invalid');
         
     }
 
@@ -24,19 +27,21 @@ function EnterName() {
 
         if(isEmpty)
             setError('empty')
+        else 
+            setError('invalid')
     }
 
-    return(
+    return (
         <motion.fieldset layout className={styles.container}>
             <motion.label layout className={styles.label}>
-                Full name <span>*</span>
+                Email <span>*</span>
             </motion.label>
             <motion.input 
                 layout
-                name='name'
-                type='text' 
+                name='email'
+                type='email' 
                 style={error ? {borderColor: '#CB0A04'} : {}}
-                value={name}                
+                value={email}                
                 onChange={handleChange}
                 onBlur={handleBlur}
                 onInvalid={handleInvalid}
@@ -51,8 +56,18 @@ function EnterName() {
                         Can't be empty.
                     </motion.div>
             }
+            {
+                error === 'invalid' &&
+                    <motion.div 
+                        initial={{scale: 0}}
+                        animate={{scale: 1}}
+                        className={styles.errorMessage}
+                        >
+                        Enter a valid email address.
+                    </motion.div>
+            }
         </motion.fieldset>
     )
 }
 
-export default EnterName;
+export default EnterEmail;

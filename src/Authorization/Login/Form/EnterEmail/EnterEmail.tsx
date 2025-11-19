@@ -41,6 +41,7 @@ function EnterEmail(){
                 layout
                 name='email'
                 type='email' 
+                style={error ? {borderColor: '#CB0A04'} : {}}
                 value={email}                
                 onChange={handleChange}
                 onBlur={handleBlur}

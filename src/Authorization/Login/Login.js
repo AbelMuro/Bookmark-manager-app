@@ -28,7 +28,7 @@ function Login() {
                     <motion.div layout className={styles.login_footer}>
                         <p className={styles.login_forgot}>
                             Forgot password?
-                            <button type='button' onClick={() => handleNavigation('/reset')}>
+                            <button type='button' onClick={() => handleNavigation('/forgot')}>
                                 Reset it
                             </button>
                         </p>

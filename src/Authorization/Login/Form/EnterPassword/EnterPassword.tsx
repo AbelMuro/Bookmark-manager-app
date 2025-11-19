@@ -36,7 +36,7 @@ function EnterPassword() {
                 layout
                 name='password'
                 type='password' 
-                //pattern={'.{8,}'}
+                style={error ? {borderColor: '#CB0A04'} : {}}
                 className={styles.password}
                 value={password}
                 onChange={handleChange}
