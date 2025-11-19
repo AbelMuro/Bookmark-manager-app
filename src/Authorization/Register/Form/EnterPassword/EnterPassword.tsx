@@ -7,6 +7,7 @@ function EnterPassword() {
     const [error, setError] = useState<string>('');
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        e.target.setCustomValidity('');
         setError('');
         setEmail(e.target.value);
     }
@@ -23,6 +24,7 @@ function EnterPassword() {
     }
 
     const handleInvalid = (e: ChangeEvent<HTMLInputElement>) => {
+        e.target.setCustomValidity(' ');
         const isEmpty = e.target.validity.valueMissing;
 
         if(isEmpty)

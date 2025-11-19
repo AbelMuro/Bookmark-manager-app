@@ -1,9 +1,15 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom'
 import Form from './Form';
 import {LayoutGroup, motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 
 function ResetPassword(){
+    const navigate = useNavigate();
+
+    const handleNavigation = () => {
+        navigate('/');
+    }
 
     return(
         <section className={styles.container}>
@@ -19,6 +25,9 @@ function ResetPassword(){
                         </p>                
                     </motion.div>
                     <Form/>
+                    <button className={styles.back} type='button' onClick={handleNavigation}>
+                        Back to login
+                    </button>
                 </motion.article>   
             </LayoutGroup>
         </section>

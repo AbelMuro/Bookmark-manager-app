@@ -7,8 +7,8 @@ import * as styles from './styles.module.css';
 function Reset(){
    const navigate = useNavigate();
 
-    const handleNavigation = (link) => {
-        navigate(link);
+    const handleNavigation = () => {
+        navigate('/');
     }
 
     return(
@@ -25,7 +25,7 @@ function Reset(){
                         </p>                
                     </motion.div>
                     <Form/>
-                    <button className={styles.back}>
+                    <button className={styles.back} type='button' onClick={handleNavigation}>
                         Back to login
                     </button>
                 </motion.article>   

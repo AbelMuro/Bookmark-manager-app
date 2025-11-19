@@ -3,16 +3,18 @@ import {motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 
 type Props = {
-    label: string
+    label: string,
+    password: string,
+    setPassword: Function
 }
 
-function EnterPassword({label} : Props){
-    const [email, setEmail] = useState<string>('');
+function EnterPassword({label, password, setPassword} : Props){
     const [error, setError] = useState<string>('');
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        e.target.setCustomValidity('');
         setError('');
-        setEmail(e.target.value);
+        setPassword(e.target.value);
     }
 
     const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,6 +29,7 @@ function EnterPassword({label} : Props){
     }
 
     const handleInvalid = (e: ChangeEvent<HTMLInputElement>) => {
+        e.target.setCustomValidity(' ');
         const isEmpty = e.target.validity.valueMissing;
 
         if(isEmpty)
@@ -46,7 +49,7 @@ function EnterPassword({label} : Props){
                 style={error ? {borderColor: '#CB0A04'} : {}}
                 name='password'
                 type='password' 
-                value={email}                
+                value={password}                
                 onChange={handleChange}
                 onBlur={handleBlur}
                 onInvalid={handleInvalid}

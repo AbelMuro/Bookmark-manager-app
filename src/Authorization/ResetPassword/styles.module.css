@@ -50,6 +50,15 @@
     align-items: center;
 }
 
+.back{
+    background-color: transparent;
+    border: none;
+    font-family: 'manrope';
+    font-size: 0.875rem;
+    line-height: 140%;
+    cursor: pointer;
+}
+
 
 @media(prefers-color-scheme: light){
     .reset{
@@ -67,6 +76,11 @@
     .reset_logo{
         content: url('../icons/logo-light-theme.svg');
     }
+
+    .back{
+        color: #051513;
+    }
+
 }
 
 @media(prefers-color-scheme: dark){
@@ -113,6 +127,18 @@
     .reset_forgot > button:active,
     .reset_sign > button:active{
         color: #8e8e8e;
+    }
+
+    .back{
+        color: white;
+    }
+
+    .back:hover{
+        color: rgb(182, 182, 182);
+    }
+
+    .back:active{
+        color: rgb(119, 119, 119);
     }
 }
 
