@@ -4,7 +4,7 @@ import {LayoutGroup, motion} from 'framer-motion';
 import {useNavigate} from 'react-router-dom';
 import * as styles from './styles.module.css';
 
-function Reset(){
+function ForgotPassword(){
    const navigate = useNavigate();
 
     const handleNavigation = () => {
@@ -34,4 +34,4 @@ function Reset(){
     )
 }
 
-export default Reset;
+export default ForgotPassword;

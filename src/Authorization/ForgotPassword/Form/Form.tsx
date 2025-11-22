@@ -6,11 +6,10 @@ function Form() {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const email = e.currentTarget.namedItem('email') as HTMLInputElement;
-
+        const email = e.currentTarget.elements.namedItem('email') as HTMLInputElement;
 
         try{
-            const response = await fetch('http://localhost:4000/', {
+            const response = await fetch('http://localhost:4000/create_token', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

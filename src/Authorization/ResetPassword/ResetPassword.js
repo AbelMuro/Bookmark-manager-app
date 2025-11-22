@@ -1,11 +1,13 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import Form from './Form';
 import {LayoutGroup, motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 
 function ResetPassword(){
     const navigate = useNavigate();
+    const {token} = useParams();
+    if(!token) return null;
 
     const handleNavigation = () => {
         navigate('/');
@@ -24,7 +26,7 @@ function ResetPassword(){
                             Enter your new password below. Make sure it’s strong and secure.
                         </p>                
                     </motion.div>
-                    <Form/>
+                    <Form token={token}/>
                     <button className={styles.back} type='button' onClick={handleNavigation}>
                         Back to login
                     </button>
