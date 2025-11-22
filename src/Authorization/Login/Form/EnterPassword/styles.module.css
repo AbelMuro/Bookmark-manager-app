@@ -55,12 +55,12 @@
         color: #051513;
     }
 
-    .input:focus{
+    .password:focus{
         outline: 3px solid #004746;
         outline-offset: 2px;
     }
 
-    .input:hover{
+    .password:hover{
         background-color: #E8F0EF;
     }
 }
@@ -72,11 +72,14 @@
         color: white;
     }
 
-    .input:focus{
+    .password:focus{
         outline: 1px solid white;
         outline-offset: 2px;
     }
 
+    .password:hover{
+        background-color: #004241;
+    }
 
     .label{
         color: white;

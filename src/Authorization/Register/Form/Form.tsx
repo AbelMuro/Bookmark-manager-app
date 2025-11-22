@@ -11,7 +11,6 @@ function Form() {
         const email = e.currentTarget.elements.namedItem('email') as HTMLInputElement;
         const name = e.currentTarget.elements.namedItem('name') as HTMLInputElement;
         const password = e.currentTarget.elements.namedItem('password') as HTMLInputElement;
-        console.log(email.value, name.value, password.value);
 
         try{
             const response = await fetch('http://localhost:4000/create_account', {
