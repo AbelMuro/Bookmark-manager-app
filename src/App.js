@@ -10,9 +10,7 @@ import PopupMessageBox from './Common/PopupMessageBox';
 import * as styles from './styles.css';
 
 /* 
-    this is where i left off, i need to continue working on the PopupMessageBox component.
-
-    i was using the Login component to test it out
+    this is where i left off, i was in the back end
 */
 
 function App() {

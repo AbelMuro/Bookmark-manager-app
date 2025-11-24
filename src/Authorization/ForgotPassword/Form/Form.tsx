@@ -1,10 +1,15 @@
 import React, {FormEvent, useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {TypedDispatch} from '../../../Store';
 import {ClipLoader} from 'react-spinners';
 import EnterEmail from './EnterEmail';
 import * as styles from './styles.module.css';
 
+const useTypedDispatch = () => useDispatch<TypedDispatch>();
+
 function Form() {
     const [loading, setLoading] = useState<boolean>(false);
+    const dispatch = useTypedDispatch()
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -23,15 +28,18 @@ function Form() {
             if(response.status === 200){
                 const result = await response.text();
                 console.log(result);
+                dispatch({type: 'SHOW_POPUP', payload: 'Reset link has been sent to your email'});
             }
             else{
                 const result = await response.text();
                 console.log(result);
+                dispatch({type: 'SHOW_POPUP', payload: result});
             }
         }
         catch(error){
             const message = error.message;
             console.log(message);
+            dispatch({type: 'SHOW_POPUP', payload: message});
         }
         finally{
             setLoading(false);

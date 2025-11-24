@@ -32,7 +32,10 @@ function PopupMessageBox() {
                     exit={{bottom: -200}}
                     transition={{type: 'spring'}}
                     >
-                        {message}
+                       {message}
+                        <button className={styles.close}>
+                            X
+                        </button>
                 </motion.div>}            
         </AnimatePresence>
     )

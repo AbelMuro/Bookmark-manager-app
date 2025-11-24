@@ -1,4 +1,6 @@
 import React, {useState, FormEvent} from 'react';
+import { useDispatch } from 'react-redux';
+import { TypedDispatch } from '../../../Store';
 import { ClipLoader } from 'react-spinners';
 import EnterPassword from './EnterPassword';
 import * as styles from './styles.module.css';
@@ -7,11 +9,14 @@ type Props = {
     token: string
 }
 
+const useTypedDispatch = () => useDispatch<TypedDispatch>();
+
 function Form({token} : Props) {
     const [loading, setLoading] = useState<boolean>(false);
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const [error, setError] = useState<boolean>(false);
+    const dispatch = useTypedDispatch();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -32,16 +37,19 @@ function Form({token} : Props) {
             if(response.status === 200){
                 const result = await response.text();
                 console.log(result);
+                dispatch({type: 'SHOW_POPUP', payload: result});
             }
             else{
                 const result = await response.text();
                 console.log(result);
+                dispatch({type: 'SHOW_POPUP', payload: result});
             }
 
         }
         catch(error){
             const message = error.message;
             console.log(message);
+            dispatch({type: 'SHOW_POPUP', payload: message});
         }
         finally{
             setLoading(false);
