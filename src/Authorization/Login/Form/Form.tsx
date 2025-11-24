@@ -1,13 +1,21 @@
-import React, {FormEvent} from 'react';
+import React, {FormEvent, useState} from 'react';
+import { useDispatch} from 'react-redux';
+import {TypedDispatch} from '../../../Store';
+import {ClipLoader} from 'react-spinners';
 import {motion} from 'framer-motion';
 import EnterEmail from './EnterEmail';
 import EnterPassword from './EnterPassword';
 import * as styles from './styles.module.css';
 
+const useTypedDispatch = () => useDispatch<TypedDispatch>();
+
 function Form () {
+    const [loading, setLoading] = useState<boolean>(false);
+    const dispatch = useTypedDispatch();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setLoading(true);
         const email = e.currentTarget.elements.namedItem('email') as HTMLInputElement;
         const password = e.currentTarget.elements.namedItem('password') as HTMLInputElement;
 
@@ -22,16 +30,22 @@ function Form () {
 
             if(response.status === 200){
                 const result = await response.text();
-                console.log(result)
+                console.log(result);
+                dispatch({type: 'SHOW_POPUP', payload: 'You have successfully logged in'});
             }
             else{
                 const result = await response.text();
                 console.log(result);
+                dispatch({type: 'SHOW_POPUP', payload: result});
             }
         }
         catch(error){
             const message = error.message;
             console.log(message);
+            dispatch({type: 'SHOW_POPUP', payload: message});
+        }
+        finally{
+            setLoading(false);
         }
 
     }
@@ -41,7 +55,7 @@ function Form () {
             <EnterEmail/>
             <EnterPassword/>
             <motion.button layout className={styles.submit}>
-                Log in
+                {loading ? <ClipLoader size='25px' color='white'/> : 'Log in'}
             </motion.button>
         </motion.form>
     )

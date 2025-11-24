@@ -1,4 +1,5 @@
 import React, {useState, FormEvent} from 'react';
+import { ClipLoader } from 'react-spinners';
 import EnterPassword from './EnterPassword';
 import * as styles from './styles.module.css';
 
@@ -7,6 +8,7 @@ type Props = {
 }
 
 function Form({token} : Props) {
+    const [loading, setLoading] = useState<boolean>(false);
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const [error, setError] = useState<boolean>(false);
@@ -17,7 +19,7 @@ function Form({token} : Props) {
             setError(true);
             return;
         }
-
+        setLoading(true);
         try{
             const response = await fetch('http://localhost:4000/reset_password', {
                 method: 'POST',
@@ -41,7 +43,9 @@ function Form({token} : Props) {
             const message = error.message;
             console.log(message);
         }
-            
+        finally{
+            setLoading(false);
+        }
     }
 
     return(
@@ -54,7 +58,7 @@ function Form({token} : Props) {
                 </div>
             }
             <button className={styles.submit}>
-                Reset password
+                {loading ? <ClipLoader size='25px' color='white'/> : 'Reset password'}
             </button>
         </form>
     )

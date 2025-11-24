@@ -1,11 +1,14 @@
-import React, {FormEvent} from 'react';
+import React, {FormEvent, useState} from 'react';
+import {ClipLoader} from 'react-spinners';
 import EnterEmail from './EnterEmail';
 import * as styles from './styles.module.css';
 
 function Form() {
+    const [loading, setLoading] = useState<boolean>(false);
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setLoading(true);
         const email = e.currentTarget.elements.namedItem('email') as HTMLInputElement;
 
         try{
@@ -30,13 +33,16 @@ function Form() {
             const message = error.message;
             console.log(message);
         }
+        finally{
+            setLoading(false);
+        }
     }
 
     return(
         <form className={styles.form} onSubmit={handleSubmit}>
             <EnterEmail/>
             <button className={styles.submit}>
-                Send reset link
+                {loading ? <ClipLoader size='25px' color='white'/> : 'Send reset link'}
             </button>
         </form>
     )

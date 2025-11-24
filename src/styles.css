@@ -9,6 +9,14 @@ body{
     transition: all 0.2s linear, opacity 0s, transform 0s;
 }
 
+:root{
+    --closest: 100;
+    --closer: 75;
+    --close: 50;
+    --far: 25;
+    --farthest: 1;
+}
+
 @font-face{
     font-family: 'manrope';
     src: url('../public/Manrope-VariableFont_wght.ttf');

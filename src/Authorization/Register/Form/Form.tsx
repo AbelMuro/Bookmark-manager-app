@@ -1,13 +1,16 @@
-import React, {FormEvent} from 'react';
+import React, {FormEvent, useState} from 'react';
+import {ClipLoader} from 'react-spinners';
 import EnterName from './EnterName';
 import EnterEmail from './EnterEmail';
 import EnterPassword from './EnterPassword';
 import * as styles from './styles.module.css';
 
 function Form() {
+    const [loading, setLoading] = useState<boolean>(false);
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement> ) => {
         e.preventDefault();
+        setLoading(true);
         const email = e.currentTarget.elements.namedItem('email') as HTMLInputElement;
         const name = e.currentTarget.elements.namedItem('name') as HTMLInputElement;
         const password = e.currentTarget.elements.namedItem('password') as HTMLInputElement;
@@ -38,6 +41,9 @@ function Form() {
             const message = error.message;
             console.error('/create_account', message)
         }
+        finally{
+            setLoading(false);
+        }
     }
 
     return(
@@ -46,7 +52,7 @@ function Form() {
             <EnterEmail/>
             <EnterPassword/>
             <button className={styles.submit}>
-                Create account
+                {loading ? <ClipLoader size='25px' color='white'/> : 'Create account'}
             </button>
         </form>
     )

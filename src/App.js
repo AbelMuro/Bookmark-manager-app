@@ -1,27 +1,33 @@
 import React from 'react';
+import {Provider} from 'react-redux';
+import Store from './Store';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Login from './Authorization/Login';
 import Register from './Authorization/Register';
 import ForgotPassword from './Authorization/ForgotPassword';
 import ResetPassword from './Authorization/ResetPassword';
+import PopupMessageBox from './Common/PopupMessageBox';
 import * as styles from './styles.css';
 
 /* 
-    this is where i left off, i need to finish the ForgotPassword and resetPassword features on both front and back end
+    this is where i left off, i need to continue working on the PopupMessageBox component.
 
-    i am currently on the back end
+    i was using the Login component to test it out
 */
 
 function App() {
     return(
-        <BrowserRouter>
-            <Routes>
-                <Route path='/' element={<Login/>}/>
-                <Route path='/register' element={<Register/>}/>
-                <Route path='/forgot' element={<ForgotPassword/>}/>
-                <Route path='/reset/:token' element={<ResetPassword/>}/>
-            </Routes>
-        </BrowserRouter>
+        <Provider store={Store}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' element={<Login/>}/>
+                    <Route path='/register' element={<Register/>}/>
+                    <Route path='/forgot' element={<ForgotPassword/>}/>
+                    <Route path='/reset/:token' element={<ResetPassword/>}/>
+                </Routes>
+            </BrowserRouter>    
+            <PopupMessageBox/>        
+        </Provider>
     )
 }
 

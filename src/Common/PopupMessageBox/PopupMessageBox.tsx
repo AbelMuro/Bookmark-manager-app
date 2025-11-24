@@ -1,0 +1,41 @@
+import React, {useEffect} from 'react';
+import {motion, AnimatePresence} from 'framer-motion';
+import {TypedUseSelectorHook, useSelector, useDispatch} from 'react-redux';
+import {TypedDispatch} from '../../Store';
+import {RootState} from '../../Store';
+import * as styles from './styles.module.css';
+
+const useTypedSelector : TypedUseSelectorHook<RootState> = useSelector;
+const useTypedDispatch = () => useDispatch<TypedDispatch>();
+
+function PopupMessageBox() {
+    const open = useTypedSelector<boolean>(state => state.popup.open);
+    const message = useTypedSelector<string>(state => state.popup.message);
+    const dispatch = useTypedDispatch();
+
+    useEffect(() => {
+        if(!open) return;
+
+        setTimeout(() => {
+            dispatch({type: 'HIDE_POPUP'});
+        }, 3000)
+    }, [open])
+
+    return (
+        <AnimatePresence>
+            {
+            open &&
+                <motion.div 
+                    className={styles.container}
+                    initial={{bottom: -200}}
+                    animate={{bottom: 40}}
+                    exit={{bottom: -200}}
+                    transition={{type: 'spring'}}
+                    >
+                        {message}
+                </motion.div>}            
+        </AnimatePresence>
+    )
+}
+
+export default PopupMessageBox;
