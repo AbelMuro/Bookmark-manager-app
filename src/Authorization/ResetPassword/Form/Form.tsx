@@ -1,4 +1,5 @@
 import React, {useState, FormEvent} from 'react';
+import {useNavigate} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { TypedDispatch } from '../../../Store';
 import { ClipLoader } from 'react-spinners';
@@ -17,6 +18,7 @@ function Form({token} : Props) {
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const [error, setError] = useState<boolean>(false);
     const dispatch = useTypedDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -38,6 +40,7 @@ function Form({token} : Props) {
                 const result = await response.text();
                 console.log(result);
                 dispatch({type: 'SHOW_POPUP', payload: result});
+                navigate('/')
             }
             else{
                 const result = await response.text();

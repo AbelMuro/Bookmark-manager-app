@@ -1,5 +1,6 @@
 import React, {FormEvent, useState} from 'react';
 import { useDispatch } from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 import { TypedDispatch } from '../../../Store';
 import {ClipLoader} from 'react-spinners';
 import EnterName from './EnterName';
@@ -12,6 +13,7 @@ const useTypedDispatch = () => useDispatch<TypedDispatch>();
 function Form() {
     const [loading, setLoading] = useState<boolean>(false);
     const dispatch = useTypedDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement> ) => {
         e.preventDefault();
@@ -36,7 +38,8 @@ function Form() {
             if(response.status === 200){
                 const result = await response.text();
                 console.log(result);
-                dispatch({type: 'SHOW_POPUP', payload: 'Account has been successfully created'})
+                dispatch({type: 'SHOW_POPUP', payload: 'Account has been successfully created'});
+                navigate('/')
             }
             else{
                 const result = await response.text();
