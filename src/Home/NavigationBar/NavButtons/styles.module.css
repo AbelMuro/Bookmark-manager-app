@@ -1,0 +1,77 @@
+.nav_buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+
+.nav_buttons > button{
+    width: 100%;
+    height: 42px;
+    font-size: 1rem;
+    line-height: 140%;
+    letter-spacing: 0px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    padding: 12px 8px;
+    gap: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.nav_buttons_icon_home, 
+.nav_buttons_icon_archived{
+    width: 20px;
+    height: 20px;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 20px 20px;
+}
+
+.nav_buttons_icon_home{
+    mask-image: url('./icons/icon-home.svg')
+}
+
+.nav_buttons_icon_archived{
+    mask-image: url('./icons/icon-archive.svg');
+}
+
+@media(prefers-color-scheme: light){
+    .nav_buttons > button{
+        color: #4C5C59;
+    }
+
+    .nav_buttons_icon_home, .nav_buttons_icon_archived{
+        background-color: #4C5C59;
+    }
+
+    .selected.selected{
+        background-color: #E8F0EF;
+        color: #051513;
+    }
+
+    .selected.selected > img{
+        background-color: #051513;
+    }
+}
+
+@media(prefers-color-scheme: dark){
+    .nav_buttons > button{
+        color: #B1B9B9;
+    }
+
+    .nav_buttons_icon_home, .nav_buttons_icon_archived{
+        background-color: #B1B9B9;
+    }
+
+    .selected.selected{
+        background-color: #004241;
+        color: white;
+    }
+
+    .selected.selected > img {
+        background-color: white;
+    }
+}

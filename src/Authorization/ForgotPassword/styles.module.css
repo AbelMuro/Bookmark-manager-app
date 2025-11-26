@@ -87,7 +87,7 @@
     }
 
     .forgot_logo{
-        content: url('../icons/logo-light-theme.svg');
+        content: url('../../Common/icons/logo-light-theme.svg');
     }
 }
 
@@ -106,7 +106,7 @@
     }
 
     .forgot_logo{
-        content: url('../icons/logo-dark-theme.svg');
+        content: url('../../Common/icons/logo-dark-theme.svg');
     }
 
     .forgot_forgot, .forgot_sign{

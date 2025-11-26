@@ -7,6 +7,7 @@ import Register from './Authorization/Register';
 import ForgotPassword from './Authorization/ForgotPassword';
 import ResetPassword from './Authorization/ResetPassword';
 import PopupMessageBox from './Common/PopupMessageBox';
+import Home from './Home';
 import * as styles from './styles.css';
 
 /* 
@@ -22,6 +23,7 @@ function App() {
                     <Route path='/register' element={<Register/>}/>
                     <Route path='/forgot' element={<ForgotPassword/>}/>
                     <Route path='/reset/:token' element={<ResetPassword/>}/>
+                    <Route path='/home' element={<Home/>}/>
                 </Routes>
             </BrowserRouter>    
             <PopupMessageBox/>        

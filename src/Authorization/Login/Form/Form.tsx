@@ -1,4 +1,5 @@
 import React, {FormEvent, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import { useDispatch} from 'react-redux';
 import {TypedDispatch} from '../../../Store';
 import {ClipLoader} from 'react-spinners';
@@ -12,6 +13,7 @@ const useTypedDispatch = () => useDispatch<TypedDispatch>();
 function Form () {
     const [loading, setLoading] = useState<boolean>(false);
     const dispatch = useTypedDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -32,6 +34,7 @@ function Form () {
                 const result = await response.text();
                 console.log(result);
                 dispatch({type: 'SHOW_POPUP', payload: 'You have successfully logged in'});
+                navigate('/home')
             }
             else{
                 const result = await response.text();

@@ -74,7 +74,7 @@
     }
 
     .reset_logo{
-        content: url('../icons/logo-light-theme.svg');
+        content: url('../../Common/icons/logo-light-theme.svg');
     }
 
     .back{
@@ -98,7 +98,7 @@
     }
 
     .reset_logo{
-        content: url('../icons/logo-dark-theme.svg');
+        content: url('../../Common/icons/logo-dark-theme.svg');
     }
 
     .reset_forgot, .reset_sign{
