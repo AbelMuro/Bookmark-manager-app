@@ -11,7 +11,7 @@ import Home from './Home';
 import * as styles from './styles.css';
 
 /* 
-    this is where i left off, i need to continue working on the tag component within the navigation bar component
+    this is where i left off, i need to continue working on the header component
 */
 
 function App() {
