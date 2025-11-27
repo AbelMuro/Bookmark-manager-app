@@ -6,7 +6,43 @@
     justify-content: space-between;
 }
 
-.checkbox{
-    width: 16px;
-    height: 16px;
+.group{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tag_name{
+    font-family: 'manrope';
+    font-size: 1rem;
+    line-height: 140%;
+    letter-spacing: 0px;
+    color: #b1b9b9;
+}
+
+.tag_count{
+    width: 21px;
+    height: 21px;
+    border-radius: 100%;
+    background-color: #002E2D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'manrope';
+    font-size: 0.75rem;
+}
+
+@media(prefers-color-scheme: light){
+    .tag_count{
+        color: #4C5C59;
+        border: 1px solid #DDE9E7;
+    }
+
+}
+
+@media(prefers-color-scheme: dark){
+    .tag_count{
+        color: white;
+        border: 1px solid #004241;
+    }
 }

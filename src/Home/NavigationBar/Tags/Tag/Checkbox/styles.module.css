@@ -1,0 +1,35 @@
+.container{
+    position: relative;
+}
+
+.checkbox{
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.checkbox:focus{
+    outline: none;
+}
+
+.checkmark{
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    top: 1px;
+    pointer-events: none;
+}
+
+@media(prefers-color-scheme: light){
+    .checkbox{
+        border: 1px solid #899492;
+    }
+}
+
+@media(prefers-color-scheme: dark){
+    .checkbox{
+        border: 1px solid #00706E;
+    }
+}
