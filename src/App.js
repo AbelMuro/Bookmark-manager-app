@@ -11,7 +11,9 @@ import Home from './Home';
 import * as styles from './styles.css';
 
 /* 
-    this is where i left off, i need to continue working on the header component
+    this is where i left off, i need to continue working on the bookmark component
+
+    dont forget to check the focus states for all elements
 */
 
 function App() {

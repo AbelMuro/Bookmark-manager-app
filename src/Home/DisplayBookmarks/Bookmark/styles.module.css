@@ -50,6 +50,7 @@
     border-radius: 8px;
     grid-column: 3/4;
     grid-row: 1/3;
+    cursor: pointer;
 }
 
 .bookmark_edit > img{
@@ -86,6 +87,10 @@
         border: 1px solid #C0CFCC;
     }
 
+    .bookmark_edit:hover{
+        background-color: #C0CFCC;
+    }
+
 
     .bookmark_edit > img{
         background-color: #051513;
@@ -95,7 +100,7 @@
 
 @media(prefers-color-scheme: dark){
     .bookmark{
-        background-color: #002E2D;
+        background-color: #001F1F;
     }
 
     .bookmark_title{
@@ -108,6 +113,10 @@
 
     .bookmark_edit{
         border: 1px solid #004241;
+    }
+
+    .bookmark_edit:hover{
+        background-color: #001919;
     }
 
 
