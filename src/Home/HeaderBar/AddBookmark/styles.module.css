@@ -1,0 +1,33 @@
+.button{
+    width: 169px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    font-family: 'manrope';
+    font-size: 1rem;
+    line-height: 140%;
+    letter-spacing: 0px;
+    border-radius: 8px;
+    background-color: #014745;
+    color: white;
+    border: 1px solid #004241;
+    cursor: pointer;
+}
+
+.button > span{
+    font-size: 1.6rem;
+}
+
+.button:hover{
+    background-color: #013C3B;
+}
+
+.button:active{
+    background-color: #002524;
+}
+
+/* 
+    styles are the same for both light and dark theme
+*/

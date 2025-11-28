@@ -1,0 +1,23 @@
+.container{
+    width: 100%;
+    height: calc(100vh - 78px);
+    padding: 32px;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-content: start;
+    gap: 32px;
+}
+
+.title{
+    color: white;
+    font-family: 'manrope';
+    font-size: 1.5rem;
+    line-height: 140%;
+    letter-spacing: 0px;
+    margin: 0px;
+    grid-column: 1/4;
+    grid-row: 1/2;
+    margin-bottom: -12px;
+}

@@ -1,0 +1,13 @@
+.account{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.account_image{
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+}
