@@ -1,0 +1,94 @@
+.bookmark_misc{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.group{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.bookmark_views, 
+.bookmark_created,
+.bookmark_calendar{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-family: 'manrope';
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+.bookmark_views > img,
+.bookmark_created > img,
+.bookmark_calendar > img {
+    width: 12px;
+    height: 12px;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 12px 12px;
+}
+
+.bookmark_views > img{
+    mask-image: url('../icons/icon-visit-count.svg');
+}
+
+
+.bookmark_created > img{
+    mask-image: url('../icons/icon-created.svg');
+}
+
+.bookmark_calendar > img{
+    mask-image: url('../icons/icon-last-visited.svg')
+}
+
+.bookmark_pin{
+    width: 16px;
+    height: 16px;
+    mask-image: url('../icons/icon-pin.svg');
+    mask-size: 16px 16px;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    cursor: pointer;
+}
+
+@media(prefers-color-scheme: light){
+    .bookmark_views, 
+    .bookmark_created,
+    .bookmark_calendar{
+        color: #4C5C59;
+    }
+
+    .bookmark_views > img,
+    .bookmark_created > img,
+    .bookmark_calendar > img,
+    .bookmark_pin{
+        background-color: #4C5C59;
+    }
+
+    .bookmark_pin:hover{
+        background-color: black;
+    }
+}
+
+@media(prefers-color-scheme: dark){
+    .bookmark_views, 
+    .bookmark_created, 
+    .bookmark_calendar{
+        color: #B1B9B9;
+    }
+
+    .bookmark_views > img,
+    .bookmark_created > img,
+    .bookmark_calendar > img,
+    .bookmark_pin{
+        background-color: #B1B9B9;
+    };
+
+    .bookmark_pin:hover{
+        background-color: white;
+    }
+}

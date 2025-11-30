@@ -1,66 +1,30 @@
 .bookmark{
     width: 338px;
-    height: 272px;
     padding: 16px;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 16px;
 }
 
-.bookmark_header{
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    column-gap: 12px;
-    row-gap: 4px;
-}
 
-.bookmark_icon{
-    width: 44px;
-    height: 44px;
-    border-radius: 8px;
-    grid-column: 1/2;
-    grid-row: 1/3;
-    align-self: center;
-}
-
-.bookmark_title{
-    font-family: 'manrope';
-    font-size: 1.25rem;
-    line-height: 120%;
-    letter-spacing: 0px;
+.bookmark_line{
+    width: 100%;
+    height: 1px;
     margin: 0px;
-    grid-column: 2/3;
-    grid-row: 1/2;
+    padding: 0px;
+    border: none;
 }
 
-.bookmark_link{
+.bookmark_desc{
+    margin: 0px;
     font-family: 'manrope';
-    font-size: 0.75rem;
-    line-height: 140%;
+    font-size: 0.875rem;
+    line-height: 150%;
     letter-spacing: 0px;
-    grid-column: 2/3;
-    grid-row: 2/3;
 }
 
-.bookmark_edit{
-    width: 32px;
-    height: 32px;
-    background-color: transparent;
-    border-radius: 8px;
-    grid-column: 3/4;
-    grid-row: 1/3;
-    cursor: pointer;
-}
 
-.bookmark_edit > img{
-    width: 20px;
-    height: 20px;
-    mask-image: url('./icons/icon-menu-bookmark.svg');
-    mask-position: center;
-    mask-repeat: no-repeat;
-    mask-size: 20px 20px;
-}
 
 
 @media(prefers-color-scheme: light){
@@ -68,34 +32,14 @@
         background-color: white;
     }
 
-    .bookmark_title{
-        color: #051513;
-    }
-
-    .bookmark_link{
-        font-family: 'manrope';
-        font-size: 0.75rem;
-        line-height: 140%;
-        letter-spacing: 0px;
-    }
-
-    .bookmark_link{
+    .bookmark_desc{
         color: #4C5C59;
     }
 
-    .bookmark_edit{
-        border: 1px solid #C0CFCC;
+    
+    .bookmark_line{
+        background-color: #DDE9E7;
     }
-
-    .bookmark_edit:hover{
-        background-color: #C0CFCC;
-    }
-
-
-    .bookmark_edit > img{
-        background-color: #051513;
-    }
-
 }
 
 @media(prefers-color-scheme: dark){
@@ -103,24 +47,12 @@
         background-color: #001F1F;
     }
 
-    .bookmark_title{
-        color: white;
+
+    .bookmark_line{
+        background-color: #004241;
     }
 
-    .bookmark_link{
+    .bookmark_desc{
         color: #B1B9B9;
-    }
-
-    .bookmark_edit{
-        border: 1px solid #004241;
-    }
-
-    .bookmark_edit:hover{
-        background-color: #001919;
-    }
-
-
-    .bookmark_edit > img{
-        background-color: white;
     }
 }

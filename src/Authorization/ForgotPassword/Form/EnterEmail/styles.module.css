@@ -49,11 +49,6 @@
         color: #051513;
     }
 
-    .input:focus{
-        outline: 3px solid #004746;
-        outline-offset: 2px;
-    }
-
     .input:hover{
         background-color: #E8F0EF;
     }
@@ -64,11 +59,6 @@
         border: 1px solid #00706E; 
         background-color: #002E2D;
         color: white;
-    }
-
-    .input:focus{
-        outline: 1px solid white;
-        outline-offset: 2px;
     }
 
     .input:hover{

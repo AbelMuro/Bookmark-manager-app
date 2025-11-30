@@ -1,21 +1,26 @@
 import React from 'react';
+import Header from './Header';
+import Tags from './Tags';
+import Misc from './Misc';
 import * as styles from './styles.module.css';
 
 function Bookmark() {
     return(
         <article className={styles.bookmark}>
-            <div className={styles.bookmark_header}>
-                <img className={styles.bookmark_icon}/>
-                <h2 className={styles.bookmark_title}>
-                    Frontend Mentor
-                </h2>
-                <a className={styles.bookmark_link}>
-                    frontendmentor.io
-                </a>
-                <button className={styles.bookmark_edit}>
-                    <img />
-                </button>
-            </div>
+            <Header/>
+
+            <hr className={styles.bookmark_line}/>
+            <p className={styles.bookmark_desc}>
+                Improve your front-end coding skills by building real projects. 
+                Solve real-world HTML, CSS and JavaScript challenges whilst 
+                working to professional designs.
+            </p>
+
+            <Tags/>
+
+            <hr className={styles.bookmark_line}/>
+            <Misc/>
+
         </article>
     )
 }

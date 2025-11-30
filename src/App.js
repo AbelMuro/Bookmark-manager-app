@@ -8,12 +8,10 @@ import ForgotPassword from './Authorization/ForgotPassword';
 import ResetPassword from './Authorization/ResetPassword';
 import PopupMessageBox from './Common/PopupMessageBox';
 import Home from './Home';
-import * as styles from './styles.css';
+import './styles.css';
 
 /* 
-    this is where i left off, i need to continue working on the bookmark component
-
-    dont forget to check the focus states for all elements
+    this is where i left off, i need to continue working on the DisplayAccount component
 */
 
 function App() {
