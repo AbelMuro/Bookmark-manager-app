@@ -1,0 +1,71 @@
+.theme{
+    width: 64px;
+    height: 30px;
+    border-radius: 4px;
+    padding: 2px;   
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.theme_light, .theme_dark{
+    width: 30px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.theme_light > img{
+    width: 14px;
+    height: 14px;
+    mask-image: url('./icons/icon-light-theme.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 14px 14px;
+}
+
+.theme_dark > img{ 
+    width: 14px;
+    height: 14px;
+    mask-image: url('./icons/icon-dark-theme.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 14px 14px;
+}
+
+
+@media(prefers-color-scheme: dark){
+    .theme{
+        background-color: #004241;
+    }
+
+    .theme_light > img, 
+    .theme_dark > img{
+        background-color: white;
+    }
+
+    .selected{
+        background-color: #002E2D;
+    }
+}
+
+@media(prefers-color-scheme: light){
+    .theme{
+        background-color: #DDE9E7;
+        border: 1px solid #abb0af; 
+    }
+
+    .theme_light > img, 
+    .theme_dark > img{
+        background-color: #051513;
+    }
+
+    .selected{
+        background-color: white;
+    }
+}

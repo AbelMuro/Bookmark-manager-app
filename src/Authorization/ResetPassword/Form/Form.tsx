@@ -1,7 +1,6 @@
 import React, {useState, FormEvent} from 'react';
 import {useNavigate} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { TypedDispatch } from '../../../Store';
+import { useTypedDispatch } from '../../../Store';
 import { ClipLoader } from 'react-spinners';
 import EnterPassword from './EnterPassword';
 import * as styles from './styles.module.css';
@@ -10,7 +9,6 @@ type Props = {
     token: string
 }
 
-const useTypedDispatch = () => useDispatch<TypedDispatch>();
 
 function Form({token} : Props) {
     const [loading, setLoading] = useState<boolean>(false);

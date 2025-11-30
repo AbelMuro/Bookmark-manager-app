@@ -1,12 +1,9 @@
 import React, {useEffect} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import {TypedUseSelectorHook, useSelector, useDispatch} from 'react-redux';
-import {TypedDispatch} from '../../Store';
-import {RootState} from '../../Store';
+import {useTypedDispatch, useTypedSelector} from '../../Store';
 import * as styles from './styles.module.css';
 
-const useTypedSelector : TypedUseSelectorHook<RootState> = useSelector;
-const useTypedDispatch = () => useDispatch<TypedDispatch>();
 
 function PopupMessageBox() {
     const open = useTypedSelector<boolean>(state => state.popup.open);

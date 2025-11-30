@@ -1,14 +1,11 @@
 import React, {FormEvent, useState} from 'react';
-import { useDispatch } from 'react-redux';
 import {useNavigate} from 'react-router-dom';
-import { TypedDispatch } from '../../../Store';
+import { useTypedDispatch } from '../../../Store';
 import {ClipLoader} from 'react-spinners';
 import EnterName from './EnterName';
 import EnterEmail from './EnterEmail';
 import EnterPassword from './EnterPassword';
 import * as styles from './styles.module.css';
-
-const useTypedDispatch = () => useDispatch<TypedDispatch>();
 
 function Form() {
     const [loading, setLoading] = useState<boolean>(false);

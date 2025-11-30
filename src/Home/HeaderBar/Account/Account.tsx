@@ -12,12 +12,15 @@ function Acccount() {
     }
 
     return(
+        <>
             <button className={styles.account} onClick={handleOpen}>
-                <img className={styles.account_image} src={icons['placeholder']}/>
-                <AnimatePresence>
-                    {open && <DisplayAccount/>}     
-                </AnimatePresence>                  
-            </button>              
+                <img className={styles.account_image} src={icons['placeholder']}/>                 
+            </button>         
+            <AnimatePresence>
+                {open && <DisplayAccount/>}     
+            </AnimatePresence> 
+        </>
+             
     )
 }
 
