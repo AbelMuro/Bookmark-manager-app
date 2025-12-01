@@ -1,3 +1,3 @@
-import DisplayAccount from './DisplayAccount.js';
+import DisplayAccount from './DisplayAccount.tsx';
 
 export default DisplayAccount;

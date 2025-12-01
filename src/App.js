@@ -11,7 +11,8 @@ import Home from './Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i need to continue working on the DisplayAccount component
+    this is where i left off, i need to continue working on changing the theme styles for everyone component
+    i am currently on the <DisplayBookmarks/> component
 */
 
 function App() {

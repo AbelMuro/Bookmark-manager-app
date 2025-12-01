@@ -22,14 +22,10 @@
     pointer-events: none;
 }
 
-@media(prefers-color-scheme: light){
-    .checkbox{
-        border: 1px solid #899492;
-    }
+.checkbox.light{
+    border: 1px solid #899492;
 }
 
-@media(prefers-color-scheme: dark){
-    .checkbox{
-        border: 1px solid #00706E;
-    }
+.checkbox.dark{
+    border: 1px solid #00706E;
 }

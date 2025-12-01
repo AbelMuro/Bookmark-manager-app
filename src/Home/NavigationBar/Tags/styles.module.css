@@ -17,14 +17,10 @@
     flex-direction: column;
 }
 
-@media(prefers-color-scheme: light){
-    .tags_title{
-        color: #4D4D4D;
-    }
+.tags_title.light{
+    color: #4D4D4D;
 }
 
-@media(prefers-color-scheme: dark){
-    .tags_title{
-        color: #CCD1D1;
-    }
+.tags_title.dark{
+    color: #CCD1D1;
 }

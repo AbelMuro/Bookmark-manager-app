@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {memo} from 'react';
+import { useTypedSelector } from '../../../Store';
+import {ChangeTheme} from '../../../Common/functions';
 import * as styles from './styles.module.css';
 
 function Search() {
+    const theme = useTypedSelector(state => state.theme.theme);
+
     return(
         <form className={styles.container}>
-            <img className={styles.search_icon}/>
+            <img className={ChangeTheme(styles, 'search_icon', theme)}/>
             <input 
                 type='text' 
-                className={styles.search}
+                className={ChangeTheme(styles, 'search', theme)}
                 placeholder={'Search by title...'}
                 />
         </form>
@@ -15,4 +19,4 @@ function Search() {
     )
 }
 
-export default Search;
+export default memo(Search);

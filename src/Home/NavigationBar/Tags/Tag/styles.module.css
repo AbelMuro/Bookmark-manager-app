@@ -17,14 +17,20 @@
     font-size: 1rem;
     line-height: 140%;
     letter-spacing: 0px;
+}
+
+.tag_name.dark{
     color: #b1b9b9;
+}
+
+.tag_name.light{
+    color: #4C5C59;   
 }
 
 .tag_count{
     width: 21px;
     height: 21px;
     border-radius: 100%;
-    background-color: #002E2D;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,17 +38,14 @@
     font-size: 0.75rem;
 }
 
-@media(prefers-color-scheme: light){
-    .tag_count{
-        color: #4C5C59;
-        border: 1px solid #DDE9E7;
-    }
-
+.tag_count.light{
+    color: #4C5C59;
+    border: 1px solid #DDE9E7;
+    background-color: #E8F0EF;
 }
 
-@media(prefers-color-scheme: dark){
-    .tag_count{
-        color: white;
-        border: 1px solid #004241;
-    }
+.tag_count.dark{
+    color: white;
+    border: 1px solid #004241;
+    background-color: #002E2D;
 }

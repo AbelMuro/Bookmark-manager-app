@@ -39,33 +39,29 @@
 }
 
 
-@media(prefers-color-scheme: dark){
-    .theme{
-        background-color: #004241;
-    }
-
-    .theme_light > img, 
-    .theme_dark > img{
-        background-color: white;
-    }
-
-    .selected{
-        background-color: #002E2D;
-    }
+.theme.dark{
+    background-color: #004241;
 }
 
-@media(prefers-color-scheme: light){
-    .theme{
-        background-color: #DDE9E7;
-        border: 1px solid #abb0af; 
-    }
+.theme_light.dark > img, 
+.theme_dark.dark > img{
+    background-color: white;
+}
 
-    .theme_light > img, 
-    .theme_dark > img{
-        background-color: #051513;
-    }
+.selected.dark{
+    background-color: #002E2D;
+}
 
-    .selected{
-        background-color: white;
-    }
+.theme.light{
+    background-color: #DDE9E7;
+    border: 1px solid #abb0af; 
+}
+
+.theme_light.light > img, 
+.theme_dark.light > img{
+    background-color: #051513;
+}
+
+.selected.light{
+    background-color: white;
 }

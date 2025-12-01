@@ -1,3 +1,3 @@
-import Tag from './Tag.js';
+import Tag from './Tag.tsx';
 
 export default Tag;

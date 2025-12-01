@@ -13,6 +13,34 @@
     letter-spacing: 0px;
 }
 
+.search.light{
+    color: #051513;
+    background-color: white;
+    border: 1px solid #DDE9E7;
+}
+
+.search.light:hover{
+    background-color: #4C5C59;
+}
+
+.search.light::placeholder{
+    color: #4C4C59;
+}
+
+.search.dark{
+    color: white;
+    background-color: #002E2D;
+    border: 1px solid #004241;
+}
+
+.search.dark:hover{
+    background-color: #004746;
+}
+
+.search.dark::placeholder{
+    color: #b1b9b9;
+}
+
 .search_icon{
     width: 20px;
     height: 20px;
@@ -27,42 +55,11 @@
     margin: auto;
 }
 
-@media(prefers-color-scheme: light){
-    .search{
-        color: #051513;
-        background-color: white;
-        border: 1px solid #DDE9E7;
-    }
 
-    .search:hover{
-        background-color: #4C5C59;
-    }
-
-    .search::placeholder{
-        color: #4C4C59;
-    }
-
-    .search_icon{
-        background-color: #4C5C59;
-    }
+.search_icon.light{
+    background-color: #4C5C59;
 }
 
-@media(prefers-color-scheme: dark){
-    .search{
-        color: white;
-        background-color: #002E2D;
-        border: 1px solid #004241;
-    }
-
-    .search:hover{
-        background-color: #004746;
-    }
-
-    .search::placeholder{
-        color: #b1b9b9;
-    }
-
-    .search_icon{
-        background-color: #b1b9b9;
-    }
+.search_icon.dark{
+    background-color: #b1b9b9;
 }

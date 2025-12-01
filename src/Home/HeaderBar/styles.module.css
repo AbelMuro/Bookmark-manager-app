@@ -8,22 +8,18 @@
     position: relative;
 }
 
+.header.dark{
+    background-color: #001f1f;
+    border-bottom: 1px solid #004241;
+}
+
+.header.light{
+    background-color: white;
+    border-bottom: 1px solid #DDE9E7;
+}
+
 .group{
     display: flex;
     align-items: center;
     gap: 16px;
-}
-
-@media(prefers-color-scheme: dark){
-    .header{
-        background-color: #001f1f;
-        border-bottom: 1px solid #004241;
-    }
-}
-
-@media(preferse-color-scheme: light){
-    .header{
-        background-color: white;
-        border-bottom: 1px solid #DDE9E7;
-    }
 }

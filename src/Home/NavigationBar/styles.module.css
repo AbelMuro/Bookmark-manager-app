@@ -10,28 +10,25 @@
 }
 
 
-@media(prefers-color-scheme: light){
-    .nav{
-        background-color: white;
-        border-right: 1px solid #DDE9E7;        
-    }
-
-    .nav_logo{
-        width: 214px;
-        height: 32px;
-        content: url('../../Common/icons/logo-light-theme.svg')
-    }
+.nav.light{
+    background-color: white;
+    border-right: 1px solid #DDE9E7;        
 }
 
-@media(prefers-color-scheme: dark){
-    .nav{
-        background-color: #001f1f;
-        border-right: 1px solid #004241;
-    }
+.nav_logo.light{
+    width: 214px;
+    height: 32px;
+    content: url('../../Common/icons/logo-light-theme.svg')
+}
 
-    .nav_logo{
-        width: 214px;
-        height: 32px;
-        content: url('../../Common/icons/logo-dark-theme.svg')
-    }
+
+.nav.dark{
+    background-color: #001f1f;
+    border-right: 1px solid #004241;
+}
+
+.nav_logo.dark{
+    width: 214px;
+    height: 32px;
+    content: url('../../Common/icons/logo-dark-theme.svg')
 }
