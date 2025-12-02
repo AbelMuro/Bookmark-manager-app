@@ -1,4 +1,5 @@
 import React from 'react';
+import ChangeBodyTheme from './ChangeBodyTheme';
 import {Provider} from 'react-redux';
 import Store from './Store';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
@@ -12,12 +13,14 @@ import './styles.css';
 
 /* 
     this is where i left off, i need to continue working on changing the theme styles for everyone component
-    i am currently on the <DisplayBookmarks/> component
+    i am currently on the <Login/> component, more specifically, i am on the <EnterEmail/> component
 */
 
 function App() {
+
     return(
         <Provider store={Store}>
+            <ChangeBodyTheme/>
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<Login/>}/>

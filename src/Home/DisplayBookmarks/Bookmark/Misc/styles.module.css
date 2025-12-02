@@ -55,40 +55,37 @@
     cursor: pointer;
 }
 
-@media(prefers-color-scheme: light){
-    .bookmark_views, 
-    .bookmark_created,
-    .bookmark_calendar{
-        color: #4C5C59;
-    }
-
-    .bookmark_views > img,
-    .bookmark_created > img,
-    .bookmark_calendar > img,
-    .bookmark_pin{
-        background-color: #4C5C59;
-    }
-
-    .bookmark_pin:hover{
-        background-color: black;
-    }
+.bookmark_views.light, 
+.bookmark_created.light,
+.bookmark_calendar.light{
+    color: #4C5C59;
 }
 
-@media(prefers-color-scheme: dark){
-    .bookmark_views, 
-    .bookmark_created, 
-    .bookmark_calendar{
-        color: #B1B9B9;
-    }
+.bookmark_views.light > img,
+.bookmark_created.light > img,
+.bookmark_calendar.light > img,
+.bookmark_pin.light{
+    background-color: #4C5C59;
+}
 
-    .bookmark_views > img,
-    .bookmark_created > img,
-    .bookmark_calendar > img,
-    .bookmark_pin{
-        background-color: #B1B9B9;
-    };
+.bookmark_pin.light:hover{
+    background-color: black;
+}
 
-    .bookmark_pin:hover{
-        background-color: white;
-    }
+
+.bookmark_views.dark, 
+.bookmark_created.dark, 
+.bookmark_calendar.dark{
+    color: #B1B9B9;
+}
+
+.bookmark_views.dark > img,
+.bookmark_created.dark > img,
+.bookmark_calendar.dark > img,
+.bookmark_pin.dark{
+    background-color: #B1B9B9;
+};
+
+.bookmark_pin.dark:hover{
+    background-color: white;
 }

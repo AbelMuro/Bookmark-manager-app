@@ -37,34 +37,31 @@
 }
 
 
-@media(prefers-color-scheme: dark){
-    .submit{
-        border: 1px solid #00706E;
-    }
-
-    .back{
-        color: white;
-    }
-
-    .back:hover{
-        color: rgb(182, 182, 182);
-    }
-
-    .back:active{
-        color: rgb(119, 119, 119);
-    }
+.submit.dark{
+    border: 1px solid #00706E;
 }
 
-@media(prefers-color-scheme: light){
-    .back{
-        color: #051513;
-    }
+.back.dark{
+    color: white;
+}
 
-    .back:hover{
-        color: #0b2b27
-    }
+.back.dark:hover{
+    color: rgb(182, 182, 182);
+}
 
-    .back:active{
-        color: #134d46;
-    }
+.back.dark:active{
+    color: rgb(119, 119, 119);
+}
+
+
+.back.light{
+    color: #051513;
+}
+
+.back.light:hover{
+    color: #0b2b27
+}
+
+.back.light:active{
+    color: #134d46;
 }

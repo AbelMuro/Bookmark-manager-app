@@ -27,32 +27,29 @@
 
 
 
-@media(prefers-color-scheme: light){
-    .bookmark{
-        background-color: white;
-    }
-
-    .bookmark_desc{
-        color: #4C5C59;
-    }
-
-    
-    .bookmark_line{
-        background-color: #DDE9E7;
-    }
+.bookmark.light{
+    background-color: white;
 }
 
-@media(prefers-color-scheme: dark){
-    .bookmark{
-        background-color: #001F1F;
-    }
+.bookmark_desc.light{
+    color: #4C5C59;
+}
 
 
-    .bookmark_line{
-        background-color: #004241;
-    }
+.bookmark_line.light{
+    background-color: #DDE9E7;
+}
 
-    .bookmark_desc{
-        color: #B1B9B9;
-    }
+
+.bookmark.dark{
+    background-color: #001F1F;
+}
+
+
+.bookmark_line.dark{
+    background-color: #004241;
+}
+
+.bookmark_desc.dark{
+    color: #B1B9B9;
 }

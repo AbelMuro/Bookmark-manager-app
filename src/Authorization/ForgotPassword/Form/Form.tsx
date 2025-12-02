@@ -1,5 +1,6 @@
 import React, {FormEvent, useState} from 'react';
-import {useTypedDispatch} from '../../../Store';
+import {ChangeTheme} from '../../../Common/functions';
+import {useTypedDispatch, useTypedSelector} from '../../../Store';
 import {ClipLoader} from 'react-spinners';
 import EnterEmail from './EnterEmail';
 import * as styles from './styles.module.css';
@@ -7,6 +8,7 @@ import * as styles from './styles.module.css';
 function Form() {
     const [loading, setLoading] = useState<boolean>(false);
     const dispatch = useTypedDispatch()
+    const theme = useTypedSelector<string>(state => state.theme.theme);
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -46,7 +48,7 @@ function Form() {
     return(
         <form className={styles.form} onSubmit={handleSubmit}>
             <EnterEmail/>
-            <button className={styles.submit}>
+            <button className={ChangeTheme(styles, 'submit', theme)}>
                 {loading ? <ClipLoader size='25px' color='white'/> : 'Send reset link'}
             </button>
         </form>

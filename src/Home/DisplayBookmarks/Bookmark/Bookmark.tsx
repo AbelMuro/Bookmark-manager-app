@@ -1,16 +1,20 @@
 import React from 'react';
+import { useTypedSelector } from '../../../Store';
+import {ChangeTheme} from '../../../Common/functions';
 import Header from './Header';
 import Tags from './Tags';
 import Misc from './Misc';
 import * as styles from './styles.module.css';
 
 function Bookmark() {
+    const theme = useTypedSelector<string>(state => state.theme.theme);
+
     return(
-        <article className={styles.bookmark}>
+        <article className={ChangeTheme(styles, 'bookmark', theme)}>
             <Header/>
 
-            <hr className={styles.bookmark_line}/>
-            <p className={styles.bookmark_desc}>
+            <hr className={ChangeTheme(styles, 'bookmark_line', theme)}/>
+            <p className={ChangeTheme(styles, 'bookmark_desc', theme)}>
                 Improve your front-end coding skills by building real projects. 
                 Solve real-world HTML, CSS and JavaScript challenges whilst 
                 working to professional designs.
@@ -18,7 +22,7 @@ function Bookmark() {
 
             <Tags/>
 
-            <hr className={styles.bookmark_line}/>
+            <hr className={ChangeTheme(styles, 'bookmark_line', theme)}/>
             <Misc/>
 
         </article>

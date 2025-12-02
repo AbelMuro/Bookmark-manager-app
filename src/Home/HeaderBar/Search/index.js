@@ -1,3 +1,3 @@
-import Search from './Search.js';
+import Search from './Search.tsx';
 
 export default Search;

@@ -4,7 +4,7 @@ import {ChangeTheme} from '../../../Common/functions';
 import * as styles from './styles.module.css';
 
 function Search() {
-    const theme = useTypedSelector(state => state.theme.theme);
+    const theme = useTypedSelector<string>(state => state.theme.theme);
 
     return(
         <form className={styles.container}>
@@ -15,7 +15,6 @@ function Search() {
                 placeholder={'Search by title...'}
                 />
         </form>
-
     )
 }
 

@@ -50,70 +50,66 @@
     align-items: center;
 }
 
-
-@media(prefers-color-scheme: light){
-    .login{
-        background-color: white;
-    }
-
-    .login_title{
-        color: #051513;
-    }
-
-    .login_desc{
-        color: #4C5C59;
-    }
-
-    .login_logo{
-        content: url('../../Common/icons/logo-light-theme.svg');
-    }
+.login.light{
+    background-color: white;
 }
 
-@media(prefers-color-scheme: dark){
-    .login{
-        background-color: #001f1f;
-        border: 1px solid #004241;
-    }
+.login_title.light{
+    color: #051513;
+}
 
-    .login_title{
-        color: white;
-    }
+.login_desc.light{
+    color: #4C5C59;
+}
 
-    .login_desc{
-        color: #b1b9b9;
-    }
+.login_logo.light{
+    content: url('../../Common/icons/logo-light-theme.svg');
+}
 
-    .login_logo{
-        content: url('../../Common/icons/logo-dark-theme.svg');
-    }
 
-    .login_forgot, .login_sign{
-        font-family: 'manrope';
-        font-size: 0.875rem;
-        line-height: 140%;
-        letter-spacing: 0px;
-        margin: 0px;
-        color: #b1b9b9;
-    }
+.login.dark{
+    background-color: #001f1f;
+    border: 1px solid #004241;
+}
 
-    .login_forgot > button, 
-    .login_sign > button{
-        color: white;
-        background-color: transparent;
-        border: none;
-        font-weight: 700;
-        cursor: pointer;
-    }    
-    
-    .login_forgot > button:hover,
-    .login_sign > button:hover{
-        color: #b1b9b9;
-    }
+.login_title.dark{
+    color: white;
+}
 
-    .login_forgot > button:active,
-    .login_sign > button:active{
-        color: #8e8e8e;
-    }
+.login_desc.dark{
+    color: #b1b9b9;
+}
+
+.login_logo.dark{
+    content: url('../../Common/icons/logo-dark-theme.svg');
+}
+
+.login_forgot.dark, .login_sign.dark{
+    font-family: 'manrope';
+    font-size: 0.875rem;
+    line-height: 140%;
+    letter-spacing: 0px;
+    margin: 0px;
+    color: #b1b9b9;
+}
+
+.login_forgot.dark > button, 
+.login_sign.dark > button{
+    color: white;
+    background-color: transparent;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+}    
+
+.login_forgot.dark > button:hover,
+.login_sign.dark > button:hover{
+    color: #b1b9b9;
+}
+
+.login_forgot.dark > button:active,
+.login_sign.dark > button:active{
+    color: #8e8e8e;
 }
 
 @media(max-width: 500px){

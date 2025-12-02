@@ -1,3 +1,3 @@
-import DisplayBookmarks from './DisplayBookmarks.js';
+import DisplayBookmarks from './DisplayBookmarks.tsx';
 
 export default DisplayBookmarks;

@@ -16,6 +16,7 @@
     cursor: pointer;
     color: white;
     background-color: #014745;
+    border: 1px solid #00706E;    
 }
 
 
@@ -25,11 +26,4 @@
 
 .submit:active{
     background-color: #002d2c;
-}
-
-
-@media(prefers-color-scheme: dark){
-    .submit{
-        border: 1px solid #00706E;
-    }
 }

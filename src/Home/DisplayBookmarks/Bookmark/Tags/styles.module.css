@@ -15,17 +15,14 @@
 }
 
 
-@media(prefers-color-scheme: light){
-    .bookmark_tag{
-       background-color: #E8F0EF; 
-       color: #4C5C59;
-    }
+.bookmark_tag.light{
+    background-color: #E8F0EF; 
+    color: #4C5C59;
 }
 
-@media(prefers-color-scheme: dark){
-    .bookmark_tag{
-       background-color: #002E2D; 
-       color: #B1B9B9;
-       box-shadow: 0px 2px 2px black;
-    }
+
+.bookmark_tag.dark{
+    background-color: #002E2D; 
+    color: #B1B9B9;
+    box-shadow: 0px 2px 2px black;
 }

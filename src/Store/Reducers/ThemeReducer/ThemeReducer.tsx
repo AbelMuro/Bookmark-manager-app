@@ -1,13 +1,22 @@
 import { createAction, createReducer} from '@reduxjs/toolkit'
 
 const changeTheme = createAction('CHANGE_THEME');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-const initialState = { theme: prefersDark ? 'dark' : 'light'};
+let initialState;
+
+const savedPreference = localStorage.getItem('preferred-theme');
+if(savedPreference)
+    initialState = { theme: savedPreference};
+else{
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    initialState = { theme: prefersDark ? 'dark' : 'light'}    
+}
+
 
 const ThemeReducer = createReducer(initialState, (builder) => {       //builder, as the name implies, is an object that builds the reducer with .addCase
 builder
     .addCase(changeTheme, (state) => {                    
         state.theme = state.theme === 'light' ? 'dark' : 'light';
+        localStorage.setItem('preferred-theme', state.theme);
     })
 })
 

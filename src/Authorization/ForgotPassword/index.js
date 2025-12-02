@@ -1,3 +1,3 @@
-import ForgotPassword from './ForgotPassword.js';
+import ForgotPassword from './ForgotPassword.tsx';
 
 export default ForgotPassword;

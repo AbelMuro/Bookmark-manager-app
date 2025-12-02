@@ -1,3 +1,3 @@
-import Misc from './Misc.js';
+import Misc from './Misc.tsx';
 
 export default Misc;

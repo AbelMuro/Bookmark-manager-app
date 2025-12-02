@@ -1,3 +1,3 @@
-import Bookmark from './Bookmark.js';
+import Bookmark from './Bookmark.tsx';
 
 export default Bookmark;
