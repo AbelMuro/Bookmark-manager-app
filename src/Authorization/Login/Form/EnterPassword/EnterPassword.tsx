@@ -1,10 +1,13 @@
 import React, {useState, ChangeEvent} from 'react';
+import {ChangeTheme} from '../../../../Common/functions';
+import { useTypedSelector } from '../../../../Store';
 import {motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 
 function EnterPassword() {
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string>('');
+    const theme = useTypedSelector<string>(state => state.theme.theme);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         e.target.setCustomValidity('');
@@ -31,7 +34,7 @@ function EnterPassword() {
 
     return(
         <motion.fieldset layout className={styles.container}>
-            <motion.label layout className={styles.label}>
+            <motion.label layout className={ChangeTheme(styles, 'label', theme)}>
                 Password
             </motion.label>
             <motion.input 
@@ -39,7 +42,7 @@ function EnterPassword() {
                 name='password'
                 type='password' 
                 style={error ? {borderColor: '#CB0A04'} : {}}
-                className={styles.password}
+                className={ChangeTheme(styles, 'password', theme)}
                 value={password}
                 onChange={handleChange}
                 onBlur={handleBlur}

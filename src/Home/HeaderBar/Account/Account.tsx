@@ -11,13 +11,14 @@ function Acccount() {
         setOpen(!open);
     }
 
+
     return(
         <>
             <button className={styles.account} onClick={handleOpen}>
                 <img className={styles.account_image} src={icons['placeholder']}/>                 
             </button>         
             <AnimatePresence>
-                {open && <DisplayAccount/>}     
+                {open && <DisplayAccount setOpen={setOpen}/>}     
             </AnimatePresence> 
         </>
              

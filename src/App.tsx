@@ -12,8 +12,8 @@ import Home from './Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i need to continue working on changing the theme styles for everyone component
-    i am currently on the <Login/> component, more specifically, i am on the <EnterEmail/> component
+    this is where i left off, i am currently working on the DisplayAccount component
+    i want to unmount the component when the user clicks on any element outside the component
 */
 
 function App() {

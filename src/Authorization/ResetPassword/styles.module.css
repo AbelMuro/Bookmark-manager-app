@@ -59,88 +59,92 @@
     cursor: pointer;
 }
 
-
-@media(prefers-color-scheme: light){
-    .reset{
-        background-color: white;
-    }
-
-    .reset_title{
-        color: #051513;
-    }
-
-    .reset_desc{
-        color: #4C5C59;
-    }
-
-    .reset_logo{
-        content: url('../../Common/icons/logo-light-theme.svg');
-    }
-
-    .back{
-        color: #051513;
-    }
-
+.back:focus{
+    outline: none;
 }
 
-@media(prefers-color-scheme: dark){
-    .reset{
-        background-color: #001f1f;
-        border: 1px solid #004241;
-    }
-
-    .reset_title{
-        color: white;
-    }
-
-    .reset_desc{
-        color: #b1b9b9;
-    }
-
-    .reset_logo{
-        content: url('../../Common/icons/logo-dark-theme.svg');
-    }
-
-    .reset_forgot, .reset_sign{
-        font-family: 'manrope';
-        font-size: 0.875rem;
-        line-height: 140%;
-        letter-spacing: 0px;
-        margin: 0px;
-        color: #b1b9b9;
-    }
-
-    .reset_forgot > button, 
-    .reset_sign > button{
-        color: white;
-        background-color: transparent;
-        border: none;
-        font-weight: 700;
-        cursor: pointer;
-    }    
-    
-    .reset_forgot > button:hover,
-    .reset_sign > button:hover{
-        color: #b1b9b9;
-    }
-
-    .reset_forgot > button:active,
-    .reset_sign > button:active{
-        color: #8e8e8e;
-    }
-
-    .back{
-        color: white;
-    }
-
-    .back:hover{
-        color: rgb(182, 182, 182);
-    }
-
-    .back:active{
-        color: rgb(119, 119, 119);
-    }
+.reset_forgot, .reset_sign{
+    font-family: 'manrope';
+    font-size: 0.875rem;
+    line-height: 140%;
+    letter-spacing: 0px;
+    margin: 0px;
 }
+
+
+.reset.light{
+    background-color: white;
+}
+
+.reset_title.light{
+    color: #051513;
+}
+
+.reset_desc.light{
+    color: #4C5C59;
+}
+
+.reset_logo.light{
+    content: url('../../Common/icons/logo-light-theme.svg');
+}
+
+.back.light{
+    color: #051513;
+}
+
+
+.reset.dark{
+    background-color: #001f1f;
+    border: 1px solid #004241;
+}
+
+.reset_title.dark{
+    color: white;
+}
+
+.reset_desc.dark{
+    color: #b1b9b9;
+}
+
+.reset_logo.dark{
+    content: url('../../Common/icons/logo-dark-theme.svg');
+}
+
+.reset_forgot.dark, .reset_sign.dark{
+    color: #b1b9b9;
+}
+
+.reset_forgot.dark > button, 
+.reset_sign.dark > button{
+    color: white;
+    background-color: transparent;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+}    
+
+.reset_forgot.dark > button:hover,
+.reset_sign.dark > button:hover{
+    color: #b1b9b9;
+}
+
+.reset_forgot.dark > button:active,
+.reset_sign.dark > button:active{
+    color: #8e8e8e;
+}
+
+.back.dark{
+    color: white;
+}
+
+.back.dark:hover{
+    color: rgb(182, 182, 182);
+}
+
+.back.dark:active{
+    color: rgb(119, 119, 119);
+}
+
 
 @media(max-width: 500px){
     .reset{

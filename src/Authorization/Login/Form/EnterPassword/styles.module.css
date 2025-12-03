@@ -44,44 +44,42 @@
 }
 
 
-@media(prefers-color-scheme: light){
-    .label{
-        color: #051513;
-    }
 
-    .password{
-        border: 1px solid #899492;
-        background-color: white;
-        color: #051513;
-    }
-
-    .password:focus{
-        outline: 3px solid #004746;
-        outline-offset: 2px;
-    }
-
-    .password:hover{
-        background-color: #E8F0EF;
-    }
+.label.light{
+    color: #051513;
 }
 
-@media(prefers-color-scheme: dark){
-    .password{ 
-        border: 1px solid #00706E; 
-        background-color: #002E2D;
-        color: white;
-    }
+.password.light{
+    border: 1px solid #899492;
+    background-color: white;
+    color: #051513;
+}
 
-    .password:focus{
-        outline: 1px solid white;
-        outline-offset: 2px;
-    }
+.password.light:focus{
+    outline: 3px solid #004746;
+    outline-offset: 2px;
+}
 
-    .password:hover{
-        background-color: #004241;
-    }
+.password.light:hover{
+    background-color: #E8F0EF;
+}
 
-    .label{
-        color: white;
-    }
+
+.password.dark{ 
+    border: 1px solid #00706E; 
+    background-color: #002E2D;
+    color: white;
+}
+
+.password.dark:focus{
+    outline: 1px solid white;
+    outline-offset: 2px;
+}
+
+.password.dark:hover{
+    background-color: #004241;
+}
+
+.label.dark{
+    color: white;
 }

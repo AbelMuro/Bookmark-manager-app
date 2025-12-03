@@ -76,6 +76,10 @@
     color: #134d46;
 }
 
+.back:focus{
+    outline: none;
+}
+
 .forgot_title.light{
     color: #051513;
 }

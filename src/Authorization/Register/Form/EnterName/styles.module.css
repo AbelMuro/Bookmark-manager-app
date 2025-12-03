@@ -35,41 +35,38 @@
 }
 
 
-@media(prefers-color-scheme: light){
-    .label{
-        color: #051513;
-    }
-
-    .label > span{
-        color: #014745;
-    }
-
-    .input{
-        border: 1px solid #899492;
-        background-color: white;
-        color: #051513;
-    }
-
-    .input:hover{
-        background-color: #E8F0EF;
-    }
+.label.light{
+    color: #051513;
 }
 
-@media(prefers-color-scheme: dark){
-    .input{ 
-        border: 1px solid #00706E; 
-        background-color: #002E2D;
-        color: white;
-    }
+.label.light > span{
+    color: #014745;
+}
 
-    .input:hover{
-        background-color: #004241;
-    }
-    .label{
-        color: white;
-    }
+.input.light{
+    border: 1px solid #899492;
+    background-color: white;
+    color: #051513;
+}
 
-    .label > span{
-        color: #B1B9B9;
-    }
+.input.light:hover{
+    background-color: #E8F0EF;
+}
+
+
+.input.dark{ 
+    border: 1px solid #00706E; 
+    background-color: #002E2D;
+    color: white;
+}
+
+.input.dark:hover{
+    background-color: #004241;
+}
+.label.dark{
+    color: white;
+}
+
+.label.dark > span{
+    color: #B1B9B9;
 }
