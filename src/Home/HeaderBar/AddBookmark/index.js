@@ -1,3 +1,3 @@
-import AddBookmark from "./AddBookmark.js";
+import AddBookmark from "./AddBookmark.tsx";
 
 export default AddBookmark;

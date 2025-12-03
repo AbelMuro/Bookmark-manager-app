@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {forwardRef} from 'react';
 import ThemeButton from './ThemeButton';
 import { useTypedSelector } from '../../../../Store';
 import {ChangeTheme} from '../../../../Common/functions';
@@ -6,32 +6,13 @@ import {motion} from 'framer-motion';
 import icons from '../icons';
 import * as styles from './styles.module.css';
 
-type Props = {
-    setOpen: Function
-}
 
-function DisplayAccount({setOpen} : Props) {
+const DisplayAccount = forwardRef((_, ref : React.Ref<HTMLElement | null>) => {
     const theme = useTypedSelector<string>(state => state.theme.theme);
-    const accountRef = useRef<HTMLDivElement | null>(null);
-
-    useEffect(() => {
-        const handleClose = (e: PointerEvent) => {
-            const target = e.target as Node;
-
-            if(accountRef.current && !accountRef.current.contains(target))
-                setOpen(false);
-        }
-
-        document.addEventListener('click', handleClose);
-
-        return () => {
-            document.removeEventListener('click', handleClose);
-        }
-    }, [])
 
     return(
         <motion.article 
-            ref={accountRef}
+            ref={ref}
             className={ChangeTheme(styles, 'account', theme)}
             initial={{scale: 0}}
             animate={{scale: 1}}
@@ -62,6 +43,6 @@ function DisplayAccount({setOpen} : Props) {
                 </button>
         </motion.article>
     )
-}
+})
 
 export default DisplayAccount;

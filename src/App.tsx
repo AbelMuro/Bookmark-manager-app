@@ -12,8 +12,8 @@ import Home from './Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am currently working on the DisplayAccount component
-    i want to unmount the component when the user clicks on any element outside the component
+    this is where i left off, i am currently working on the AddBookmark-Dialog component
+    i am currently creating the components for the Form
 */
 
 function App() {

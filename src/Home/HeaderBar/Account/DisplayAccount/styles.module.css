@@ -98,11 +98,11 @@
     cursor: pointer;
 }
 
-.account_theme.light,  .account_logout.light{
+.account_theme.light, .account_logout.light{
     color: #4C5C59;
 }
 
-.account_theme.dark,  .account_logout.dark{
+.account_theme.dark, .account_logout.dark{
     color: #b1b9b9;
 }
 
