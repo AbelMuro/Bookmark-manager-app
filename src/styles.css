@@ -25,6 +25,7 @@ body{
 
 @media(prefers-color-scheme: light){
     input:focus,
+    textarea:focus,
     button:focus{
         outline: 1px solid #014745;
         outline-offset: 3px;
@@ -33,6 +34,7 @@ body{
 
 @media(prefers-color-scheme: dark){
     input:focus,
+    textarea:focus,
     button:focus{
         outline: 1px solid #b1b9b9;
         outline-offset: 3px;

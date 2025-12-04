@@ -19,24 +19,23 @@ function AddBookmark() {
                 <span>+</span> 
                 Add Bookmark
             </button>        
-            {open && 
-                <Dialog>
-                    <button className={ChangeTheme(styles, 'close', theme)} onClick={handleOpen}>
-                        <img />
-                    </button>
-                    <div className={styles.header}>
-                        <h1 className={ChangeTheme(styles, 'title', theme)}>
-                            Add a bookmark
-                        </h1>
-                        <p className={ChangeTheme(styles, 'desc', theme)}>
-                            Save a link with details to keep your 
-                            collection organized. We extract the 
-                            favicon automatically from the URL.
-                        </p>
-                    </div>
-                    <Form/>
-                </Dialog>
-                }
+            <Dialog open={open}>
+                <button className={ChangeTheme(styles, 'close', theme)} onClick={handleOpen}>
+                    <img />
+                </button>
+                <div className={styles.header}>
+                    <h1 className={ChangeTheme(styles, 'title', theme)}>
+                        Add a bookmark
+                    </h1>
+                    <p className={ChangeTheme(styles, 'desc', theme)}>
+                        Save a link with details to keep your 
+                        collection organized. We extract the 
+                        favicon automatically from the URL.
+                    </p>
+                </div>
+                <Form/>
+            </Dialog>
+                
         </>
 
     )

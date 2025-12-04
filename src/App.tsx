@@ -13,7 +13,7 @@ import './styles.css';
 
 /* 
     this is where i left off, i am currently working on the AddBookmark-Dialog component
-    i am currently creating the components for the Form
+    i am currently creating the content for the EnterURL component
 */
 
 function App() {
