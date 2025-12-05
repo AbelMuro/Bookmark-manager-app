@@ -1,51 +1,48 @@
 import React, {useState, ChangeEvent} from 'react';
-import { ChangeTheme } from '../../../../../Common/functions';
-import {useTypedSelector} from '../../../../../Store';
+import {ChangeTheme} from '../../../../../Common/functions';
+import { useTypedSelector } from '../../../../../Store';
 import {motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 
-function Description() {
-    const [email, setEmail] = useState<string>('');
+function EnterTags() {
+    const [url, setUrl] = useState<string>('');
     const [error, setError] = useState<string>('');
-    const [char, setChar] = useState<number>(0); 
     const theme = useTypedSelector<string>(state => state.theme.theme);
 
-    const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const input = e.target.value;
-        if(input.length > 280)
-            return;
         e.target.setCustomValidity('');
         setError('');
-        setEmail(input);
-        setChar(input.length);
+        setUrl(input);
     }
 
-    const handleBlur = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
         const isEmpty = e.target.validity.valueMissing;
-
+        
         if(isEmpty)
             setError('empty');
-        
     }
 
-    const handleInvalid = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const handleInvalid = (e: ChangeEvent<HTMLInputElement>) => {
         e.target.setCustomValidity(' ');
         const isEmpty = e.target.validity.valueMissing;
 
         if(isEmpty)
-            setError('empty')
+            setError('empty');
     }
 
     return (
         <motion.fieldset layout className={styles.container}>
             <motion.label layout className={ChangeTheme(styles, 'label', theme)}>
-                Description <span>*</span>
+                Tags <span>*</span>
             </motion.label>
-            <motion.textarea 
+            <motion.input
                 layout
-                name='description'
+                name='tags'
+                type='text'
+                placeholder='e.g Design, Learning, Tools'
                 style={error ? {borderColor: '#CB0A04'} : {}}
-                value={email}                
+                value={url}                
                 onChange={handleChange}
                 onBlur={handleBlur}
                 onInvalid={handleInvalid}
@@ -60,11 +57,8 @@ function Description() {
                         Can't be empty.
                     </motion.div>
             }
-            <p className={ChangeTheme(styles, 'limit', theme)}>
-                {char}/280
-            </p>
         </motion.fieldset>
     )
 }
 
-export default Description;
+export default EnterTags;

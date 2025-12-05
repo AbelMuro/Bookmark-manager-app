@@ -3,3 +3,70 @@
     flex-direction: column;
     gap: 20px;
 }
+
+.buttons{
+    display: flex;
+    gap: 16px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    justify-content: end;
+}
+
+.cancel{
+    width: 90px;
+    height: 46px;
+    border-radius: 8px;
+    font-size: 1rem;
+    line-height: 140%;
+    letter-spacing: 0px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.cancel.light{
+    border: 1px solid #C0CFCC;
+    color: #051513;
+}
+
+.cancel.light:hover{
+    background-color: rgb(229, 229, 229);
+}
+
+.cancel.light:active{
+    background-color: rgb(220, 220, 220);
+}
+
+.cancel.dark{
+    border: 1px solid #004746;
+    color: white;
+}
+
+.cancel.dark:hover{
+    background-color: var(--hover-dark-cancel-button); 
+}
+
+.cancel.dark:active{
+    background-color: var(--active-dark-cancel-button) ;
+}
+
+.save{
+    width: 152px;
+    height: 46px;
+    border-radius: 8px;
+    font-size: 1rem;
+    line-height: 140%;
+    letter-spacing: 0px;
+    background-color: #014745;
+    color: white;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.save:hover{
+    background-color: var(--hover-green-button);
+}
+
+.save:active{
+    background-color: var(--active-green-button);
+}

@@ -15,6 +15,14 @@ body{
     --close: 50;
     --far: 25;
     --farthest: 1;
+    --hover-green-button: #003331;
+    --active-green-button: #00302f;
+
+    --hover-light-cancel-button: rgb(229, 229, 229);
+    --active-light-cancel-button: rgb(220, 220, 220);
+    --hover-dark-cancel-button: #002c2c;
+    --active-dark-cancel-button: #003131;
+
 }
 
 
