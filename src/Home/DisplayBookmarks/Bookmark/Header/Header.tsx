@@ -1,4 +1,5 @@
 import React from 'react';
+import EditButton from './EditButton';
 import {ChangeTheme} from '../../../../Common/functions';
 import { useTypedSelector } from '../../../../Store';
 import * as styles from './styles.module.css';
@@ -16,9 +17,7 @@ function Header() {
             <a className={ChangeTheme(styles, 'bookmark_link', theme)}>
                 frontendmentor.io
             </a>
-            <button className={ChangeTheme(styles, 'bookmark_edit', theme)}>
-                <img />
-            </button>
+            <EditButton/>
         </div>
     );
 }

@@ -51,6 +51,7 @@ function EnterTags() {
             {
                 error === 'empty' && 
                     <motion.div 
+                        layout
                         initial={{scale: 0}}
                         animate={{scale: 1}}
                         className={styles.errorMessage}>

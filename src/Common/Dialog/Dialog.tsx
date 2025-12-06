@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import {motion, AnimatePresence} from 'framer-motion';
+import {motion, AnimatePresence, LayoutGroup} from 'framer-motion';
 import {ChangeTheme} from '../functions';
 import { useTypedSelector } from '../../Store';
 import * as styles from './styles.module.css';
@@ -16,6 +16,7 @@ function Dialog({open, children} : Props) {
     return(
         <AnimatePresence>
             {open && 
+            <LayoutGroup>
                 <motion.div 
                     className={styles.container}
                     initial={{opacity: 0}}
@@ -23,6 +24,7 @@ function Dialog({open, children} : Props) {
                     exit={{opacity: 0}}
                     >
                     <motion.dialog 
+                        layout
                         open={true} 
                         className={ChangeTheme(styles, 'dialog', theme)}
                         initial={{scale: 0}}
@@ -32,9 +34,10 @@ function Dialog({open, children} : Props) {
                         >
                         {children}
                     </motion.dialog>
-                </motion.div>}            
+                </motion.div>
+            </LayoutGroup>
+            }            
         </AnimatePresence>
-
     )
 }
 

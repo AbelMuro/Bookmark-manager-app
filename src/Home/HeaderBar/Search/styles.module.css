@@ -63,3 +63,14 @@
 .search_icon.dark{
     background-color: #b1b9b9;
 }
+
+
+.search.light:focus{
+    outline: 1px solid #014745;
+    outline-offset: 3px;
+}  
+
+.search.dark:focus{
+    outline: 1px solid #b1b9b9;
+    outline-offset: 3px;
+}

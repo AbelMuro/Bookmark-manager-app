@@ -52,6 +52,11 @@
     background-color: #E8F0EF;
 }
 
+.input.light:focus{
+    outline: 1px solid #014745;
+    outline-offset: 3px;
+}  
+
 
 .input.dark{ 
     border: 1px solid #00706E; 
@@ -62,10 +67,16 @@
 .input.dark:hover{
     background-color: #004241;
 }
+
 .label.dark{
     color: white;
 }
 
 .label.dark > span{
     color: #B1B9B9;
+}
+
+.input.dark:focus{
+    outline: 1px solid #b1b9b9;
+    outline-offset: 3px;
 }

@@ -54,15 +54,16 @@ function Description() {
             {
                 error === 'empty' && 
                     <motion.div 
+                        layout
                         initial={{scale: 0}}
                         animate={{scale: 1}}
                         className={styles.errorMessage}>
                         Can't be empty.
                     </motion.div>
             }
-            <p className={ChangeTheme(styles, 'limit', theme)}>
+            <motion.p layout className={ChangeTheme(styles, 'limit', theme)}>
                 {char}/280
-            </p>
+            </motion.p>
         </motion.fieldset>
     )
 }

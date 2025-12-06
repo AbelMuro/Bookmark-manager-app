@@ -1,10 +1,10 @@
 import React, {useState, ChangeEvent} from 'react';
-import {ChangeTheme} from '../../../../../Common/functions';
-import {useTypedSelector} from '../../../../../Store';
+import { ChangeTheme } from '../../../../../../../Common/functions';
+import { useTypedSelector } from '../../../../../../../Store';
 import {motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 
-function EnterURL() {
+function EnterTags() {
     const [url, setUrl] = useState<string>('');
     const [error, setError] = useState<string>('');
     const theme = useTypedSelector<string>(state => state.theme.theme);
@@ -19,18 +19,8 @@ function EnterURL() {
     const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
         const isEmpty = e.target.validity.valueMissing;
         
-        try{
-            new URL(url);
-            if(isEmpty)
-                setError('empty');
-        }
-        catch(error){
-            const message = error.message;
-            console.log(message);
-            setError('invalid')
-        }
-
-        
+        if(isEmpty)
+            setError('empty');
     }
 
     const handleInvalid = (e: ChangeEvent<HTMLInputElement>) => {
@@ -44,12 +34,13 @@ function EnterURL() {
     return (
         <motion.fieldset layout className={styles.container}>
             <motion.label layout className={ChangeTheme(styles, 'label', theme)}>
-                Website URL <span>*</span>
+                Tags <span>*</span>
             </motion.label>
             <motion.input
                 layout
-                name='url'
-                type='url'
+                name='tags'
+                type='text'
+                placeholder='e.g Design, Learning, Tools'
                 style={error ? {borderColor: '#CB0A04'} : {}}
                 value={url}                
                 onChange={handleChange}
@@ -67,18 +58,8 @@ function EnterURL() {
                         Can't be empty.
                     </motion.div>
             }
-            {
-                error === 'invalid' && 
-                    <motion.div 
-                        layout
-                        initial={{scale: 0}}
-                        animate={{scale: 1}}
-                        className={styles.errorMessage}>
-                        Please enter a valid URL.
-                    </motion.div>
-            }
         </motion.fieldset>
     )
 }
 
-export default EnterURL;
+export default EnterTags;

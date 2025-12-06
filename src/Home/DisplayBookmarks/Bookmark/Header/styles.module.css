@@ -43,26 +43,6 @@
     grid-row: 2/3;
 }
 
-.bookmark_edit{
-    width: 32px;
-    height: 32px;
-    background-color: transparent;
-    border-radius: 8px;
-    grid-column: 3/4;
-    grid-row: 1/3;
-    cursor: pointer;
-    box-shadow: 0px 2px 3px black;
-}
-
-.bookmark_edit > img{
-    width: 20px;
-    height: 20px;
-    mask-image: url('../icons/icon-menu-bookmark.svg');
-    mask-position: center;
-    mask-repeat: no-repeat;
-    mask-size: 20px 20px;
-}
-
 .bookmark_title.light{
     color: #051513;
 }
@@ -78,19 +58,6 @@
     color: #4C5C59;
 }
 
-.bookmark_edit.light{
-    border: 1px solid #C0CFCC;
-}
-
-.bookmark_edit.light:hover{
-    background-color: #C0CFCC;
-}
-
-
-.bookmark_edit.light > img{
-    background-color: #051513;
-}
-
 
 .bookmark_title.dark{
     color: white;
@@ -98,16 +65,4 @@
 
 .bookmark_link.dark{
     color: #B1B9B9;
-}
-
-.bookmark_edit.dark{
-    border: 1px solid #004241;
-}
-
-.bookmark_edit.dark:hover{
-    background-color: #001919;
-}
-
-.bookmark_edit.dark > img{
-    background-color: white;
 }

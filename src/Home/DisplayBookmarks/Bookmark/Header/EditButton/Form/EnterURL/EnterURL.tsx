@@ -1,6 +1,6 @@
 import React, {useState, ChangeEvent} from 'react';
-import {ChangeTheme} from '../../../../../Common/functions';
-import {useTypedSelector} from '../../../../../Store';
+import { ChangeTheme } from '../../../../../../../Common/functions';
+import { useTypedSelector } from '../../../../../../../Store';
 import {motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 

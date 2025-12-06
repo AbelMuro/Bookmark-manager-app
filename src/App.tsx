@@ -12,9 +12,8 @@ import Home from './Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am currently working on the AddBookmark-Dialog component
-    i am currently updating the styles in the AddBookmark component, i need to make sure all 
-    hover states and active states are consistent
+    this is where i left off, i am currently working on the EditButton for the bookmark component
+
 */
 
 function App() {

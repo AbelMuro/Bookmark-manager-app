@@ -56,9 +56,9 @@
 }
 
 .password.light:focus{
-    outline: 3px solid #004746;
-    outline-offset: 2px;
-}
+    outline: 1px solid #014745;
+    outline-offset: 3px;
+}  
 
 .password.light:hover{
     background-color: #E8F0EF;
@@ -72,8 +72,8 @@
 }
 
 .password.dark:focus{
-    outline: 1px solid white;
-    outline-offset: 2px;
+    outline: 1px solid #b1b9b9;
+    outline-offset: 3px;
 }
 
 .password.dark:hover{

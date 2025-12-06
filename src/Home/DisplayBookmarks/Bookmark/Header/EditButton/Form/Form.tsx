@@ -1,14 +1,14 @@
 import React from 'react';
-import {motion} from 'framer-motion';
-import {ChangeTheme} from '../../../../Common/functions';
-import { useTypedSelector } from '../../../../Store';
 import EnterTitle from './EnterTitle';
 import EnterDescription from './EnterDescription';
-import EnterURL from './EnterURL';
+import EnterURL from './EnterURL'
 import EnterTags from './EnterTags';
+import {motion} from 'framer-motion';
+import {ChangeTheme} from '../../../../../../Common/functions';
+import { useTypedSelector } from '../../../../../../Store';
 import * as styles from './styles.module.css';
 
-function Form () {
+function Form() {
     const theme = useTypedSelector<string>(state => state.theme.theme);
 
     return(

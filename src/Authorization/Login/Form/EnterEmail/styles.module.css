@@ -48,6 +48,11 @@
     background-color: #E8F0EF;
 }
 
+.input.light:focus{
+    outline: 1px solid #014745;
+    outline-offset: 3px;
+}  
+
 
 .input.dark{ 
     border: 1px solid #00706E; 
@@ -60,4 +65,9 @@
 }
 .label.dark{
     color: white;
+}
+
+.input.dark:focus{
+    outline: 1px solid #b1b9b9;
+    outline-offset: 3px;
 }
