@@ -1,18 +1,20 @@
 import React from 'react';
-import ChangeBodyTheme from './ChangeBodyTheme';
+import ChangeBodyTheme from './Common/Components/ChangeBodyTheme';
 import {Provider} from 'react-redux';
 import Store from './Store';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import Login from './Authorization/Login';
-import Register from './Authorization/Register';
-import ForgotPassword from './Authorization/ForgotPassword';
-import ResetPassword from './Authorization/ResetPassword';
-import PopupMessageBox from './Common/PopupMessageBox';
-import Home from './Home';
+import Login from './Pages/Authorization/Login';
+import Register from './Pages/Authorization/Register';
+import ForgotPassword from './Pages/Authorization/ForgotPassword';
+import ResetPassword from './Pages/Authorization/ResetPassword';
+import PopupMessageBox from './Common/Components/PopupMessageBox';
+import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am currently working on the EditButton for the bookmark component
+    this is where i left off, i am currently working on the responsiveness of the <Home/> component
+
+    i should change the number of columns in the Grid component to display the MobileHeaderBar
 
 */
 

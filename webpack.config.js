@@ -30,11 +30,11 @@ module.exports = {
                 exclude: /node_modules/,
             },                     
             {                                 
-                test: /\.js$/, 
+                test: /\.js?$/, 
                 use: {
                     loader: 'babel-loader',  
                     options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react'],
+                        presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
                         plugins: [
                             [
                             'babel-plugin-root-import',
@@ -72,5 +72,8 @@ module.exports = {
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
+        alias: {
+            '~': path.resolve(__dirname, 'src')
+        }
     },
 }

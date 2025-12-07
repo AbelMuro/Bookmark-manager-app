@@ -7,7 +7,11 @@
     "target": "es5",
     "jsx": "react",
     "allowJs": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": ["*"]
+    }
   },
     "include": ["src", "global.d.ts"]
 }

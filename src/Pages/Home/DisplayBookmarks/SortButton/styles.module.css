@@ -1,0 +1,70 @@
+.sort{
+    grid-column: 3/4;
+    grid-row: 1/2;
+    justify-self: end;
+    width: 107px;
+    height: 42px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    font-size: 1rem;
+    font-family: 'manrope';
+    font-weight: bold;
+    line-height: 140%;
+    letter-spacing: 0px;
+    border: none;
+    cursor: pointer;
+}
+
+.sort > img{
+    width: 20px;
+    height: 20px;
+    mask-image: url('./icons/icon-sort.svg');
+    mask-size: 20px 20px;
+    mask-position: center;
+    mask-size: 20px 20px;
+}
+
+.sort.dark{
+    background-color: #001F1F;
+    border: 1px solid #004746;
+    color: white;
+}
+
+.sort.dark:hover{
+    background-color: rgba(0, 31, 31, 0.7);
+}
+
+.sort.dark:active{
+    background-color: rgba(0, 31, 31, 0.3)
+}
+
+.sort.dark > img{
+    background-color: white
+}
+
+.sort.light{
+    background-color: white;
+    border: 1px solid #C0CFCC;
+    color: #051513;
+}
+
+.sort.light:hover{
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.sort.light:active{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.sort.light > img{
+    background-color: #051513;
+}
+
+@media(max-width: 1130px){
+    .sort{
+        grid-column: 2/3;
+    }
+}
