@@ -5,6 +5,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    grid-column: 1/2;
 }
 
 .header.light{
@@ -20,12 +21,17 @@
 .header_group{
     display: flex;
     justify-content: center;
-    align-items: 16px;
+    align-items: center;
+    gap: 16px;
 }
 
-.header_menu{
-    width: 44px;
-    height: 44px;
-    border-radius: 8px;
-}
+@media(max-width: 630px){
+    .header{
+        height: 65px;
+        padding: 12px;
+    }
 
+    .header_group{
+        gap: 10px;
+    }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import Search from '~/Common/Components/Search';
-import Account from './Account';
-import AddBookmark from './AddBookmark';
+import Account from '~/Common/Components/Account';
+import AddBookmark from '~/Common/Components/AddBookmark';
 import {ChangeTheme} from '~/Common/functions';
 import { useTypedSelector } from '~/Store';
 import * as styles from './styles.module.css';

@@ -12,9 +12,9 @@ import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am currently working on the responsiveness of the <Home/> component
+    this is where i left off, i am finished with the responsiveness of the application
 
-    i should change the number of columns in the Grid component to display the MobileHeaderBar
+    now i can work on the features!
 
 */
 

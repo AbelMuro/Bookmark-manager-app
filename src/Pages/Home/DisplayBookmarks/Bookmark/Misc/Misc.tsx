@@ -7,7 +7,7 @@ function Misc() {
     const theme = useTypedSelector(state  => state.theme.theme);
 
     return(
-        <div className={styles.bookmark_misc}>
+        <div className={ChangeTheme(styles, 'bookmark_misc', theme)}>
             <div className={styles.group}>
                 <div className={ChangeTheme(styles, 'bookmark_views', theme)}>
                     <img/>

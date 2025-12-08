@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useMediaQuery } from '~/Hooks';
 import {motion} from 'framer-motion';
 import { ChangeTheme } from '~/Common/functions';
 import { useTypedSelector } from '~/Store';
@@ -7,8 +8,9 @@ import Form from './Form';
 import * as styles from './styles.module.css';
 
 function AddBookmark() {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState<boolean>(false);
     const theme = useTypedSelector(state  => state.theme.theme);
+    const [mobile] = useMediaQuery('(max-width: 630px)');
 
     const handleOpen = () => {
         setOpen(!open)
@@ -18,7 +20,7 @@ function AddBookmark() {
         <>
             <button className={styles.button} onClick={handleOpen}>
                 <span>+</span> 
-                Add Bookmark
+                {!mobile && 'Add Bookmark'}
             </button>        
             <Dialog open={open}>
                 <motion.button layout className={ChangeTheme(styles, 'close', theme)} onClick={handleOpen}>

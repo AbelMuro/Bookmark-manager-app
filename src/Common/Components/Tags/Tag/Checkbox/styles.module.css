@@ -26,6 +26,14 @@
     border: 1px solid #899492;
 }
 
+.checkbox.light:hover{
+    background-color: #DDE9E7;
+}
+
 .checkbox.dark{
     border: 1px solid #00706E;
+}
+
+.checkbox.dark:hover{
+    background-color: #002E2D;
 }

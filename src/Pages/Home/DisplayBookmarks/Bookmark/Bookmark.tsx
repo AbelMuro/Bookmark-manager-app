@@ -11,20 +11,17 @@ function Bookmark() {
 
     return(
         <article className={ChangeTheme(styles, 'bookmark', theme)}>
-            <Header/>
-
-            <hr className={ChangeTheme(styles, 'bookmark_line', theme)}/>
-            <p className={ChangeTheme(styles, 'bookmark_desc', theme)}>
-                Improve your front-end coding skills by building real projects. 
-                Solve real-world HTML, CSS and JavaScript challenges whilst 
-                working to professional designs.
-            </p>
-
-            <Tags/>
-
-            <hr className={ChangeTheme(styles, 'bookmark_line', theme)}/>
+            <section>
+                <Header/>
+                <hr className={ChangeTheme(styles, 'bookmark_line', theme)}/>
+                <p className={ChangeTheme(styles, 'bookmark_desc', theme)}>
+                    Improve your front-end coding skills by building real projects. 
+                    Solve real-world HTML, CSS and JavaScript challenges whilst 
+                    working to professional designs.
+                </p>
+                <Tags/>                
+            </section>
             <Misc/>
-
         </article>
     )
 }

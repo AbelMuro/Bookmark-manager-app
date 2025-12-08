@@ -68,3 +68,9 @@
         grid-column: 2/3;
     }
 }
+
+@media(max-width: 630px){
+    .sort{
+        
+    }
+}

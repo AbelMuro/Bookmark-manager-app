@@ -18,7 +18,7 @@ function Dialog({open, children} : Props) {
             {open && 
             <LayoutGroup>
                 <motion.div 
-                    className={styles.container}
+                    className={styles.layout}
                     initial={{opacity: 0}}
                     animate={{opacity: 1}}
                     exit={{opacity: 0}}

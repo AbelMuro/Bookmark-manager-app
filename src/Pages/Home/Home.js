@@ -11,7 +11,7 @@ function Home() {
 
     return(
         <Grid>
-            <NavigationBar/>
+            {!mobile && <NavigationBar/>}
             {mobile ? <MobileHeaderBar/> : <HeaderBar/>}
             <DisplayBookmarks/>
         </Grid>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useTypedSelector } from '~/Store';
 import {ChangeTheme} from '~/Common/functions'
-import NavButtons from './NavButtons';
-import Tags from './Tags';
+import NavButtons from '~/Common/Components/NavButtons';
+import Tags from '~/Common/Components/Tags';
 import * as styles from './styles.module.css';
 
 function NavigationBar() {

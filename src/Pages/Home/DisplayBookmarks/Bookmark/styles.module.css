@@ -1,7 +1,10 @@
 .bookmark{
     width: 100%;
-    padding: 16px;
     border-radius: 12px;
+}
+
+.bookmark > section{
+    padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -54,7 +57,8 @@
     color: #B1B9B9;
 }
 
-@media(max-width: 930px){
+
+@media(max-width: 630px){
     .bookmark{
         grid-column: 1/3;
     }

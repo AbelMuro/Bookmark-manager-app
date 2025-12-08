@@ -149,3 +149,14 @@
 .desc.light{
     color: #4C5C59;
 }
+
+@media(max-width: 630px){
+    .close{
+        top: 10px;
+        right: 10px;
+    }
+
+    .title{
+        font-size: 1.25rem;
+    }
+}

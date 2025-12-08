@@ -77,6 +77,19 @@
 
 @media(max-width: 930px){
     .search{
-        width: 250px;
+        width: 260px;
+    }
+}
+
+@media(max-width: 630px){
+    .search{
+        width: 193px;
+        height: 41px;
+    }
+}
+
+@media(max-width: 400px){
+    .search{
+        width: 180px;
     }
 }
