@@ -26,42 +26,60 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@media(prefers-color-scheme: light){
-    .container{
-        color: #051513;
-        background-color: #E8F0EF;
-    }
-    .close{
-        color: #051513;
-    }
-
-    .close:hover{
-        color: #114640;
-    }
-
-    .close:active{
-        color: #19655c;
-    }
-
+.close > img{
+    width: 20px;
+    height: 20px;
+    mask-image: url('/public/icons/icon-close.svg');
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 20px 20px;
 }
 
-@media(prefers-color-scheme: dark){
-    .container{
-        color: white;
-        background-color: #004241;
-    }
+.close.light > img{
+    background-color: #051513;
+}
 
-    .close{
-        color: white;
-    }
+.close.dark > img{
+    background-color: white;
+}
 
-    .close:hover{
-        color: rgb(169, 169, 169);
-    }
+.container.light{
+    color: #051513;
+    background-color: #E8F0EF;
+}
 
-    .close:active{
-        color: rgb(117, 117, 117);
-    }
+.close.light{
+    color: #051513;
+}
+
+
+.close.light:hover > img{
+    background-color: #114640;
+}
+
+.close.light:active > img{
+    background-color: #19655c;
+}
+
+
+.container.dark{
+    color: white;
+    background-color: #004241;
+}
+
+.close.dark{
+    color: white;
+}
+
+.close.dark:hover > img{
+    background-color: rgb(169, 169, 169);
+}
+
+.close.dark:active > img{
+    background-color: rgb(117, 117, 117);
 }

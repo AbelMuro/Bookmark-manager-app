@@ -12,9 +12,9 @@ import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am finished with the responsiveness of the application
+    this is where i left off, i am currently working on the AddBookmark feature of the app
 
-    now i can work on the features!
+    i am currently on the back end
 
 */
 
