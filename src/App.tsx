@@ -12,9 +12,9 @@ import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am currently working on the AddBookmark feature of the app
+    this is where i left off, i am currently working on the EditBookmark component
 
-    i am currently on the back end
+    i need to make an onSubmit event handler for the form component and make the fetch request
 
 */
 

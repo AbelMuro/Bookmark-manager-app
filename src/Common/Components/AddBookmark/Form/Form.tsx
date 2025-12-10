@@ -1,19 +1,28 @@
-import React, {FormEvent} from 'react';
+import React, {FormEvent, useState} from 'react';
+import {ClipLoader} from 'react-spinners'
 import {motion} from 'framer-motion';
 import {ChangeTheme} from '~/Common/functions';
-import { useTypedSelector } from '~/Store';
+import { useTypedSelector, useTypedDispatch } from '~/Store';
 import EnterTitle from './EnterTitle';
 import EnterDescription from './EnterDescription';
 import EnterURL from './EnterURL';
 import EnterTags from './EnterTags';
 import * as styles from './styles.module.css';
 
-function Form () {
-    const theme = useTypedSelector(state  => state.theme.theme);
+type Props = {
+    setOpen: Function
+}
 
-    const handleSubmit = async (e : FormEvent<HTMLFormElement>) => {
+function Form ({setOpen} : Props) {
+    const theme = useTypedSelector(state  => state.theme.theme);
+    const dispatch = useTypedDispatch();
+    const [loading, setLoading] = useState<boolean>(false);
+
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
         const title = e.currentTarget.elements.namedItem('title') as HTMLInputElement;
-        const desc = e.currentTarget.elements.namedItem('desc') as HTMLInputElement;
+        const desc = e.currentTarget.elements.namedItem('description') as HTMLInputElement;
         const url = e.currentTarget.elements.namedItem('url') as HTMLInputElement;
         const tags = e.currentTarget.elements.namedItem('tags') as HTMLInputElement;
 
@@ -34,19 +43,23 @@ function Form () {
 
             if(response.status === 200){
                 const result = await response.text();
-
                 console.log(result);
+                setLoading(false);
+                setOpen(false);
+                dispatch({type: 'SHOW_POPUP', payload: result});
             }
             else{
                 const result = await response.text();
+                setLoading(false);
                 console.log(result);
+                dispatch({type: 'SHOW_POPUP', payload: result});
             }
-
-
         }
         catch(error){
             const message = error.message;
             console.log(message);
+            setLoading(false);
+            dispatch({type: 'SHOW_POPUP', payload: message});
         }
     }
 
@@ -61,7 +74,7 @@ function Form () {
                     Cancel
                 </button>
                 <button className={styles.save}>
-                    Save Bookmark
+                    {loading ? <ClipLoader size='25px' color='white'/> : 'Save Bookmark'}
                 </button>
             </motion.fieldset>
         </motion.form>

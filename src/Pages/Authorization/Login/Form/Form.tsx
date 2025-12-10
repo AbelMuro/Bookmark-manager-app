@@ -25,7 +25,8 @@ function Form () {
                 headers: {
                     'Content-Type' : 'application/json'
                 },
-                body: JSON.stringify({email: email.value, password: password.value})
+                body: JSON.stringify({email: email.value, password: password.value}),
+                credentials: 'include'
             });
 
             if(response.status === 200){

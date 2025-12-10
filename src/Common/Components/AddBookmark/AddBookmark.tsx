@@ -39,7 +39,7 @@ function AddBookmark() {
                         favicon automatically from the URL.
                     </p>
                 </motion.div>
-                <Form/>
+                <Form setOpen={setOpen}/>
             </Dialog>
                 
         </>
