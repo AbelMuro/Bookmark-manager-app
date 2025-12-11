@@ -12,9 +12,9 @@ import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am currently working on the EditBookmark component
+    this is where i left off, i am trying to useContext() pomn the Bookmark component
 
-    i need to make an onSubmit event handler for the form component and make the fetch request
+    but im trying to fix how webpack and typescript resolves modules with babel
 
 */
 

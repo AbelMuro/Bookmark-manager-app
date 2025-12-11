@@ -1,3 +1,4 @@
-import DisplayBookmarks from './DisplayBookmarks.tsx';
+import DisplayBookmarks, {BookmarkContext} from './DisplayBookmarks.tsx';
 
+export {BookmarkContext};
 export default DisplayBookmarks;

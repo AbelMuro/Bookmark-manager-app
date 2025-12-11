@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { BookmarkContext } from '!/DisplayBookmarks';
 import { useTypedSelector } from '~/Store';
 import {ChangeTheme} from '~/Common/functions';
 import Header from './Header';
@@ -6,8 +7,10 @@ import Tags from './Tags';
 import Misc from './Misc';
 import * as styles from './styles.module.css';
 
+
 function Bookmark() {
     const theme = useTypedSelector(state  => state.theme.theme);
+    const {description} = useContext(BookmarkContext);
 
     return(
         <article className={ChangeTheme(styles, 'bookmark', theme)}>

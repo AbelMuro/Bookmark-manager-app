@@ -19,8 +19,12 @@ function Form({setOpen} : Props) {
         setOpen(false);
     }
 
+    const handleSubmit = async () => {
+
+    }
+
     return(
-        <motion.form className={styles.form} layout>
+        <motion.form className={styles.form} layout onSubmit={handleSubmit}>
             <EnterTitle/>
             <EnterDescription/>
             <EnterURL/>

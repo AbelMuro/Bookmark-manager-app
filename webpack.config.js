@@ -40,9 +40,17 @@ module.exports = {
                             'babel-plugin-root-import',
                             {
                                 rootPathSuffix: './src',
-                                rootPathPrefix: '~/'
+                                rootPathPrefix: '~'
                             },
-                                'src directory'                        //if you are planning on having multiple directories defined here, you need a unique key for each one
+                                'src directory'                      
+                            ], 
+                            [
+                            'babel-plugin-root-import',
+                            {
+                                rootPathSuffix: './src/Pages/Home',
+                                rootPathPrefix: '!'
+                            },
+                                'home directory'
                             ]                                        
                         ]    
                     }  
@@ -73,7 +81,8 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
         alias: {
-            '~': path.resolve(__dirname, 'src')
+            '~': path.resolve(__dirname, 'src'),
+            '!': path.resolve(__dirname, 'src/Pages/Home')
         }
     },
 }
