@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
 import EditButton from './EditButton';
 import {ChangeTheme} from '~/Common/functions';
 import { useTypedSelector } from '~/Store';
@@ -6,16 +7,16 @@ import * as styles from './styles.module.css';
 
 function Header() {
     const theme = useTypedSelector(state  => state.theme.theme);
-
+    const {title, url} = useContext(BookmarkContext);
 
     return(
         <div className={styles.bookmark_header}>
             <img className={styles.bookmark_icon}/>
             <h2 className={ChangeTheme(styles, 'bookmark_title', theme)}>
-                Frontend Mentor
+                {title}
             </h2>
             <a className={ChangeTheme(styles, 'bookmark_link', theme)}>
-                frontendmentor.io
+                {url}
             </a>
             <EditButton/>
         </div>

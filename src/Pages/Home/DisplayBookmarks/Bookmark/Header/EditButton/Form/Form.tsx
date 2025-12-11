@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useContext, FormEvent} from 'react';
+import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
 import EnterTitle from './EnterTitle';
 import EnterDescription from './EnterDescription';
 import EnterURL from './EnterURL'
 import EnterTags from './EnterTags';
 import {motion} from 'framer-motion';
 import {ChangeTheme} from '~/Common/functions';
-import { useTypedSelector } from '~/Store';
+import { useTypedSelector, useTypedDispatch } from '~/Store';
 import * as styles from './styles.module.css';
 
 type Props = {
@@ -14,13 +15,49 @@ type Props = {
 
 function Form({setOpen} : Props) {
     const theme = useTypedSelector(state  => state.theme.theme);
+    const dispatch = useTypedDispatch();
+    const {bookmarkId} = useContext(BookmarkContext);
 
     const handleCancel = () => {
         setOpen(false);
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        const title = e.currentTarget.elements.namedItem('title') as HTMLInputElement;
+        const description = e.currentTarget.elements.namedItem('description') as HTMLInputElement;
+        const url = e.currentTarget.elements.namedItem('url') as HTMLInputElement;
+        const tags = e.currentTarget.elements.namedItem('tags') as HTMLInputElement;
 
+        try{    
+            const response = await fetch('http://localhost:4000/edit_bookmark', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title: title.value,
+                    description: description.value,
+                    url: url.value,
+                    tags: tags.value
+                })
+            });
+
+            if(response.status === 200){
+                const result = await response.text();
+                console.log(result);
+                dispatch({type: 'SHOW_POPUP', payload: result})
+            }
+            else{
+                const result = await response.text();
+                dispatch({type: 'SHOW_POPUP', payload: result})
+            }
+
+        }
+        catch(error){
+            const message = error.message;
+            console.log(message);
+            dispatch({type: 'SHOW_POPUP', payload: message});
+        }
     }
 
     return(

@@ -12,9 +12,9 @@ import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am trying to useContext() pomn the Bookmark component
+    this is where i left off, i am currently on the Edit Bookmark dialog component
 
-    but im trying to fix how webpack and typescript resolves modules with babel
+    i want to display the current bookmark data on the dialog
 
 */
 

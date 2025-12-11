@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { BookmarkContext } from '!/DisplayBookmarks';
+import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
 import { useTypedSelector } from '~/Store';
 import {ChangeTheme} from '~/Common/functions';
 import Header from './Header';
@@ -18,9 +18,7 @@ function Bookmark() {
                 <Header/>
                 <hr className={ChangeTheme(styles, 'bookmark_line', theme)}/>
                 <p className={ChangeTheme(styles, 'bookmark_desc', theme)}>
-                    Improve your front-end coding skills by building real projects. 
-                    Solve real-world HTML, CSS and JavaScript challenges whilst 
-                    working to professional designs.
+                    {description}
                 </p>
                 <Tags/>                
             </section>

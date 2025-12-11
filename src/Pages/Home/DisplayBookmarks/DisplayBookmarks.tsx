@@ -10,7 +10,8 @@ type Context = {
     description: string,
     accountId: number,
     bookmarkId: string,
-    tags: string
+    tags: string,
+    url: string
 }
 
 export const BookmarkContext = createContext<Context | undefined>(undefined);
@@ -62,9 +63,10 @@ function DisplayBookmarks() {
                     const bookmarkId = bookmark.id;
                     const accountId = bookmark.account_id;
                     const tags = bookmark.tags;
+                    const url = bookmark.url;
 
                     return(
-                        <BookmarkContext.Provider value={{title, description, accountId, bookmarkId, tags}}>
+                        <BookmarkContext.Provider value={{title, description, accountId, bookmarkId, tags, url}}>
                             <Bookmark/> 
                         </BookmarkContext.Provider>
                        )
