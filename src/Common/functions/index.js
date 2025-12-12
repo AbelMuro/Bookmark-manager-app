@@ -1,3 +1,3 @@
-import { ChangeTheme } from "./functions";
+import { ChangeTheme, FormatDate } from "./functions";
 
-export {ChangeTheme};
+export {ChangeTheme, FormatDate};

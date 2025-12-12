@@ -1,11 +1,13 @@
-import React, {useState, ChangeEvent} from 'react';
+import React, {useState, ChangeEvent, useContext} from 'react';
+import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
 import { ChangeTheme } from '~/Common/functions';
 import { useTypedSelector } from '~/Store';
 import {motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 
 function EnterURL() {
-    const [url, setUrl] = useState<string>('');
+    const {url : prevUrl} = useContext(BookmarkContext);
+    const [url, setUrl] = useState<string>(prevUrl);
     const [error, setError] = useState<string>('');
     const theme = useTypedSelector(state  => state.theme.theme);
 

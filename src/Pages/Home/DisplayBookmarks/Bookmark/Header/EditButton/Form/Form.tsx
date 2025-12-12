@@ -1,4 +1,5 @@
-import React, {useContext, FormEvent} from 'react';
+import React, {useState, useContext, FormEvent} from 'react';
+import { ClipLoader } from 'react-spinners';
 import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
 import EnterTitle from './EnterTitle';
 import EnterDescription from './EnterDescription';
@@ -14,6 +15,7 @@ type Props = {
 }
 
 function Form({setOpen} : Props) {
+    const [loading, setLoading] = useState(false);
     const theme = useTypedSelector(state  => state.theme.theme);
     const dispatch = useTypedDispatch();
     const {bookmarkId} = useContext(BookmarkContext);
@@ -23,6 +25,8 @@ function Form({setOpen} : Props) {
     }
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
         const title = e.currentTarget.elements.namedItem('title') as HTMLInputElement;
         const description = e.currentTarget.elements.namedItem('description') as HTMLInputElement;
         const url = e.currentTarget.elements.namedItem('url') as HTMLInputElement;
@@ -38,18 +42,22 @@ function Form({setOpen} : Props) {
                     title: title.value,
                     description: description.value,
                     url: url.value,
-                    tags: tags.value
+                    tags: tags.value,
+                    bookmarkId: bookmarkId
                 })
             });
 
             if(response.status === 200){
                 const result = await response.text();
                 console.log(result);
+                setOpen(false);
                 dispatch({type: 'SHOW_POPUP', payload: result})
+                const event = new CustomEvent('update_bookmarks');
+                document.dispatchEvent(event);
             }
             else{
                 const result = await response.text();
-                dispatch({type: 'SHOW_POPUP', payload: result})
+                dispatch({type: 'SHOW_POPUP', payload: result});
             }
 
         }
@@ -57,6 +65,9 @@ function Form({setOpen} : Props) {
             const message = error.message;
             console.log(message);
             dispatch({type: 'SHOW_POPUP', payload: message});
+        }
+        finally{
+            setLoading(false);
         }
     }
 
@@ -71,7 +82,7 @@ function Form({setOpen} : Props) {
                     Cancel
                 </button>
                 <button className={styles.save}>
-                    Save Bookmark
+                    {loading ? <ClipLoader size='25px' color='white'/> : 'Save Bookmark'}
                 </button>
             </motion.fieldset>
         </motion.form>

@@ -35,6 +35,7 @@
 }
 
 .bookmark_link{
+    cursor: pointer;
     font-family: 'manrope';
     font-size: 0.75rem;
     line-height: 140%;
@@ -47,6 +48,11 @@
     color: #051513;
 }
 
+.bookmark_title.dark{
+    color: white;
+}
+
+
 .bookmark_link.light{
     font-family: 'manrope';
     font-size: 0.75rem;
@@ -58,11 +64,23 @@
     color: #4C5C59;
 }
 
-
-.bookmark_title.dark{
-    color: white;
+.bookmark_link.light:hover{
+    color: #40504d;
 }
+
+.bookmark_link.light:active{
+    color: #2a3936;
+}
+
 
 .bookmark_link.dark{
     color: #B1B9B9;
+}
+
+.bookmark_link.dark:hover{
+    color: #9dbdbd;
+}
+
+.bookmark_link.dark:active{
+    color: #8ec0c0;
 }

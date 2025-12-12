@@ -11,7 +11,10 @@ type Context = {
     accountId: number,
     bookmarkId: string,
     tags: string,
-    url: string
+    url: string,
+    createdAt: string,
+    views: number,
+    lastUpdated: string
 }
 
 export const BookmarkContext = createContext<Context | undefined>(undefined);
@@ -48,6 +51,11 @@ function DisplayBookmarks() {
 
     useEffect(() => {
         getAllBookmarks();
+        document.addEventListener('update_bookmarks', getAllBookmarks);
+
+        return () => {
+            document.removeEventListener('update_bookmarks', getAllBookmarks)
+        }
     }, [])
 
     return(
@@ -64,9 +72,22 @@ function DisplayBookmarks() {
                     const accountId = bookmark.account_id;
                     const tags = bookmark.tags;
                     const url = bookmark.url;
+                    const createdAt = bookmark.created_at;
+                    const views = bookmark.views;
+                    const lastUpdated = bookmark.last_updated;
 
                     return(
-                        <BookmarkContext.Provider value={{title, description, accountId, bookmarkId, tags, url}}>
+                        <BookmarkContext.Provider value={{
+                                title, 
+                                description, 
+                                accountId, 
+                                bookmarkId, 
+                                tags, 
+                                url,
+                                createdAt,
+                                views,
+                                lastUpdated
+                                }}>
                             <Bookmark/> 
                         </BookmarkContext.Provider>
                        )

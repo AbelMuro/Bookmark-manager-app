@@ -12,9 +12,12 @@ import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am currently on the Edit Bookmark dialog component
+    this is where i left off, i am currently on the Link of the Bookmark component
 
-    i want to display the current bookmark data on the dialog
+    once the user views the link in a new tab, i want to make a fetch request that updates the 
+    number of views for that specific bookmark
+
+    i am now currently on the back end
 
 */
 

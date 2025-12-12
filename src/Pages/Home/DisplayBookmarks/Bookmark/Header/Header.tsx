@@ -2,12 +2,43 @@ import React, {useContext} from 'react';
 import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
 import EditButton from './EditButton';
 import {ChangeTheme} from '~/Common/functions';
-import { useTypedSelector } from '~/Store';
+import { useTypedSelector, useTypedDispatch } from '~/Store';
 import * as styles from './styles.module.css';
 
 function Header() {
     const theme = useTypedSelector(state  => state.theme.theme);
-    const {title, url} = useContext(BookmarkContext);
+    const dispatch = useTypedDispatch();
+    const {title, url, bookmarkId, views} = useContext(BookmarkContext);
+
+    const handleUrl = async () => {
+        window.open(url);
+        try{
+            const response = await fetch('http://localhost:4000/update_bookmark', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({bookmarkId, prevViews: views})
+            });
+
+            if(response.status === 200){
+                const result = await response.text();
+                console.log(result);
+                dispatch({type: 'SHOW_POPUP', payload: result});
+            }
+            else{
+                const result = await response.text();
+                console.log(result);
+                dispatch({type: 'SHOW_POPUP', payload: result});
+            }
+
+        }
+        catch(error){
+            const message = error.message;
+            console.log(message);
+            dispatch({type: 'SHOW_POPUP', payload: message});
+        }
+    }
 
     return(
         <div className={styles.bookmark_header}>
@@ -15,7 +46,7 @@ function Header() {
             <h2 className={ChangeTheme(styles, 'bookmark_title', theme)}>
                 {title}
             </h2>
-            <a className={ChangeTheme(styles, 'bookmark_link', theme)}>
+            <a className={ChangeTheme(styles, 'bookmark_link', theme)} onClick={handleUrl}>
                 {url}
             </a>
             <EditButton/>

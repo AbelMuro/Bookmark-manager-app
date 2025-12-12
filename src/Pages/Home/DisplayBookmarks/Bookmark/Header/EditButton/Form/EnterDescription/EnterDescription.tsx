@@ -1,11 +1,13 @@
-import React, {useState, ChangeEvent} from 'react';
+import React, {useState, ChangeEvent, useContext} from 'react';
+import {BookmarkContext} from '~/Pages/Home/DisplayBookmarks';
 import { ChangeTheme } from '~/Common/functions';
 import { useTypedSelector } from '~/Store';
 import {motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 
 function Description() {
-    const [email, setEmail] = useState<string>('');
+    const {description} = useContext(BookmarkContext);    
+    const [desc, setDesc] = useState<string>(description);
     const [error, setError] = useState<string>('');
     const [char, setChar] = useState<number>(0); 
     const theme = useTypedSelector(state  => state.theme.theme);
@@ -16,7 +18,7 @@ function Description() {
             return;
         e.target.setCustomValidity('');
         setError('');
-        setEmail(input);
+        setDesc(input);
         setChar(input.length);
     }
 
@@ -25,7 +27,6 @@ function Description() {
 
         if(isEmpty)
             setError('empty');
-        
     }
 
     const handleInvalid = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -45,7 +46,7 @@ function Description() {
                 layout
                 name='description'
                 style={error ? {borderColor: '#CB0A04'} : {}}
-                value={email}                
+                value={desc}                
                 onChange={handleChange}
                 onBlur={handleBlur}
                 onInvalid={handleInvalid}

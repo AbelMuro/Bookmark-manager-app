@@ -1,11 +1,13 @@
-import React, {useState, ChangeEvent} from 'react';
+import React, {useState, ChangeEvent, useContext} from 'react';
+import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
 import { ChangeTheme } from '~/Common/functions';
 import { useTypedSelector } from '~/Store';
 import {motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 
 function EnterTags() {
-    const [url, setUrl] = useState<string>('');
+    const {tags : prevTags} = useContext(BookmarkContext);
+    const [tags, setTags] = useState<string>(prevTags);
     const [error, setError] = useState<string>('');
     const theme = useTypedSelector(state  => state.theme.theme);
 
@@ -13,7 +15,7 @@ function EnterTags() {
         const input = e.target.value;
         e.target.setCustomValidity('');
         setError('');
-        setUrl(input);
+        setTags(input);
     }
 
     const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +44,7 @@ function EnterTags() {
                 type='text'
                 placeholder='e.g Design, Learning, Tools'
                 style={error ? {borderColor: '#CB0A04'} : {}}
-                value={url}                
+                value={tags}                
                 onChange={handleChange}
                 onBlur={handleBlur}
                 onInvalid={handleInvalid}

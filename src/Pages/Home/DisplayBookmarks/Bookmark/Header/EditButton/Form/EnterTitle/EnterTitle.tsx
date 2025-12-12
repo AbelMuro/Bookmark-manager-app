@@ -1,18 +1,20 @@
-import React, {useState, ChangeEvent} from 'react';
+import React, {useState, ChangeEvent, useContext} from 'react';
+import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
 import { ChangeTheme } from '~/Common/functions';
 import { useTypedSelector } from '~/Store';
 import {motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 
 function EnterTitle() {
-    const [email, setEmail] = useState<string>('');
+    const {title : prevTitle} = useContext(BookmarkContext);
+    const [title, setTitle] = useState<string>(prevTitle);
     const [error, setError] = useState<string>('');
     const theme = useTypedSelector(state  => state.theme.theme);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         e.target.setCustomValidity('');
         setError('');
-        setEmail(e.target.value);
+        setTitle(e.target.value);
     }
 
     const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +43,7 @@ function EnterTitle() {
                 name='title'
                 type='text' 
                 style={error ? {borderColor: '#CB0A04'} : {}}
-                value={email}                
+                value={title}                
                 onChange={handleChange}
                 onBlur={handleBlur}
                 onInvalid={handleInvalid}

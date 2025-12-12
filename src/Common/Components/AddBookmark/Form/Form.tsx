@@ -1,7 +1,7 @@
 import React, {FormEvent, useState} from 'react';
 import {ClipLoader} from 'react-spinners'
 import {motion} from 'framer-motion';
-import {ChangeTheme} from '~/Common/functions';
+import {ChangeTheme, FormatDate} from '~/Common/functions';
 import { useTypedSelector, useTypedDispatch } from '~/Store';
 import EnterTitle from './EnterTitle';
 import EnterDescription from './EnterDescription';
@@ -25,6 +25,10 @@ function Form ({setOpen} : Props) {
         const desc = e.currentTarget.elements.namedItem('description') as HTMLInputElement;
         const url = e.currentTarget.elements.namedItem('url') as HTMLInputElement;
         const tags = e.currentTarget.elements.namedItem('tags') as HTMLInputElement;
+        const date = new Date();
+        const day = date.getDate();
+        const month = date.getMonth();
+        const formattedDate = FormatDate(day, month);
 
         try{
             const response = await fetch('http://localhost:4000/add_bookmark', {
@@ -37,6 +41,7 @@ function Form ({setOpen} : Props) {
                     desc: desc.value,
                     url: url.value,
                     tags: tags.value,
+                    createdAt: formattedDate
                 }),
                 credentials: 'include'
             });
@@ -44,13 +49,13 @@ function Form ({setOpen} : Props) {
             if(response.status === 200){
                 const result = await response.text();
                 console.log(result);
-                setLoading(false);
                 setOpen(false);
+                const event = new CustomEvent('update_bookmarks');
+                document.dispatchEvent(event);
                 dispatch({type: 'SHOW_POPUP', payload: result});
             }
             else{
-                const result = await response.text();
-                setLoading(false);
+                const result = await response.text();;
                 console.log(result);
                 dispatch({type: 'SHOW_POPUP', payload: result});
             }
@@ -58,8 +63,10 @@ function Form ({setOpen} : Props) {
         catch(error){
             const message = error.message;
             console.log(message);
-            setLoading(false);
             dispatch({type: 'SHOW_POPUP', payload: message});
+        }
+        finally{
+            setLoading(false);
         }
     }
 
