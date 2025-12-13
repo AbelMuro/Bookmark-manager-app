@@ -24,7 +24,8 @@ function Header() {
             if(response.status === 200){
                 const result = await response.text();
                 console.log(result);
-                dispatch({type: 'SHOW_POPUP', payload: result});
+                const event = new CustomEvent('update_bookmarks');
+                document.dispatchEvent(event);
             }
             else{
                 const result = await response.text();

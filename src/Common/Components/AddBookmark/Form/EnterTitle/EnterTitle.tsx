@@ -5,14 +5,16 @@ import {motion} from 'framer-motion';
 import * as styles from './styles.module.css';
 
 function EnterTitle() {
-    const [email, setEmail] = useState<string>('');
+    const [title, setTitle] = useState<string>('');
     const [error, setError] = useState<string>('');
     const theme = useTypedSelector(state  => state.theme.theme);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const input = e.target.value;
+        if(input.length > 20) return;
         e.target.setCustomValidity('');
         setError('');
-        setEmail(e.target.value);
+        setTitle(input);
     }
 
     const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +43,7 @@ function EnterTitle() {
                 name='title'
                 type='text' 
                 style={error ? {borderColor: '#CB0A04'} : {}}
-                value={email}                
+                value={title}                
                 onChange={handleChange}
                 onBlur={handleBlur}
                 onInvalid={handleInvalid}

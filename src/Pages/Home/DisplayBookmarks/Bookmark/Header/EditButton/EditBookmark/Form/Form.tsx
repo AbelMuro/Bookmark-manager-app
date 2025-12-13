@@ -6,7 +6,7 @@ import EnterDescription from './EnterDescription';
 import EnterURL from './EnterURL'
 import EnterTags from './EnterTags';
 import {motion} from 'framer-motion';
-import {ChangeTheme} from '~/Common/functions';
+import {ChangeTheme, FormatDate} from '~/Common/functions';
 import { useTypedSelector, useTypedDispatch } from '~/Store';
 import * as styles from './styles.module.css';
 
@@ -31,6 +31,10 @@ function Form({setOpen} : Props) {
         const description = e.currentTarget.elements.namedItem('description') as HTMLInputElement;
         const url = e.currentTarget.elements.namedItem('url') as HTMLInputElement;
         const tags = e.currentTarget.elements.namedItem('tags') as HTMLInputElement;
+        const date = new Date();
+        const day = date.getDate();
+        const month = date.getMonth();
+        const dateUpdated = FormatDate(day, month);
 
         try{    
             const response = await fetch('http://localhost:4000/edit_bookmark', {
@@ -43,7 +47,8 @@ function Form({setOpen} : Props) {
                     description: description.value,
                     url: url.value,
                     tags: tags.value,
-                    bookmarkId: bookmarkId
+                    bookmarkId,
+                    dateUpdated
                 })
             });
 

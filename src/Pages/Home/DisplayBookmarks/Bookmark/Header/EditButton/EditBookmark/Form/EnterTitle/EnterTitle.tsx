@@ -12,9 +12,11 @@ function EnterTitle() {
     const theme = useTypedSelector(state  => state.theme.theme);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const input = e.target.value;
+        if(input.length > 20) return;
         e.target.setCustomValidity('');
         setError('');
-        setTitle(e.target.value);
+        setTitle(input);
     }
 
     const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {

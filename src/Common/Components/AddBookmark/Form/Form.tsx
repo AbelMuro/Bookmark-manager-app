@@ -18,6 +18,10 @@ function Form ({setOpen} : Props) {
     const dispatch = useTypedDispatch();
     const [loading, setLoading] = useState<boolean>(false);
 
+    const handleOpen = () => {
+        setOpen(false);
+    }
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoading(true);
@@ -77,7 +81,7 @@ function Form ({setOpen} : Props) {
             <EnterURL/>
             <EnterTags/>
             <motion.fieldset layout className={styles.buttons}>
-                <button className={ChangeTheme(styles, 'cancel', theme)}>
+                <button type='button' onClick={handleOpen} className={ChangeTheme(styles, 'cancel', theme)}>
                     Cancel
                 </button>
                 <button className={styles.save}>

@@ -13,9 +13,9 @@ function Tags() {
             {
                 tags.split(',').map((tag) => {
                     return(
-                        <div className={ChangeTheme(styles, 'bookmark_tag', theme)}>
+                        <p className={ChangeTheme(styles, 'bookmark_tag', theme)}>
                             {tag}
-                        </div>  
+                        </p>  
                     )
                 })
             }
