@@ -12,9 +12,7 @@ import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am currently on the edit button for the Bookmark component
-
-    i need to finish creating the dropdown for that button
+    this is where i left off, i am currently on the Dialog component for the Archive Button
 
 */
 

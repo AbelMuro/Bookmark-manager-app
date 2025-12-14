@@ -14,7 +14,7 @@ type Context = {
     url: string,
     createdAt: string,
     views: number,
-    lastUpdated: string
+    lastUpdated: string,
 }
 
 export const BookmarkContext = createContext<Context | undefined>(undefined);
@@ -75,22 +75,26 @@ function DisplayBookmarks() {
                     const createdAt = bookmark.created_at;
                     const views = bookmark.views;
                     const lastUpdated = bookmark.last_updated;
+                    const archived = bookmark.archived;
 
-                    return(
-                        <BookmarkContext.Provider value={{
-                                title, 
-                                description, 
-                                accountId, 
-                                bookmarkId, 
-                                tags, 
-                                url,
-                                createdAt,
-                                views,
-                                lastUpdated
-                                }}>
-                            <Bookmark/> 
-                        </BookmarkContext.Provider>
-                       )
+                    if(!archived)
+                        return(
+                            <BookmarkContext.Provider value={{
+                                    title, 
+                                    description, 
+                                    accountId, 
+                                    bookmarkId, 
+                                    tags, 
+                                    url,
+                                    createdAt,
+                                    views,
+                                    lastUpdated,
+                                    }}>
+                                <Bookmark key={`${bookmarkId} ${archived}`}/> 
+                            </BookmarkContext.Provider>
+                        )
+                    else
+                        return null;
                 })
             }
         </section>

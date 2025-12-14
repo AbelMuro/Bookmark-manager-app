@@ -3,7 +3,7 @@ import { useMediaQuery } from '~/Hooks';
 import {motion} from 'framer-motion';
 import { ChangeTheme } from '~/Common/functions';
 import { useTypedSelector } from '~/Store';
-import Dialog from '~/Common/Components/Dialog';
+import Modal from '~/Common/Components/Modal';
 import Form from './Form';
 import * as styles from './styles.module.css';
 
@@ -22,7 +22,7 @@ function AddBookmark() {
                 <span>+</span> 
                 {!mobile && 'Add Bookmark'}
             </button>        
-            <Dialog open={open}>
+            <Modal open={open}>
                 <motion.button layout className={ChangeTheme(styles, 'close', theme)} onClick={handleOpen}>
                     <img />
                 </motion.button>
@@ -40,7 +40,7 @@ function AddBookmark() {
                     </p>
                 </motion.div>
                 <Form setOpen={setOpen}/>
-            </Dialog>
+            </Modal>
                 
         </>
 

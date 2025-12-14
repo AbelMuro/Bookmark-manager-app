@@ -10,7 +10,7 @@ type Props = {
 }
 
 
-function Dialog({open, children} : Props) {
+function Modal({open, children} : Props) {
     const theme = useTypedSelector(state  => state.theme.theme);
     
     return(
@@ -41,4 +41,4 @@ function Dialog({open, children} : Props) {
     )
 }
 
-export default Dialog;
+export default Modal;

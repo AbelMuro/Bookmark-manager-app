@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Form from './Form';
-import Dialog from '~/Common/Components/Dialog';
+import Modal from '~/Common/Components/Modal';
 import {motion} from 'framer-motion';
 import {ChangeTheme} from '~/Common/functions';
 import { useTypedSelector } from '~/Store';
@@ -8,9 +8,19 @@ import * as styles from './styles.module.css';
 
 function EditBookmark() {
     const theme = useTypedSelector(state => state.theme.theme);
+    const [open, setOpen] = useState(false);
 
+    const handleOpen = () => {
+        setOpen(!open);
+    }
+ 
     return(
-            <Dialog open={open}>
+        <>
+            <button className={ChangeTheme(styles, 'dropdown_button', theme)} onClick={handleOpen}>
+                <img/>
+                Edit
+            </button>
+            <Modal open={open}>
                 <motion.button layout className={ChangeTheme(styles, 'close', theme)} onClick={handleOpen}>
                     <img />
                 </motion.button>
@@ -26,7 +36,8 @@ function EditBookmark() {
                     </p>
                 </motion.div>
                 <Form setOpen={setOpen}/>
-            </Dialog>
+            </Modal>
+        </>
     )
 }
 

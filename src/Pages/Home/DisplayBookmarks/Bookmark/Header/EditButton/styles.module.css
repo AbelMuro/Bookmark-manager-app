@@ -53,7 +53,6 @@
 
 .dropdown{
     width: 200px;
-    height: 212px;
     border-radius: 8px;
     padding: 8px;
     display: flex;
@@ -69,4 +68,9 @@
 .dropdown.dark{
     background-color: #002E2D;
     border: 1px solid #004241;
+}
+
+.dropdown.light{
+    background-color: white;
+    border: 1px solid #E8F0EF;
 }

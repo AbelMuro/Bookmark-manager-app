@@ -1,3 +1,3 @@
-import Dialog from './Dialog.tsx';
+import Dialog from './Dialog.js';
 
 export default Dialog;
