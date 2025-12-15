@@ -1,4 +1,5 @@
 import React, {useEffect, useState, createContext} from 'react';
+import LoadingBookmarks from '~/Common/Components/LoadingBookmarks';
 import SortButton from './SortButton';
 import { useTypedSelector, useTypedDispatch } from '~/Store';
 import {ChangeTheme} from '~/Common/functions';
@@ -9,12 +10,27 @@ type Context = {
     title: string,
     description: string,
     accountId: number,
-    bookmarkId: string,
+    bookmarkId: number,
     tags: string,
     url: string,
     createdAt: string,
     views: number,
     lastUpdated: string,
+    pinned: number,
+}
+
+type Bookmark = {
+    id: number,
+    account_id: number,
+    title: string,
+    description: string,
+    url: string,
+    tags: string,
+    created_at: string,
+    last_updated: string,
+    views: number,
+    archived: number,
+    pinned: number
 }
 
 export const BookmarkContext = createContext<Context | undefined>(undefined);
@@ -22,9 +38,11 @@ export const BookmarkContext = createContext<Context | undefined>(undefined);
 function DisplayBookmarks() {
     const theme = useTypedSelector(state  => state.theme.theme);
     const dispatch = useTypedDispatch();
-    const [bookmarks, setBookmarks] = useState([]);
+    const [bookmarks, setBookmarks] = useState<Array<Bookmark>>([]);
+    const [loading, setLoading] = useState<boolean>(false)
     
     const getAllBookmarks = async () => {
+        setLoading(true);
         try{
             const response = await fetch('http://localhost:4000/get_bookmarks', {
                 method: 'GET',
@@ -33,7 +51,15 @@ function DisplayBookmarks() {
 
             if(response.status === 200){
                 const result = await response.json();
-                setBookmarks(result);
+                const pinned : Array<Bookmark> = [];
+                const unpinned : Array<Bookmark> = []
+                result.forEach((bookmark : Bookmark) => {
+                    if(bookmark.pinned)
+                        pinned.push(bookmark)
+                    else
+                        unpinned.push(bookmark)
+                })
+                setBookmarks([...pinned, ...unpinned]);
             }
             else{
                 const result = await response.text();
@@ -46,6 +72,9 @@ function DisplayBookmarks() {
             const message = error.message;
             console.log(message);
             dispatch({type: 'SHOW_POPUP', payload: message})
+        }
+        finally{
+            setLoading(false);
         }
     }
 
@@ -64,7 +93,7 @@ function DisplayBookmarks() {
                 All bookmarks
             </h1>
             <SortButton/>
-            {
+            {true ? <LoadingBookmarks/> :
                 bookmarks.map((bookmark) => {
                     const title = bookmark.title;
                     const description = bookmark.description;
@@ -76,6 +105,7 @@ function DisplayBookmarks() {
                     const views = bookmark.views;
                     const lastUpdated = bookmark.last_updated;
                     const archived = bookmark.archived;
+                    const pinned = bookmark.pinned;
 
                     if(!archived)
                         return(
@@ -89,6 +119,7 @@ function DisplayBookmarks() {
                                     createdAt,
                                     views,
                                     lastUpdated,
+                                    pinned
                                     }}>
                                 <Bookmark key={`${bookmarkId} ${archived}`}/> 
                             </BookmarkContext.Provider>

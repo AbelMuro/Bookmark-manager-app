@@ -1,3 +1,3 @@
-import CopyUrlButton from "./CopyUrlButton.js";
+import CopyUrlButton from "./CopyUrlButton.tsx";
 
 export default CopyUrlButton;

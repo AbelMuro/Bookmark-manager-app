@@ -1,10 +1,10 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import { useMediaQuery } from '~/Hooks';
 import Grid from './Grid';
 import HeaderBar from './HeaderBar';
 import MobileHeaderBar from './MobileHeaderBar';
 import NavigationBar from './NavigationBar';
-import DisplayBookmarks from './DisplayBookmarks';
 
 function Home() {
     const [mobile] = useMediaQuery('(max-width: 930px)');
@@ -13,7 +13,7 @@ function Home() {
         <Grid>
             {!mobile && <NavigationBar/>}
             {mobile ? <MobileHeaderBar/> : <HeaderBar/>}
-            <DisplayBookmarks/>
+            <Outlet/>
         </Grid>
     )
 }

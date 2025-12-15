@@ -15,14 +15,19 @@
     position: absolute;
     inset: 0;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .dialog.light{
     background-color: white;
+    border: none;
 }
 
 .dialog.dark{
     background-color: #001F1F;
+    border: 1px solid #004241;
 }
 
 .dialog_header{
@@ -36,6 +41,7 @@
     font-family: 'manrope';
     line-height: 140%;
     letter-spacing: 0px;   
+    margin: 0px;
 }
 
 .dialog_title.light{
@@ -51,6 +57,7 @@
     font-family: 'manrope';
     line-height: 150%;
     letter-spacing: 0px;
+    margin: 0px;
 }
 
 .dialog_desc.light{
@@ -74,14 +81,33 @@
     letter-spacing: 0px;
     border-radius: 8px;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .dialog_cancel.light{
     color: #051513;
+    border: 1px solid #C0CFCC;
+}
+
+.dialog_cancel.light:hover{
+    background-color: var(--hover-light-cancel-button);
+}
+
+.dialog_cancel.light:active{
+    background-color: var(--active-light-cancel-button);
 }
 
 .dialog_cancel.dark{
     color: #C0CFCC;
+    border: 1px solid #004745;
+}
+
+.dialog_cancel.dark:hover{
+    background-color: var(--hover-dark-cancel-button);
+}
+
+.dialog_cancel.dark:active{
+    background-color: var(--active-dark-cancel-button);
 }
 
 .dialog_submit{
@@ -92,8 +118,21 @@
     letter-spacing: 0px;
     border-radius: 8px;
     color: white;
+    background-color: #014745;
+    border: none;
+    cursor: pointer;
 }
 
-.dialog_submit.light{
-    background-color: #014745;
+.dialog_submit.light:hover{
+    background-color: var(--hover-green-button);
+}
+
+.dialog_submit.dark:hover{
+    background-color: var(--active-green-button);
+}
+
+@media(max-width: 500px){
+    .dialog{
+        width: 340px;
+    }
 }

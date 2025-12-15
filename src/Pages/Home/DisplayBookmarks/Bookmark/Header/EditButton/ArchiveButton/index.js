@@ -1,3 +1,3 @@
-import ArchiveButton from './ArchiveButton.js';
+import ArchiveButton from './ArchiveButton.tsx';
 
 export default ArchiveButton;

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import ArchiveButton from './ArchiveButton';
 import VisitButton from './VisitButton';
-import Unpin from './Unpin';
+import PinOrUnpin from './PinOrUnpin';
 import EditBookmark from './EditBookmark';
 import CopyUrlButton from './CopyUrlButton';
 import { useTypedSelector } from '~/Store';
@@ -30,9 +30,9 @@ function EditButton() {
                         animate={{scale: 1}}
                         exit={{scale: 0}}
                         >
-                            <VisitButton/>
-                            <CopyUrlButton/>
-                            <Unpin/>
+                            <VisitButton handleOpen={handleOpen}/>
+                            <CopyUrlButton handleOpen={handleOpen}/>
+                            <PinOrUnpin handleOpen={handleOpen}/>
                             <EditBookmark/>
                             <ArchiveButton/>
                     </motion.div>

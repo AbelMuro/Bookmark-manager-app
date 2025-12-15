@@ -1,3 +1,3 @@
-import VisitButton from './VisitButton.js';
+import VisitButton from './VisitButton.tsx';
 
 export default VisitButton;

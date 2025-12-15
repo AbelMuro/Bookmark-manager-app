@@ -56,16 +56,6 @@
     mask-image: url('../icons/icon-last-visited.svg')
 }
 
-.bookmark_pin{
-    width: 16px;
-    height: 16px;
-    mask-image: url('../icons/icon-pin.svg');
-    mask-size: 16px 16px;
-    mask-repeat: no-repeat;
-    mask-position: center;
-    cursor: pointer;
-}
-
 .bookmark_views.light, 
 .bookmark_created.light,
 .bookmark_calendar.light{
@@ -74,13 +64,8 @@
 
 .bookmark_views.light > img,
 .bookmark_created.light > img,
-.bookmark_calendar.light > img,
-.bookmark_pin.light{
+.bookmark_calendar.light > img{
     background-color: #4C5C59;
-}
-
-.bookmark_pin.light:hover{
-    background-color: black;
 }
 
 
@@ -92,11 +77,6 @@
 
 .bookmark_views.dark > img,
 .bookmark_created.dark > img,
-.bookmark_calendar.dark > img,
-.bookmark_pin.dark{
+.bookmark_calendar.dark > img{
     background-color: #B1B9B9;
 };
-
-.bookmark_pin.dark:hover{
-    background-color: white;
-}

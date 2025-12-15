@@ -1,10 +1,11 @@
 import React, {useContext} from 'react';
+import Pin from './Pin';
 import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
 import {ChangeTheme} from '~/Common/functions';
 import { useTypedSelector } from '~/Store';
 import * as styles from './styles.module.css';
 
-function Misc() {
+function Footer() {
     const theme = useTypedSelector(state  => state.theme.theme);
     const {views, createdAt, lastUpdated} = useContext(BookmarkContext);
 
@@ -25,9 +26,9 @@ function Misc() {
                     {lastUpdated || '-'}
                 </div>
             </div>
-            <img className={ChangeTheme(styles, 'bookmark_pin', theme)}/>
+            <Pin/>
         </div>
     )
 }
 
-export default Misc;
+export default Footer;

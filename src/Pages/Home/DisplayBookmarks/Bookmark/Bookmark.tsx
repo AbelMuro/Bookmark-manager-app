@@ -4,7 +4,7 @@ import { useTypedSelector } from '~/Store';
 import {ChangeTheme} from '~/Common/functions';
 import Header from './Header';
 import Tags from './Tags';
-import Misc from './Misc';
+import Footer from './Footer';
 import * as styles from './styles.module.css';
 
 
@@ -22,7 +22,7 @@ function Bookmark() {
                 </p>
                 <Tags/>                
             </section>
-            <Misc/>
+            <Footer/>
         </article>
     )
 }

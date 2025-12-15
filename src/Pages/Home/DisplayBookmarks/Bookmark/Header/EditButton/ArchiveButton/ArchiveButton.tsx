@@ -1,4 +1,5 @@
-import React, {useContext} from 'react';
+import React, {useState, useContext} from 'react';
+import Dialog from '~/Common/Components/Dialog';
 import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
 import * as styles from './styles.module.css';
 import { useTypedSelector, useTypedDispatch } from '~/Store';
@@ -6,8 +7,13 @@ import { ChangeTheme } from '~/Common/functions';
 
 function ArchiveButton() {
     const theme = useTypedSelector(state => state.theme.theme);
+    const [open, setOpen] = useState<boolean>(false)
     const dispatch = useTypedDispatch();
     const {bookmarkId} = useContext(BookmarkContext);
+
+    const handleOpen = () => {
+        setOpen(!open);
+    }
 
     const handleArchive = async () => {
         try{
@@ -42,10 +48,21 @@ function ArchiveButton() {
     }
 
     return(
-        <button className={ChangeTheme(styles, 'dropdown_button', theme)} onClick={handleArchive}>
-            <img/>
-            Archive
-        </button>
+        <>
+            <button className={ChangeTheme(styles, 'dropdown_button', theme)} onClick={handleOpen}>
+                <img/>
+                Archive
+            </button>        
+            <Dialog 
+                title='Archive bookmark' 
+                desc='Are you sure you want to archive this bookmark?' 
+                submit='Archive' 
+                open={open}
+                handleOpen={handleOpen}
+                handleSubmit={handleArchive}
+                />
+        </>
+
     )
 }
 

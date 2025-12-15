@@ -4,7 +4,11 @@ import { ChangeTheme } from '~/Common/functions';
 import { useTypedSelector } from '~/Store';
 import * as styles from './styles.module.css';
 
-function VisitButton() {
+type Props = {
+    handleOpen: Function
+}
+
+function VisitButton({handleOpen} : Props) {
     const {url, views, bookmarkId} = useContext(BookmarkContext);
     const theme = useTypedSelector(state => state.theme.theme);
 
@@ -38,6 +42,9 @@ function VisitButton() {
         catch(error){
             const message = error.message;
             console.log(message);
+        }
+        finally{
+            handleOpen();
         }
     }
 
