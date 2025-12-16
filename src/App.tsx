@@ -8,15 +8,13 @@ import Register from './Pages/Authorization/Register';
 import ForgotPassword from './Pages/Authorization/ForgotPassword';
 import ResetPassword from './Pages/Authorization/ResetPassword';
 import PopupMessageBox from './Common/Components/PopupMessageBox';
-import DisplayBookmarks from './Pages/Home/DisplayBookmarks';
-import DisplayArchivedBookmarks from './Pages/Home/DisplayArchivedBookmarks';
 import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am currently on the LoadingBookmarks component
+    this is where i left off, i am currently trying to refactor the DisplayBookmarks component
 
-    i need to find a proper color for the loading skeletons
+    there are still bugs that occur when i move a bookmark from the archived section to the home section
 
 */
 
@@ -31,10 +29,7 @@ function App() {
                     <Route path='/register' element={<Register/>}/>
                     <Route path='/forgot' element={<ForgotPassword/>}/>
                     <Route path='/reset/:token' element={<ResetPassword/>}/>
-                    <Route path='/home' element={<Home/>}>
-                        <Route path='/home/' element={<DisplayBookmarks/>}/>
-                        <Route path='/home/archived' element={<DisplayArchivedBookmarks/>}/>
-                    </Route>
+                    <Route path='/home/*' element={<Home/>}/>
                 </Routes>
             </BrowserRouter>    
             <PopupMessageBox/>        

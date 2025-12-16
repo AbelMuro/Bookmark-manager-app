@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import DisplayBookmarks from './DisplayBookmarks';
 import { useMediaQuery } from '~/Hooks';
 import Grid from './Grid';
 import HeaderBar from './HeaderBar';
@@ -13,7 +13,7 @@ function Home() {
         <Grid>
             {!mobile && <NavigationBar/>}
             {mobile ? <MobileHeaderBar/> : <HeaderBar/>}
-            <Outlet/>
+            <DisplayBookmarks/>
         </Grid>
     )
 }

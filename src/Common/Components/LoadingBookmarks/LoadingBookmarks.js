@@ -9,9 +9,9 @@ function LoadingBookmarks() {
 
     const handleColor = () => {
         if(theme === 'light')
-            return '#FFFFFF';
+            return '#f4f4f4';
         else
-            return '#004241';
+            return '#001c1c';
     }
 
     const handleHighlight = () => {
@@ -23,9 +23,12 @@ function LoadingBookmarks() {
 
     return(
         <SkeletonTheme baseColor={handleColor()} highlightColor={handleHighlight()}>
-            <Skeleton count={2}/>
-            <Skeleton count={2}/>
-            <Skeleton count={2}/>
+            <Skeleton count={1} className={styles.loading_bookmark}/>
+            <Skeleton count={1} className={styles.loading_bookmark}/>
+            <Skeleton count={1} className={styles.loading_bookmark}/>
+            <Skeleton count={1} className={styles.loading_bookmark}/>
+            <Skeleton count={1} className={styles.loading_bookmark}/>
+            <Skeleton count={1} className={styles.loading_bookmark}/>
         </SkeletonTheme>
     )
 }

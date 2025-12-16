@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import ArchiveButton from './ArchiveButton';
+import ArchiveOrUnarchiveButton from './ArchiveOrUnarchiveButton';
 import VisitButton from './VisitButton';
 import PinOrUnpin from './PinOrUnpin';
 import EditBookmark from './EditBookmark';
@@ -34,7 +34,7 @@ function EditButton() {
                             <CopyUrlButton handleOpen={handleOpen}/>
                             <PinOrUnpin handleOpen={handleOpen}/>
                             <EditBookmark/>
-                            <ArchiveButton/>
+                            <ArchiveOrUnarchiveButton/>
                     </motion.div>
                 }                 
             </AnimatePresence>
