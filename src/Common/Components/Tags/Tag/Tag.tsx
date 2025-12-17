@@ -4,7 +4,12 @@ import {ChangeTheme} from '~/Common/functions';
 import Checkbox from './Checkbox';
 import * as styles from './styles.module.css';
 
-function Tag() {
+type Props = {
+    name: string,
+    count: number
+}
+
+function Tag({name, count} : Props) {
     const theme = useTypedSelector(state  => state.theme.theme);
 
     return(
@@ -12,11 +17,11 @@ function Tag() {
             <div className={styles.group}>
                 <Checkbox/>
                 <p className={ChangeTheme(styles, 'tag_name', theme)}>
-                    AI
+                    {name}
                 </p>                
             </div>
             <div className={ChangeTheme(styles, 'tag_count', theme)}>
-                1
+                {count}
             </div>
         </div>
     )

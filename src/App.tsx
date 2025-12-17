@@ -12,9 +12,9 @@ import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am currently trying to refactor the DisplayBookmarks component
+    this is where i left off, i am finished with the tag component in the NavigationBar
 
-    there are still bugs that occur when i move a bookmark from the archived section to the home section
+    now i need to work on the tag component in the MobileNavigationBar
 
 */
 
