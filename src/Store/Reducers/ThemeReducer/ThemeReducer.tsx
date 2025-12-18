@@ -1,7 +1,11 @@
 import { createAction, createReducer} from '@reduxjs/toolkit'
 
+type State = {
+    theme: string
+}
+
 const changeTheme = createAction('CHANGE_THEME');
-let initialState;
+let initialState : State;
 
 const savedPreference = localStorage.getItem('preferred-theme');
 if(savedPreference)

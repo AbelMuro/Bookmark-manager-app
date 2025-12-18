@@ -15,7 +15,7 @@ function Tag({name, count} : Props) {
     return(
         <div className={styles.container}>
             <div className={styles.group}>
-                <Checkbox/>
+                <Checkbox name={name}/>
                 <p className={ChangeTheme(styles, 'tag_name', theme)}>
                     {name}
                 </p>                

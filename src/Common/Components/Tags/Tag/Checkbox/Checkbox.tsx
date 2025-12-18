@@ -1,16 +1,38 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useTypedDispatch } from '~/Store';
 import { ChangeTheme } from '~/Common/functions';
 import { useTypedSelector } from '~/Store';
 import icons from './icons';
 import * as styles from './styles.module.css';
 
-function Checkbox() {
+type Props = {
+    name: string
+}
+
+function Checkbox({name} : Props) {
     const [check, setCheck] = useState<boolean>(false);
-    const theme = useTypedSelector(state  => state.theme.theme);
+    const theme = useTypedSelector(state => state.theme.theme);
+    const dispatch = useTypedDispatch();
+    const navigate = useNavigate();
+    const {pathname} = useLocation();
 
     const handleCheck = () => {
         setCheck(!check);
+        navigate(`/home/tags`);
     }
+
+    useEffect(() => {
+        if(check)
+            dispatch({type: 'ADD_TAG', payload: name})
+        else
+            dispatch({type: 'REMOVE_TAG', payload: name});
+    }, [check])
+
+    useEffect(() => {
+        if(!pathname.includes('tags'))
+            setCheck(false);
+    }, [pathname])
 
     return(
         <div className={styles.container}>

@@ -39,12 +39,22 @@ export const BookmarkContext = createContext<Context | undefined>(undefined);
 
 function DisplayBookmarks() {
     const theme = useTypedSelector(state  => state.theme.theme);
+    const tags = useTypedSelector(state => state.tags.tags);
     const dispatch = useTypedDispatch();
     const [displayBookmarks, setDisplayBookmarks] = useState<Array<Bookmark>>([]);
     const allBookmarks = useRef<Array<Bookmark>>([]);
     const archivedBookmarks = useRef<Array<Bookmark>>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const {pathname} = useLocation();
+
+    const changeTitle = () => {
+        if(pathname === '/home/archived')
+            return 'Archived bookmarks';
+        else if(pathname === '/home/tags')
+            return `Bookmarks tagged: ${tags.join(',')}`;
+        else
+            return 'All bookmarks';
+    }
     
     const getAllBookmarks = async () => {
         setLoading(true);
@@ -113,11 +123,30 @@ function DisplayBookmarks() {
             setDisplayBookmarks(allBookmarks.current);
     }, [pathname])
 
+    useEffect(() => {
+        if(!tags.length) {
+            setDisplayBookmarks(allBookmarks.current);
+            return;
+        };
+
+        setDisplayBookmarks(() => {
+            return allBookmarks.current.filter((bookmark) => {
+                return tags.some((tag) => {
+                    const bookmarkTags = bookmark.tags.split(',');
+                    return bookmarkTags.some((bookmarkTag) => {
+                        return bookmarkTag === tag
+                    })
+                
+                })
+            })
+        })
+    }, [tags])
+
 
     return(
         <section className={styles.container}>
             <h1 className={ChangeTheme(styles, 'title', theme)}>
-                All bookmarks
+                {changeTitle()}
             </h1>
             <SortButton/>
             {loading ? <LoadingBookmarks/> :

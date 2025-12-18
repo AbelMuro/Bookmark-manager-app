@@ -12,9 +12,10 @@ import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am finished with the tag component in the NavigationBar
+    this is where i left off, i am currently in the DisplayBookmarks component
 
-    now i need to work on the tag component in the MobileNavigationBar
+    i need to change the title of that component according to the current pathname of the
+    url. i also need to update the styles for the tagged title
 
 */
 
