@@ -12,6 +12,7 @@
 }
 
 .title{
+    width: 80%;
     font-family: 'manrope';
     font-size: 1.5rem;
     line-height: 140%;
@@ -20,15 +21,28 @@
     grid-column: 1/4;
     grid-row: 1/2;
     margin-bottom: -12px;
+    justify-self: start;
     align-self: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
+
 
 .title.dark{
     color: white;
 }
 
+.title.dark > span{
+    color: #b1b9b9;
+}
+
 .title.light{
     color: #051513;
+}
+
+.title.light > span{
+    color: #014745;
 }
 
 @media(max-width: 1450px){

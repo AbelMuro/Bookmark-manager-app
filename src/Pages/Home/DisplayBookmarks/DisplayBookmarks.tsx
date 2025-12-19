@@ -43,7 +43,6 @@ function DisplayBookmarks() {
     const dispatch = useTypedDispatch();
     const [displayBookmarks, setDisplayBookmarks] = useState<Array<Bookmark>>([]);
     const allBookmarks = useRef<Array<Bookmark>>([]);
-    const archivedBookmarks = useRef<Array<Bookmark>>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const {pathname} = useLocation();
 
@@ -51,7 +50,14 @@ function DisplayBookmarks() {
         if(pathname === '/home/archived')
             return 'Archived bookmarks';
         else if(pathname === '/home/tags')
-            return `Bookmarks tagged: ${tags.join(',')}`;
+            return (
+                <>
+                    Bookmarks tagged:&nbsp;
+                    <span>
+                        {tags.join(', ')}
+                    </span> 
+                </>
+            )
         else
             return 'All bookmarks';
     }
@@ -66,27 +72,32 @@ function DisplayBookmarks() {
 
             if(response.status === 200){
                 const result = await response.json();
-                const pinned : Array<Bookmark> = [];
-                const unpinned : Array<Bookmark> = [];
-                const pinnedArchived : Array<Bookmark> = [];
-                const unPinnedArchived : Array<Bookmark> = [];
-                result.forEach((bookmark : Bookmark) => {
-                    if(bookmark.pinned && !bookmark.archived)
-                        pinned.push(bookmark)
-                    else if(!bookmark.pinned && !bookmark.archived)
-                        unpinned.push(bookmark);
+                setDisplayBookmarks(result);
+                allBookmarks.current = result;
+                /* 
+                    const pinned : Array<Bookmark> = [];
+                    const unpinned : Array<Bookmark> = [];
+                    const pinnedArchived : Array<Bookmark> = [];
+                    const unPinnedArchived : Array<Bookmark> = [];
+                    result.forEach((bookmark : Bookmark) => {
+                        if(bookmark.pinned && !bookmark.archived)
+                            pinned.push(bookmark)
+                        else if(!bookmark.pinned && !bookmark.archived)
+                            unpinned.push(bookmark);
 
-                    if(bookmark.pinned && bookmark.archived)
-                        pinnedArchived.push(bookmark);
-                    else if(!bookmark.pinned && bookmark.archived)
-                        unPinnedArchived.push(bookmark);
-                })
-                allBookmarks.current = [...pinned, ...unpinned];
-                archivedBookmarks.current = [...pinnedArchived, ...unPinnedArchived];
-                if(pathname.includes('archived'))
-                    setDisplayBookmarks(archivedBookmarks.current);            
-                else 
-                    setDisplayBookmarks(allBookmarks.current);     
+                        if(bookmark.pinned && bookmark.archived)
+                            pinnedArchived.push(bookmark);
+                        else if(!bookmark.pinned && bookmark.archived)
+                            unPinnedArchived.push(bookmark);
+                    })
+                    allBookmarks.current = [...pinned, ...unpinned];
+                    archivedBookmarks.current = [...pinnedArchived, ...unPinnedArchived];
+                    if(pathname.includes('archived'))
+                        setDisplayBookmarks(archivedBookmarks.current);            
+                    else 
+                        setDisplayBookmarks(allBookmarks.current);                 
+                */
+
             }
             else{
                 const result = await response.text();
@@ -114,33 +125,41 @@ function DisplayBookmarks() {
         return () => {
             document.removeEventListener('update_bookmarks', getAllBookmarks)
         }
-    }, [pathname])
+    }, [])
 
     useEffect(() => {
-        if(pathname.includes('archived'))
-            setDisplayBookmarks(archivedBookmarks.current)
+        if(pathname.includes('archived')){
+            const pinnedBookmarks : Array<Bookmark> = [];
+            const unPinnedBookmarks : Array<Bookmark> = [];
+            allBookmarks.current.forEach((bookmark: Bookmark) => {
+                if(bookmark.pinned && bookmark.archived)
+                    pinnedBookmarks.push(bookmark);
+                else if(!bookmark.pinned && bookmark.archived)
+                    unPinnedBookmarks.push(bookmark);
+            })
+            setDisplayBookmarks([...pinnedBookmarks, ...unPinnedBookmarks])
+        }   
+        else if(pathname.includes('tags')){
+            const pinnedBookmarks : Array<Bookmark> = [];
+            const unPinnedBookmarks : Array<Bookmark> = [];
+            allBookmarks.current.forEach((bookmark: Bookmark) => {
+                const result = bookmark.tags.split(',').some((tag) => {
+                    return tags.includes(tag)
+                })
+
+                if(!result) return;
+
+                if(bookmark.pinned)
+                    pinnedBookmarks.push(bookmark);
+                else
+                    unPinnedBookmarks.push(bookmark);
+            })
+            setDisplayBookmarks([...pinnedBookmarks, ...unPinnedBookmarks])            
+        }
         else
             setDisplayBookmarks(allBookmarks.current);
-    }, [pathname])
-
-    useEffect(() => {
-        if(!tags.length) {
-            setDisplayBookmarks(allBookmarks.current);
-            return;
-        };
-
-        setDisplayBookmarks(() => {
-            return allBookmarks.current.filter((bookmark) => {
-                return tags.some((tag) => {
-                    const bookmarkTags = bookmark.tags.split(',');
-                    return bookmarkTags.some((bookmarkTag) => {
-                        return bookmarkTag === tag
-                    })
-                
-                })
-            })
-        })
-    }, [tags])
+            
+    }, [pathname, tags])
 
 
     return(

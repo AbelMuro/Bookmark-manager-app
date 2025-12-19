@@ -4,6 +4,12 @@
     flex-direction: column;
 }
 
+.tags_header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .tags_title{
     font-family: 'manrope';
     font-size: 0.75rem;

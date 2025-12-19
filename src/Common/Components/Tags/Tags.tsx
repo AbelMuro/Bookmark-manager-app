@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import { useTypedSelector } from '~/Store';
 import {ChangeTheme} from '~/Common/functions';
 import Tag from './Tag'
+import ResetButton from './ResetButton';
 import * as styles from './styles.module.css';
-
 
 function Tags() {
     const theme = useTypedSelector(state  => state.theme.theme);
@@ -41,9 +41,13 @@ function Tags() {
 
     return (
         <section className={ChangeTheme(styles, 'tags', theme)}>
-            <h2 className={ChangeTheme(styles, 'tags_title', theme)}>
-                TAGS
-            </h2>
+            <div className={styles.tags_header}>
+                <h2 className={ChangeTheme(styles, 'tags_title', theme)}>
+                    TAGS
+                </h2>    
+                <ResetButton/>           
+            </div>
+
             {
                 tags.map((tag) => {
                     const name = tag[0];

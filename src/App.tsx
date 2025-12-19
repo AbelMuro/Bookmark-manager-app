@@ -12,10 +12,10 @@ import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am currently in the DisplayBookmarks component
+    this is where i left off, i am currently in the ResetButton for the tags component 
 
-    i need to change the title of that component according to the current pathname of the
-    url. i also need to update the styles for the tagged title
+    i need to make every checkbox component within every tag component rely on the global state
+    
 
 */
 

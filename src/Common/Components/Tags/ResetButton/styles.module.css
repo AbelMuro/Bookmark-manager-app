@@ -1,0 +1,36 @@
+.reset{
+    padding: 0px 0px 3px 0px;
+    font-family: 'manrope';
+    font-size: 0.75rem;
+    line-height: 130%;
+    letter-spacing: 0px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.reset.dark{
+    color: #b1b9b9;
+    border-bottom: 1px solid #00706E;
+}
+
+.reset.dark:hover{
+    color: #d1d1d1;
+}
+
+.reset.dark:active{
+    color: white;
+}
+
+.reset.light{
+    color: #595454;
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.reset.light:hover{
+    color: #2c2c2c;
+}
+
+.reset.light:active{
+    color: #000000;
+}
