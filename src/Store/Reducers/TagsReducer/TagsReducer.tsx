@@ -6,6 +6,7 @@ type State = {
 
 const addTags = createAction('ADD_TAG');
 const removeTags = createAction('REMOVE_TAG');
+const resetTags = createAction('RESET_TAGS');
 const initialState : State = {tags: []};
 
 const tagsReducer = createReducer(initialState, (builder) => {
@@ -17,6 +18,9 @@ const tagsReducer = createReducer(initialState, (builder) => {
             state.tags = state.tags.filter((tag) => {
                 return tag !== action.payload;
             })
+        })
+        .addCase(resetTags, (state) => {
+            state.tags = [];
         })
 });
 

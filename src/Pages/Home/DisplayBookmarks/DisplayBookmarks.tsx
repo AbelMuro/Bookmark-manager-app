@@ -1,7 +1,10 @@
-import React, {useEffect, useState, createContext, useRef} from 'react';
+import React, {useEffect, useState, createContext} from 'react';
+import type { Bookmark } from '~/Common/Types';
+import AllBookmarks from './AllBookmarks';
+import ArchivedBookmarks from './ArchivedBookmarks';
+import TaggedBookmarks from './TaggedBookmarks';
 import LoadingBookmarks from '~/Common/Components/LoadingBookmarks';
 import SortButton from '~/Common/Components/SortButton';
-import Bookmark from '~/Common/Components/Bookmark';
 import { useTypedSelector, useTypedDispatch } from '~/Store';
 import {useLocation} from 'react-router-dom';
 import {ChangeTheme} from '~/Common/functions';
@@ -21,28 +24,13 @@ type Context = {
     archived: number,
 }
 
-type Bookmark = {
-    id: number,
-    account_id: number,
-    title: string,
-    description: string,
-    url: string,
-    tags: string,
-    created_at: string,
-    last_updated: string,
-    views: number,
-    archived: number,
-    pinned: number
-}
-
 export const BookmarkContext = createContext<Context | undefined>(undefined);
 
 function DisplayBookmarks() {
     const theme = useTypedSelector(state  => state.theme.theme);
     const tags = useTypedSelector(state => state.tags.tags);
     const dispatch = useTypedDispatch();
-    const [displayBookmarks, setDisplayBookmarks] = useState<Array<Bookmark>>([]);
-    const allBookmarks = useRef<Array<Bookmark>>([]);
+    const [allBookmarks, setAllBookmarks] = useState<Array<Bookmark>>([])
     const [loading, setLoading] = useState<boolean>(false);
     const {pathname} = useLocation();
 
@@ -72,32 +60,15 @@ function DisplayBookmarks() {
 
             if(response.status === 200){
                 const result = await response.json();
-                setDisplayBookmarks(result);
-                allBookmarks.current = result;
-                /* 
-                    const pinned : Array<Bookmark> = [];
-                    const unpinned : Array<Bookmark> = [];
-                    const pinnedArchived : Array<Bookmark> = [];
-                    const unPinnedArchived : Array<Bookmark> = [];
-                    result.forEach((bookmark : Bookmark) => {
-                        if(bookmark.pinned && !bookmark.archived)
-                            pinned.push(bookmark)
-                        else if(!bookmark.pinned && !bookmark.archived)
-                            unpinned.push(bookmark);
-
-                        if(bookmark.pinned && bookmark.archived)
-                            pinnedArchived.push(bookmark);
-                        else if(!bookmark.pinned && bookmark.archived)
-                            unPinnedArchived.push(bookmark);
-                    })
-                    allBookmarks.current = [...pinned, ...unpinned];
-                    archivedBookmarks.current = [...pinnedArchived, ...unPinnedArchived];
-                    if(pathname.includes('archived'))
-                        setDisplayBookmarks(archivedBookmarks.current);            
-                    else 
-                        setDisplayBookmarks(allBookmarks.current);                 
-                */
-
+                const pinnedBookmarks : Array<Bookmark> = [];
+                const unPinnedBookmarks : Array<Bookmark> = [];
+                result.forEach((bookmark: Bookmark) => {
+                    if(bookmark.pinned)
+                        pinnedBookmarks.push(bookmark);
+                    else if(!bookmark.pinned)
+                        unPinnedBookmarks.push(bookmark);
+                })
+                setAllBookmarks([...pinnedBookmarks, ...unPinnedBookmarks])
             }
             else{
                 const result = await response.text();
@@ -127,40 +98,6 @@ function DisplayBookmarks() {
         }
     }, [])
 
-    useEffect(() => {
-        if(pathname.includes('archived')){
-            const pinnedBookmarks : Array<Bookmark> = [];
-            const unPinnedBookmarks : Array<Bookmark> = [];
-            allBookmarks.current.forEach((bookmark: Bookmark) => {
-                if(bookmark.pinned && bookmark.archived)
-                    pinnedBookmarks.push(bookmark);
-                else if(!bookmark.pinned && bookmark.archived)
-                    unPinnedBookmarks.push(bookmark);
-            })
-            setDisplayBookmarks([...pinnedBookmarks, ...unPinnedBookmarks])
-        }   
-        else if(pathname.includes('tags')){
-            const pinnedBookmarks : Array<Bookmark> = [];
-            const unPinnedBookmarks : Array<Bookmark> = [];
-            allBookmarks.current.forEach((bookmark: Bookmark) => {
-                const result = bookmark.tags.split(',').some((tag) => {
-                    return tags.includes(tag)
-                })
-
-                if(!result) return;
-
-                if(bookmark.pinned)
-                    pinnedBookmarks.push(bookmark);
-                else
-                    unPinnedBookmarks.push(bookmark);
-            })
-            setDisplayBookmarks([...pinnedBookmarks, ...unPinnedBookmarks])            
-        }
-        else
-            setDisplayBookmarks(allBookmarks.current);
-            
-    }, [pathname, tags])
-
 
     return(
         <section className={styles.container}>
@@ -169,40 +106,15 @@ function DisplayBookmarks() {
             </h1>
             <SortButton/>
             {loading ? <LoadingBookmarks/> :
-                displayBookmarks.map((bookmark : Bookmark) => {
-                    const title = bookmark.title;
-                    const description = bookmark.description;
-                    const bookmarkId = bookmark.id;
-                    const accountId = bookmark.account_id;
-                    const tags = bookmark.tags;
-                    const url = bookmark.url;
-                    const createdAt = bookmark.created_at;
-                    const views = bookmark.views;
-                    const lastUpdated = bookmark.last_updated;
-                    const archived = bookmark.archived;
-                    const pinned = bookmark.pinned;
-
-                    return(
-                        <BookmarkContext.Provider value={{
-                                title, 
-                                description, 
-                                accountId, 
-                                bookmarkId, 
-                                tags, 
-                                url,
-                                createdAt,
-                                views,
-                                lastUpdated,
-                                pinned,
-                                archived
-                                }}>
-                            <Bookmark key={`${bookmarkId} ${archived}`}/> 
-                        </BookmarkContext.Provider>
-                    )
-                })
+                <>
+                    {pathname === '/home' && <AllBookmarks bookmarks={allBookmarks}/>}
+                    {pathname.includes('archived') && <ArchivedBookmarks bookmarks={allBookmarks}/>}
+                    {pathname.includes('tags') && <TaggedBookmarks bookmarks={allBookmarks}/>} 
+                </>
             }
         </section>
     )
 }
 
 export default DisplayBookmarks;
+    

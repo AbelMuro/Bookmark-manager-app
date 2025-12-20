@@ -13,6 +13,7 @@ type Props = {
 function Checkbox({name} : Props) {
     const [check, setCheck] = useState<boolean>(false);
     const theme = useTypedSelector(state => state.theme.theme);
+    const tags = useTypedSelector(state => state.tags.tags);
     const dispatch = useTypedDispatch();
     const navigate = useNavigate();
     const {pathname} = useLocation();
@@ -33,6 +34,11 @@ function Checkbox({name} : Props) {
         if(!pathname.includes('tags'))
             setCheck(false);
     }, [pathname])
+
+    useEffect(() => {
+        const result = tags.some((tag) => tag === name);
+        setCheck(result);
+    }, [tags])
 
     return(
         <div className={styles.container}>
