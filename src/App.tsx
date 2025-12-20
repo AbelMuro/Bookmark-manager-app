@@ -12,9 +12,10 @@ import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am currently in the ResetButton for the tags component 
+    this is where i left off, i am currently in the sortButton component
 
-    i need to make every checkbox component within every tag component rely on the global state
+    i am working on the dropdown component
+
     
 
 */

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import { ChangeTheme } from '~/Common/functions';
 import { useTypedSelector } from '~/Store';
@@ -6,11 +6,31 @@ import * as styles from './styles.module.css';
 
 function SortButton(){
     const theme = useTypedSelector(state  => state.theme.theme);
-    const [open, setOpen] = useState(false);
+    const buttonRef = useRef<HTMLButtonElement | null>(null);
+    const dropdownRef = useRef<HTMLDivElement | null>(null);
+    const [open, setOpen] = useState<boolean>(false);
+    const [selected, setSelected] = useState<string>('recently added');
 
     const handleOpen = () => {
         setOpen(!open)
     }
+
+    const handleSelected = (option: string) => {
+        setSelected(option)
+    }
+
+    useEffect(() => {
+        const handleClose = (e: PointerEvent) => {
+            const target = e.target as Node;
+
+            if(!buttonRef.current.contains(target) && !dropdownRef.current.contains(target))
+                setOpen(false);
+        }
+
+        document.addEventListener('click', handleClose);
+
+        return () => document.removeEventListener('click', handleClose);
+    }, [])
 
     return(
         <button className={ChangeTheme(styles, 'sort', theme)} onClick={handleOpen}>
@@ -23,14 +43,17 @@ function SortButton(){
                     exit={{scale: 0}}
                     className={ChangeTheme(styles, 'dropdown', theme)}
                     >
-                        <button>
-                            Recently added
+                        <button onClick={() => handleSelected('recently added')}>
+                            Recently added 
+                            {selected === 'recently added' && <img className={ChangeTheme(styles, 'checkmark', theme)}/>}
                         </button>
-                        <button>
+                        <button onClick={() => handleSelected('recently visited')}>
                             Recently visited
+                            {selected === 'recently visited' && <img className={ChangeTheme(styles, 'checkmark', theme)}/>}
                         </button>
-                        <button>
+                        <button onClick={() => handleSelected('most visited')}>
                             Most visited
+                            {selected === 'most visited' && <img className={ChangeTheme(styles, 'checkmark', theme)}/>}
                         </button>
                 </motion.div>}
             </AnimatePresence>
