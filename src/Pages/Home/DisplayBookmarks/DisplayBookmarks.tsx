@@ -134,8 +134,8 @@ function DisplayBookmarks() {
         else if(sort === 'recently visited'){
             const bookmarks = [...allBookmarks];
             bookmarks.sort((a, b) => {
-                let lastTimeVisitedA : number = a.last_time_visited;
-                let lastTimeVisitedB : number = b.last_time_visited;
+                const lastTimeVisitedA : number = a.last_time_visited;
+                const lastTimeVisitedB : number = b.last_time_visited;
 
                 if(lastTimeVisitedA < lastTimeVisitedB)
                     return 1;

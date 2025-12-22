@@ -1,0 +1,23 @@
+.dropdown{
+    width: 200px;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 35px;
+    right: 0px;
+    z-index: var(--close);
+}
+
+.dropdown.dark{
+    background-color: #002E2D;
+    border: 1px solid #004241;
+}
+
+.dropdown.light{
+    background-color: white;
+    border: 1px solid #E8F0EF;
+}

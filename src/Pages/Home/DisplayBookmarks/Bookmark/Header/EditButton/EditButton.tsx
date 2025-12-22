@@ -1,17 +1,15 @@
-import React, {useState} from 'react';
-import ArchiveOrUnarchiveButton from './ArchiveOrUnarchiveButton';
-import VisitButton from './VisitButton';
-import PinOrUnpin from './PinOrUnpin';
-import EditBookmark from './EditBookmark';
-import CopyUrlButton from './CopyUrlButton';
+import React, {useState, useContext} from 'react';
+import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
+import UnarchivedDropdown from './UnarchivedDropdown';
 import { useTypedSelector } from '~/Store';
 import { ChangeTheme } from '~/Common/functions';
-import {AnimatePresence, motion} from 'framer-motion';
+import {AnimatePresence} from 'framer-motion';
 import * as styles from './styles.module.css';
 
 function EditButton() {
     const [open, setOpen] = useState(false);
-    const theme = useTypedSelector(state  => state.theme.theme);
+    const theme = useTypedSelector(state => state.theme.theme);
+    const {archived} = useContext(BookmarkContext);
 
     const handleOpen = () => {
         setOpen(!open);
@@ -24,19 +22,11 @@ function EditButton() {
             </button>   
             <AnimatePresence>
                 {open && 
-                    <motion.div 
-                        className={ChangeTheme(styles, 'dropdown', theme)}
-                        initial={{scale: 0}}
-                        animate={{scale: 1}}
-                        exit={{scale: 0}}
-                        >
-                            <VisitButton handleOpen={handleOpen}/>
-                            <CopyUrlButton handleOpen={handleOpen}/>
-                            <PinOrUnpin handleOpen={handleOpen}/>
-                            <EditBookmark/>
-                            <ArchiveOrUnarchiveButton/>
-                    </motion.div>
-                }                 
+                    archived === 0 ? 
+                        <UnarchivedDropdown handleOpen={handleOpen}/> 
+                        : 
+                        <></>
+                    }                 
             </AnimatePresence>
                  
         </>
