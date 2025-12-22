@@ -1,4 +1,4 @@
-import React, {useEffect, useState, createContext} from 'react';
+import React, {useEffect, useState, createContext, useRef} from 'react';
 import type { Bookmark } from '~/Common/Types';
 import AllBookmarks from './AllBookmarks';
 import ArchivedBookmarks from './ArchivedBookmarks';
@@ -24,15 +24,24 @@ type Context = {
     archived: number,
 }
 
+type Month = {
+
+}
+
 export const BookmarkContext = createContext<Context | undefined>(undefined);
 
 function DisplayBookmarks() {
     const theme = useTypedSelector(state  => state.theme.theme);
     const tags = useTypedSelector(state => state.tags.tags);
+    const sort = useTypedSelector(state => state.sort.sort);
     const dispatch = useTypedDispatch();
     const [allBookmarks, setAllBookmarks] = useState<Array<Bookmark>>([])
     const [loading, setLoading] = useState<boolean>(false);
     const {pathname} = useLocation();
+    const months = useRef<Record<string, number>>({
+        'Jan' : 0, 'Feb' : 1, 'Mar' : 2, 'Apr' : 3, 
+        'May' : 4, 'Jun' : 5, 'Jul' : 6, 'Aug' : 7, 
+        'Sep' : 8, 'Oct' : 9, 'Nov' : 10, 'Dec' : 11} as const);
 
     const changeTitle = () => {
         if(pathname === '/home/archived')
@@ -97,6 +106,59 @@ function DisplayBookmarks() {
             document.removeEventListener('update_bookmarks', getAllBookmarks)
         }
     }, [])
+
+    useEffect(() => {
+        if(sort === 'recently added'){
+            const bookmarks = [...allBookmarks]
+            bookmarks.sort((a, b) => {
+                let created_at : string = a.created_at;
+                let day : number = Number(created_at.split(' ')[0]);
+                let month : string = created_at.split(' ')[1];
+                let date_created : Date = new Date(2025, months.current[month], day);
+                let milliseconds_a : number = date_created.getTime();
+
+                created_at = b.created_at;
+                day = Number(created_at.split(' ')[0]);
+                month = created_at.split(' ')[1];
+                date_created = new Date(2025, months.current[month], day);
+                let milliseconds_b : number = date_created.getTime();
+
+                if(milliseconds_a < milliseconds_b)
+                    return 1;
+                else 
+                    return -1;
+
+            })
+            setAllBookmarks(bookmarks);
+        }
+        else if(sort === 'recently visited'){
+            const bookmarks = [...allBookmarks];
+            bookmarks.sort((a, b) => {
+                let lastTimeVisitedA : number = a.last_time_visited;
+                let lastTimeVisitedB : number = b.last_time_visited;
+
+                if(lastTimeVisitedA < lastTimeVisitedB)
+                    return 1;
+                else    
+                    return -1;
+                
+            });
+            setAllBookmarks(bookmarks);
+        }
+        else if(sort === 'most visited'){
+            const bookmarks = [...allBookmarks];
+            bookmarks.sort((a, b) => {
+                const viewsA = a.views;
+                const viewsB = b.views;
+
+                if(viewsA < viewsB)
+                    return 1;
+                else
+                    return -1;
+            })
+        }
+
+    }, [sort])
 
 
     return(

@@ -9,5 +9,6 @@ export type Bookmark = {
     last_updated: string,
     views: number,
     archived: number,
-    pinned: number
+    pinned: number,
+    last_time_visited: number
 }
