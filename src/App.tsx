@@ -12,7 +12,7 @@ import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am working on the sorting feature in the DisplayBookmarks component
+    this is where i left off, i am working on the different dropdown components
 */
 
 function App() {
