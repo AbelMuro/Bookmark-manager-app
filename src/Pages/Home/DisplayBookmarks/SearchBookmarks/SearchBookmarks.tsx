@@ -7,25 +7,20 @@ import type {Bookmark as BookmarkType} from '~/Common/Types';
 type Props = {
     bookmarks : Array<BookmarkType>
 }
-function TaggedBookmarks({bookmarks} : Props) {
-    const tags = useTypedSelector(state => state.tags.tags);
-    const [taggedBookmarks, setTaggedBookmarks] = useState<Array<BookmarkType>>([]);
+
+function SearchBookmarks({bookmarks} : Props) {
+    const search = useTypedSelector(state => state.search.search);
+    const [searchBookmarks, setSearchBookmarks] = useState<Array<BookmarkType>>([]);
 
     useEffect(() => {
-        const tagged : Array<BookmarkType> = []
-        bookmarks.forEach((bookmark: BookmarkType) => {
-            const result = bookmark.tags.split(',').some((tag) => {
-                return tags.includes(tag)
-            })
+        if(!search.length) setSearchBookmarks([]);
+        setSearchBookmarks(bookmarks.filter((bookmark) => {
+            const title = bookmark.title.toLowerCase();
+            return title.startsWith(search.toLowerCase());
+        }))
+    }, [search])
 
-            if(result)
-                tagged.push(bookmark)
-
-        })
-        setTaggedBookmarks(tagged)  
-    }, [tags, bookmarks])
-    
-    return taggedBookmarks.map((bookmark : BookmarkType) => {
+    return searchBookmarks.map((bookmark : BookmarkType) => {
 
             const title = bookmark.title;
             const description = bookmark.description;
@@ -60,4 +55,5 @@ function TaggedBookmarks({bookmarks} : Props) {
             )
         })
 }
-export default TaggedBookmarks;
+
+export default SearchBookmarks;

@@ -7,14 +7,12 @@ import Login from './Pages/Authorization/Login';
 import Register from './Pages/Authorization/Register';
 import ForgotPassword from './Pages/Authorization/ForgotPassword';
 import ResetPassword from './Pages/Authorization/ResetPassword';
-import PopupMessageBox from './Common/Components/PopupMessageBox';
+import Toast from './Common/Components/Toast';
 import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am working on the DeleteBookmark component
-    
-    i need to make a route on the back end that deletes the bookmark from database
+    this is where i left off, i am working on fixing a bug related to the sorting button
 */
 
 function App() {
@@ -31,7 +29,7 @@ function App() {
                     <Route path='/home/*' element={<Home/>}/>
                 </Routes>
             </BrowserRouter>    
-            <PopupMessageBox/>        
+            <Toast/>        
         </Provider>
     )
 }

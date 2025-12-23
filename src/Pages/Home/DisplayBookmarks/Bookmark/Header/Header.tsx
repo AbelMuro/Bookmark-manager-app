@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
+import BookmarkIcon from './BookmarkIcon';
 import EditButton from './EditButton';
 import {ChangeTheme} from '~/Common/functions';
 import { useTypedSelector, useTypedDispatch } from '~/Store';
@@ -43,7 +44,7 @@ function Header() {
 
     return(
         <div className={styles.bookmark_header}>
-            <img className={styles.bookmark_icon}/>
+            <BookmarkIcon/>
             <h2 className={ChangeTheme(styles, 'bookmark_title', theme)}>
                 {title}
             </h2>

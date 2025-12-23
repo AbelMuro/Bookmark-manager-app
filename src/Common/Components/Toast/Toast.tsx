@@ -4,10 +4,9 @@ import {motion, AnimatePresence} from 'framer-motion';
 import {useTypedDispatch, useTypedSelector} from '~/Store';
 import * as styles from './styles.module.css';
 
-
-function PopupMessageBox() {
-    const open = useTypedSelector<boolean>(state => state.popup.open);
-    const message = useTypedSelector<string>(state => state.popup.message);
+function Toast() {
+    const open = useTypedSelector<boolean>(state => state.toast.open);
+    const message = useTypedSelector<string>(state => state.toast.message);
     const theme = useTypedSelector<string>(state => state.theme.theme);
     const dispatch = useTypedDispatch();
 
@@ -29,11 +28,12 @@ function PopupMessageBox() {
             open &&
                 <motion.div 
                     className={ChangeTheme(styles, 'container', theme)}
-                    initial={{bottom: -200}}
-                    animate={{bottom: 40}}
-                    exit={{bottom: -200}}
-                    transition={{type: 'spring'}}
+                    initial={{right: '-400px'}}
+                    animate={{right: '40px'}}
+                    exit={{right: '-400px'}}
+                    transition={{duration: 0.7}}
                     >
+                        <img className={ChangeTheme(styles, 'check', theme)}/>
                        {message}
                         <button className={ChangeTheme(styles, 'close', theme)} onClick={handleClose}>
                             <img />
@@ -43,4 +43,4 @@ function PopupMessageBox() {
     )
 }
 
-export default PopupMessageBox;
+export default Toast;

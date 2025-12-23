@@ -7,7 +7,7 @@ import * as styles from './styles.module.css';
 
 function Footer() {
     const theme = useTypedSelector(state  => state.theme.theme);
-    const {views, createdAt, lastUpdated} = useContext(BookmarkContext);
+    const {views, createdAt, lastUpdated, archived} = useContext(BookmarkContext);
 
     return(
         <div className={ChangeTheme(styles, 'bookmark_misc', theme)}>
@@ -26,7 +26,7 @@ function Footer() {
                     {lastUpdated || '-'}
                 </div>
             </div>
-            <Pin/>
+            {archived ? <div className={ChangeTheme(styles, 'archived', theme)}> Archived </div> : <Pin/>}
         </div>
     )
 }

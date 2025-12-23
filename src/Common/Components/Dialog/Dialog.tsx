@@ -8,12 +8,13 @@ type Props = {
     open: boolean,
     handleOpen: Function,
     handleSubmit: Function,
+    submitButtonColor: string
     title: string,
     desc: string,
     submit: string
 }
 
-function Dialog({open, handleOpen, handleSubmit, title, desc, submit} : Props) {
+function Dialog({open, handleOpen, handleSubmit, submitButtonColor, title, desc, submit} : Props) {
     const theme = useTypedSelector(state => state.theme.theme);
 
     return (
@@ -45,7 +46,11 @@ function Dialog({open, handleOpen, handleSubmit, title, desc, submit} : Props) {
                         <button className={ChangeTheme(styles, 'dialog_cancel', theme)} onClick={() => handleOpen()}>
                             Cancel
                         </button>
-                        <button className={ChangeTheme(styles, 'dialog_submit', theme)} onClick={() => handleSubmit()}>
+                        <button 
+                            className={ChangeTheme(styles, 'dialog_submit', theme)} 
+                            onClick={() => handleSubmit()}
+                            style={{backgroundColor: submitButtonColor}}
+                            >
                             {submit}
                         </button>
                     </div>

@@ -24,7 +24,9 @@ function ArchivedBookmarks({bookmarks} : Props) {
             const pinned = bookmark.pinned;
 
             return(
-                <BookmarkContext.Provider value={{
+                <BookmarkContext.Provider 
+                    key={bookmarkId}
+                    value={{
                         title, 
                         description, 
                         accountId, 
@@ -37,7 +39,7 @@ function ArchivedBookmarks({bookmarks} : Props) {
                         pinned,
                         archived
                         }}>
-                    <Bookmark key={`${bookmarkId} ${archived}`}/> 
+                    <Bookmark/> 
                 </BookmarkContext.Provider>
             )
         })

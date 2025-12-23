@@ -3,6 +3,7 @@ import type { Bookmark } from '~/Common/Types';
 import AllBookmarks from './AllBookmarks';
 import ArchivedBookmarks from './ArchivedBookmarks';
 import TaggedBookmarks from './TaggedBookmarks';
+import SearchBookmarks from './SearchBookmarks';
 import LoadingBookmarks from '~/Common/Components/LoadingBookmarks';
 import SortButton from '~/Common/Components/SortButton';
 import { useTypedSelector, useTypedDispatch } from '~/Store';
@@ -24,16 +25,13 @@ type Context = {
     archived: number,
 }
 
-type Month = {
-
-}
-
 export const BookmarkContext = createContext<Context | undefined>(undefined);
 
 function DisplayBookmarks() {
     const theme = useTypedSelector(state  => state.theme.theme);
     const tags = useTypedSelector(state => state.tags.tags);
     const sort = useTypedSelector(state => state.sort.sort);
+    const search = useTypedSelector(state => state.search.search);
     const dispatch = useTypedDispatch();
     const [allBookmarks, setAllBookmarks] = useState<Array<Bookmark>>([])
     const [loading, setLoading] = useState<boolean>(false);
@@ -156,6 +154,7 @@ function DisplayBookmarks() {
                 else
                     return -1;
             })
+            setAllBookmarks(bookmarks);
         }
 
     }, [sort])
@@ -172,6 +171,7 @@ function DisplayBookmarks() {
                     {pathname === '/home' && <AllBookmarks bookmarks={allBookmarks}/>}
                     {pathname.includes('archived') && <ArchivedBookmarks bookmarks={allBookmarks}/>}
                     {pathname.includes('tags') && <TaggedBookmarks bookmarks={allBookmarks}/>} 
+                    {pathname.includes('search') && <SearchBookmarks bookmarks={allBookmarks}/>}
                 </>
             }
         </section>

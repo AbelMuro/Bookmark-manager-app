@@ -57,6 +57,7 @@ function UnarchiveButton() {
                 title={'Unarchive bookmark'} 
                 desc={'Move this bookmark back to your active list?'} 
                 submit={'Unarchive'} 
+                submitButtonColor='#014745'
                 open={open}
                 handleOpen={handleOpen}
                 handleSubmit={handleArchive}

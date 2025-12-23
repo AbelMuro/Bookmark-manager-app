@@ -57,6 +57,7 @@ function ArchiveOrUnarchiveButton() {
                 title={'Archive bookmark'} 
                 desc={'Are you sure you want to archive this bookmark?'} 
                 submit={'Archive'} 
+                submitButtonColor='#014745'
                 open={open}
                 handleOpen={handleOpen}
                 handleSubmit={handleArchive}

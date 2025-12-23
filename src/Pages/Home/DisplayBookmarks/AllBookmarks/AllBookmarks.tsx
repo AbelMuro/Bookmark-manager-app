@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { BookmarkContext } from '../DisplayBookmarks';
 import Bookmark from '../Bookmark';
 import type {Bookmark as BookmarkType} from '~/Common/Types';
@@ -8,8 +8,22 @@ type Props = {
 }
 
 function AllBookmarks({bookmarks} : Props) {
+    const [allBookmarks, setAllBookmarks] = useState<Array<BookmarkType>>([])
 
-    return bookmarks.map((bookmark : BookmarkType) => {
+    useEffect(() => {
+        const pinnedBookmarks : Array<BookmarkType> = [];
+        const unPinnedBookmarks : Array<BookmarkType> = [];
+
+        bookmarks.forEach((bookmark: BookmarkType) => {
+            if(bookmark.pinned)
+                pinnedBookmarks.push(bookmark);
+            else if(!bookmark.pinned)
+                unPinnedBookmarks.push(bookmark);
+        })
+        setAllBookmarks([...pinnedBookmarks, ...unPinnedBookmarks])
+    }, [])
+
+    return allBookmarks.map((bookmark : BookmarkType) => {
                 if(bookmark.archived) return null;
 
                 const title = bookmark.title;
@@ -25,7 +39,9 @@ function AllBookmarks({bookmarks} : Props) {
                 const pinned = bookmark.pinned;
 
                 return(
-                    <BookmarkContext.Provider value={{
+                    <BookmarkContext.Provider 
+                        key={bookmarkId}
+                        value={{
                             title, 
                             description, 
                             accountId, 
@@ -38,7 +54,7 @@ function AllBookmarks({bookmarks} : Props) {
                             pinned,
                             archived
                             }}>
-                        <Bookmark key={`${bookmarkId} ${archived}`}/> 
+                        <Bookmark /> 
                     </BookmarkContext.Provider>
                 )
             })

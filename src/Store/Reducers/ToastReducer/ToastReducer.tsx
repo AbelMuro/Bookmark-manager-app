@@ -9,7 +9,7 @@ const showPopup = createAction('SHOW_POPUP');
 const hidePopup = createAction('HIDE_POPUP');
 const initialState : State = { open: false, message: '' };
 
-const PopupMessageBoxReducer = createReducer(initialState, (builder) => {       
+const ToastReducer = createReducer(initialState, (builder) => {       
 builder
     .addCase(showPopup, (state, action: PayloadAction<string>) => {                    
         state.open = true;
@@ -21,5 +21,5 @@ builder
     })
 })
 
-export default PopupMessageBoxReducer;
+export default ToastReducer;
           

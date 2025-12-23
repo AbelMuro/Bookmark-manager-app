@@ -36,14 +36,14 @@ function Checkbox({name} : Props) {
     }, [pathname])
 
     useEffect(() => {
-        const result = tags.some((tag) => tag === name);
+        const result = tags.some((tag : string) => tag === name);
         setCheck(result);
     }, [tags])
 
     return(
         <div className={styles.container}>
             {check && <img className={styles.checkmark} src={icons['checkmark']}/>}
-            <input type='check' className={ChangeTheme(styles, 'checkbox', theme)} checked={check} onClick={handleCheck}/>            
+            <input type='check' className={ChangeTheme(styles, 'checkbox', theme)} checked={check} onChange={() => {}} onClick={handleCheck}/>            
         </div>
     )
 }

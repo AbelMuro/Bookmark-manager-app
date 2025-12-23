@@ -21,7 +21,6 @@ function Tags() {
 
             if(response.status === 200){
                 const result = await response.json();
-                console.log(result);
                 setTags(result);
             }
             else{
@@ -37,6 +36,10 @@ function Tags() {
 
     useEffect(() => {
         handleTags();
+
+        document.addEventListener('update_bookmarks', handleTags);
+
+        return () => document.removeEventListener('update_bookmarks', handleTags);
     }, [])
 
     return (
@@ -54,7 +57,7 @@ function Tags() {
                     const count = tag[1];
 
                     return(
-                        <div className={styles.tags_tag}>
+                        <div className={styles.tags_tag} key={name}>
                             <Tag name={name} count={count}/>
                         </div>
                     )
