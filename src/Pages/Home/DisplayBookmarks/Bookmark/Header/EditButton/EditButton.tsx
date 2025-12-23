@@ -1,5 +1,6 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
+import ArchivedDropdown from './ArchivedDropdown';
 import UnarchivedDropdown from './UnarchivedDropdown';
 import { useTypedSelector } from '~/Store';
 import { ChangeTheme } from '~/Common/functions';
@@ -11,6 +12,13 @@ function EditButton() {
     const theme = useTypedSelector(state => state.theme.theme);
     const {archived} = useContext(BookmarkContext);
 
+    const chooseDropdown = () => {
+        if(archived === 0)
+            return (<UnarchivedDropdown handleOpen={handleOpen}/> )
+        else
+            return (<ArchivedDropdown handleOpen={handleOpen}/>)
+    }
+
     const handleOpen = () => {
         setOpen(!open);
     }
@@ -21,12 +29,7 @@ function EditButton() {
                 <img />
             </button>   
             <AnimatePresence>
-                {open && 
-                    archived === 0 ? 
-                        <UnarchivedDropdown handleOpen={handleOpen}/> 
-                        : 
-                        <></>
-                    }                 
+                {open && chooseDropdown()}                 
             </AnimatePresence>
                  
         </>

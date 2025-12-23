@@ -2,7 +2,9 @@ import React from 'react';
 import {useTypedSelector} from '~/Store';
 import { ChangeTheme } from '~/Common/functions';
 import { motion } from 'framer-motion';
-import ArchiveOrUnarchiveButton from '../ArchiveOrUnarchiveButton';
+import PinOrUnpin from './PinOrUnpin';
+import EditBookmark from './EditBookmark';
+import ArchiveButton from './ArchiveButton';
 import VisitButton from '../VisitButton';
 import CopyUrlButton from '../CopyUrlButton';
 import * as styles from './styles.module.css';
@@ -23,7 +25,9 @@ function EditUnarchived({handleOpen} : Props) {
             >
                 <VisitButton handleOpen={handleOpen}/>
                 <CopyUrlButton handleOpen={handleOpen}/>
-                <ArchiveOrUnarchiveButton/>
+                <PinOrUnpin handleOpen={handleOpen}/>
+                <EditBookmark/>
+                <ArchiveButton/>
         </motion.div>
     )
 }

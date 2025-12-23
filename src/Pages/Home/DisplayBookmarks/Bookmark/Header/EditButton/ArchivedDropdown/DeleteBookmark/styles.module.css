@@ -50,7 +50,7 @@
     mask-size: 16px 16px;
     mask-position: center;
     mask-repeat: no-repeat;
-    mask-image: url('./icons/icon-visit.svg');
+    mask-image: url('./icons/icon-delete.svg');
 }
 
 .dropdown_button.dark > img{

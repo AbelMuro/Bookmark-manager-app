@@ -12,7 +12,9 @@ import Home from './Pages/Home';
 import './styles.css';
 
 /* 
-    this is where i left off, i am working on the different dropdown components
+    this is where i left off, i am working on the DeleteBookmark component
+    
+    i need to make a route on the back end that deletes the bookmark from database
 */
 
 function App() {

@@ -9,7 +9,7 @@ function ArchiveOrUnarchiveButton() {
     const theme = useTypedSelector(state => state.theme.theme);
     const [open, setOpen] = useState<boolean>(false)
     const dispatch = useTypedDispatch();
-    const {bookmarkId, archived} = useContext(BookmarkContext);
+    const {bookmarkId} = useContext(BookmarkContext);
 
     const handleOpen = () => {
         setOpen(!open);
@@ -24,7 +24,7 @@ function ArchiveOrUnarchiveButton() {
                 },
                 body: JSON.stringify({
                     bookmarkId,
-                    archived: !archived
+                    archived: true
                 })
             })
 
@@ -50,13 +50,13 @@ function ArchiveOrUnarchiveButton() {
     return(
         <>
             <button className={ChangeTheme(styles, 'dropdown_button', theme)} onClick={handleOpen}>
-                {archived ? <img className={ChangeTheme(styles, 'unarchive', theme)}/> : <img className={ChangeTheme(styles, 'archive', theme)}/>}
-                {archived ? 'Unarchive' : 'Archive'}
+                <img className={ChangeTheme(styles, 'archive', theme)}/>
+                Archive
             </button>        
             <Dialog 
-                title={archived ? 'Unarchive bookmark' : 'Archive bookmark'} 
-                desc={archived ? 'Move this bookmark back to your active list?' : 'Are you sure you want to archive this bookmark?'} 
-                submit={archived ? 'Unarchive' : 'Archive'} 
+                title={'Archive bookmark'} 
+                desc={'Are you sure you want to archive this bookmark?'} 
+                submit={'Archive'} 
                 open={open}
                 handleOpen={handleOpen}
                 handleSubmit={handleArchive}

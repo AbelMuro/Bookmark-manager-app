@@ -44,7 +44,7 @@
     border: none;
 }
 
-.archive, .unarchive{
+.unarchive{
     width: 16px;
     height: 16px;
     mask-size: 16px 16px;
@@ -52,18 +52,14 @@
     mask-repeat: no-repeat;
 }
 
-.archive{
-    mask-image: url('./icons/icon-archive.svg');
-}
-
 .unarchive{
     mask-image: url('./icons/icon-unarchive.svg')
 }
 
-.archive.dark, .unarchive.dark{
+.unarchive.dark{
     background-color: #B1B9B9;
 }
 
-.archive.light, .unarchive.light{
+.unarchive.light{
     background-color: #4C5C59;
 }

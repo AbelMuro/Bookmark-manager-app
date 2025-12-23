@@ -2,10 +2,9 @@ import React from 'react';
 import {motion} from 'framer-motion';
 import {ChangeTheme} from '~/Common/functions'
 import { useTypedSelector } from '~/Store';
-import ArchiveOrUnarchiveButton from '../ArchiveOrUnarchiveButton';
+import UnarchiveButton from './UnarchiveButton';
 import VisitButton from '../VisitButton';
-import PinOrUnpin from '../PinOrUnpin';
-import EditBookmark from '../EditBookmark';
+import DeleteBookmark from './DeleteBookmark';
 import CopyUrlButton from '../CopyUrlButton';
 import * as styles from './styles.module.css';
 
@@ -25,9 +24,8 @@ function ArchivedDropdown({handleOpen} : Props) {
             >
                 <VisitButton handleOpen={handleOpen}/>
                 <CopyUrlButton handleOpen={handleOpen}/>
-                <PinOrUnpin handleOpen={handleOpen}/>
-                <EditBookmark/>
-                <ArchiveOrUnarchiveButton/>
+                <UnarchiveButton/>
+                <DeleteBookmark/>
         </motion.div>
     )
 }
