@@ -11,10 +11,6 @@ import Toast from './Common/Components/Toast';
 import Home from './Pages/Home';
 import './styles.css';
 
-/* 
-    this is where i left off, i am working on fixing a bug related to the sorting button
-*/
-
 function App() {
 
     return(
