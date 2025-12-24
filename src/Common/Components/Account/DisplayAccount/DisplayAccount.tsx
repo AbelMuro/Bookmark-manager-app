@@ -15,7 +15,7 @@ const DisplayAccount = forwardRef((_, ref : React.Ref<HTMLElement | null>) => {
 
     const handleLogout = async () => {
         try{
-            const response = await fetch('http://localhost:4000/logout', {
+            const response = await fetch('https://bookmark-manager-server.netlify.app/logout', {
                 method: 'DELETE',
                 credentials: 'include',
             });

@@ -35,7 +35,7 @@ function Form ({setOpen} : Props) {
         const formattedDate = FormatDate(day, month);
 
         try{
-            const response = await fetch('http://localhost:4000/add_bookmark', {
+            const response = await fetch('https://bookmark-manager-server.netlify.app/add_bookmark', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

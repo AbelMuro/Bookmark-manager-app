@@ -17,7 +17,7 @@ function DeleteBookmark() {
 
     const handleDelete = async () => {
         try{
-            const response = await fetch(`http://localhost:4000/delete_bookmark/${bookmarkId}`, {
+            const response = await fetch(`https://bookmark-manager-server.netlify.app/delete_bookmark/${bookmarkId}`, {
                 method: 'DELETE',
                 credentials: 'include',
             })

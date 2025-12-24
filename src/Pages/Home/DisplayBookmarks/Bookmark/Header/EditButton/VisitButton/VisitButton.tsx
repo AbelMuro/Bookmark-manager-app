@@ -16,7 +16,7 @@ function VisitButton({handleOpen} : Props) {
         window.open(url);
 
         try{    
-            const response = await fetch('http://localhost:4000/update_bookmark', {
+            const response = await fetch('https://bookmark-manager-server.netlify.app/update_bookmark', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

@@ -11,7 +11,7 @@ function Tags() {
 
     const handleTags = async () => {
         try{
-            const response = await fetch('http://localhost:4000/get_tags', {
+            const response = await fetch('https://bookmark-manager-server.netlify.app/get_tags', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

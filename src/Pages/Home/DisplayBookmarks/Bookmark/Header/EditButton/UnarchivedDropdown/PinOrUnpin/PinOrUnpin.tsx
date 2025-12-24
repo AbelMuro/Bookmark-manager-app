@@ -14,7 +14,7 @@ function PinOrUnpin({handleOpen} : Props) {
 
     const handlePin = async () => {
         try{
-            const response = await fetch('http://localhost:4000/pin_bookmark', {
+            const response = await fetch('https://bookmark-manager-server.netlify.app/pin_bookmark', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

@@ -60,7 +60,7 @@ function DisplayBookmarks() {
     const getAllBookmarks = async () => {
         setLoading(true);
         try{
-            const response = await fetch('http://localhost:4000/get_bookmarks', {
+            const response = await fetch('https://bookmark-manager-server.netlify.app/get_bookmarks', {
                 method: 'GET',
                 credentials: 'include',
             });

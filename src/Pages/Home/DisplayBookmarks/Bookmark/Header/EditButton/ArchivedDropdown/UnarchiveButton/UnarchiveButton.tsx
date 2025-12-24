@@ -17,7 +17,7 @@ function UnarchiveButton() {
 
     const handleArchive = async () => {
         try{
-            const response = await fetch('http://localhost:4000/archive_bookmark', {
+            const response = await fetch('https://bookmark-manager-server.netlify.app/archive_bookmark', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

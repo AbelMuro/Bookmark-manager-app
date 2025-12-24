@@ -26,7 +26,7 @@ function Form({token} : Props) {
         }
         setLoading(true);
         try{
-            const response = await fetch('http://localhost:4000/reset_password', {
+            const response = await fetch('https://bookmark-manager-server.netlify.app/reset_password', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
