@@ -1,5 +1,6 @@
 const path = require('path');              
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const dotenv = require("dotenv-webpack")                     
 
 
@@ -15,7 +16,8 @@ module.exports = {
             filename: 'index.html',           
             template: './public/index.html'      
         }),
-        new dotenv({systemvars: true}),       
+        new dotenv({systemvars: true}),   
+        new CopyWebpackPlugin({patterns: [{from: 'public', to: ''}]})    
     ],
     devServer: {                             
         port: 3000,                           
