@@ -17,7 +17,7 @@ module.exports = {
             template: './public/index.html'      
         }),
         new dotenv({systemvars: true}),   
-        new CopyWebpackPlugin({patterns: [{from: 'public', to: ''}]})    
+        new CopyWebpackPlugin({patterns: [{from: 'public', to: '', globOptions: { ignore: ['**/index.html'] }}]})    
     ],
     devServer: {                             
         port: 3000,                           
