@@ -18,7 +18,7 @@ function AddBookmark() {
 
     return(
         <>
-            <button className={styles.button} onClick={handleOpen}>
+            <button className={ChangeTheme(styles, 'button', theme)} onClick={handleOpen}>
                 <span>+</span> 
                 {!mobile && 'Add Bookmark'}
             </button>        

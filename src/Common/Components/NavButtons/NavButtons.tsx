@@ -25,7 +25,6 @@ function NavButtons() {
         setSelected(pathname)
     }, [pathname])
 
-
     return(
         <section className={ChangeTheme(styles, 'nav_buttons', theme)}>
             <button onClick={() => handleSelected('/home')} className={handleStyles('/home')}>

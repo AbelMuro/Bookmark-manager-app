@@ -10,15 +10,15 @@ function SortButton(){
     const buttonRef = useRef<HTMLButtonElement | null>(null);
     const dropdownRef = useRef<HTMLDivElement | null>(null);
     const [open, setOpen] = useState<boolean>(false);
-    const [selected, setSelected] = useState<string>('recently added');
+    const [selected, setSelected] = useState<string>('');
     const dispatch = useTypedDispatch();
 
     const handleOpen = () => {
-        setOpen(!open)
+        setOpen(!open);
     }
 
     const handleSelected = (option: string) => {
-        setSelected(option)
+        setSelected(option);
     }
 
     useEffect(() => {

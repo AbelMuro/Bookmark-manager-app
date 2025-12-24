@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { useTypedSelector } from '~/Store';
 import { BookmarkContext } from '../DisplayBookmarks';
 import Bookmark from '../Bookmark';
@@ -9,7 +9,13 @@ type Props = {
 }
 function TaggedBookmarks({bookmarks} : Props) {
     const tags = useTypedSelector(state => state.tags.tags);
+    const sort = useTypedSelector(state => state.sort.sort);
     const [taggedBookmarks, setTaggedBookmarks] = useState<Array<BookmarkType>>([]);
+    const [allBookmarks, setAllBookmarks] = useState<Array<BookmarkType>>([])
+    const months = useRef<Record<string, number>>({
+        'Jan' : 0, 'Feb' : 1, 'Mar' : 2, 'Apr' : 3, 
+        'May' : 4, 'Jun' : 5, 'Jul' : 6, 'Aug' : 7, 
+        'Sep' : 8, 'Oct' : 9, 'Nov' : 10, 'Dec' : 11} as const);
 
     useEffect(() => {
         const tagged : Array<BookmarkType> = []
@@ -20,13 +26,67 @@ function TaggedBookmarks({bookmarks} : Props) {
 
             if(result)
                 tagged.push(bookmark)
-
         })
         setTaggedBookmarks(tagged)  
-    }, [tags, bookmarks])
-    
-    return taggedBookmarks.map((bookmark : BookmarkType) => {
+    }, [tags, bookmarks]);
 
+
+    useEffect(() => {
+        if(sort === 'recently added'){
+            const allBookmarks = [...taggedBookmarks];
+            allBookmarks.sort((a, b) => {
+                let created_at : string = a.created_at;
+                let day : number = Number(created_at.split(' ')[0]);
+                let month : string = created_at.split(' ')[1];
+                let date_created : Date = new Date(2025, months.current[month], day);
+                let milliseconds_a : number = date_created.getTime();
+
+                created_at = b.created_at;
+                day = Number(created_at.split(' ')[0]);
+                month = created_at.split(' ')[1];
+                date_created = new Date(2025, months.current[month], day);
+                let milliseconds_b : number = date_created.getTime();
+
+                if(milliseconds_a > milliseconds_b)
+                    return 1;
+                else 
+                    return -1;
+            })
+            setAllBookmarks(allBookmarks);
+        }
+        else if(sort === 'recently visited'){
+            const allBookmarks = [...taggedBookmarks];
+            allBookmarks.sort((a, b) => {
+                const lastTimeVisitedA : number = a.last_time_visited;
+                const lastTimeVisitedB : number = b.last_time_visited;
+
+                if(lastTimeVisitedA < lastTimeVisitedB)
+                    return 1;
+                else    
+                    return -1;
+                
+            });
+            setAllBookmarks(allBookmarks);
+        }
+        else if(sort === 'most visited'){
+            const allBookmarks = [...taggedBookmarks];
+            allBookmarks.sort((a, b) => {
+                const viewsA = a.views;
+                const viewsB = b.views;
+
+                if(viewsA < viewsB)
+                    return 1;
+                else
+                    return -1;
+            })
+            setAllBookmarks(allBookmarks);
+        }
+        else{
+            setAllBookmarks(taggedBookmarks);
+        }
+    }, [sort, taggedBookmarks])
+    
+    return allBookmarks.map((bookmark : BookmarkType) => {
             const title = bookmark.title;
             const description = bookmark.description;
             const bookmarkId = bookmark.id;

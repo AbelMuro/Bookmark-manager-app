@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
 import ArchivedDropdown from './ArchivedDropdown';
 import UnarchivedDropdown from './UnarchivedDropdown';

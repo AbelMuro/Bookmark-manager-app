@@ -105,60 +105,6 @@ function DisplayBookmarks() {
         }
     }, [])
 
-    useEffect(() => {
-        if(sort === 'recently added'){
-            const bookmarks = [...allBookmarks]
-            bookmarks.sort((a, b) => {
-                let created_at : string = a.created_at;
-                let day : number = Number(created_at.split(' ')[0]);
-                let month : string = created_at.split(' ')[1];
-                let date_created : Date = new Date(2025, months.current[month], day);
-                let milliseconds_a : number = date_created.getTime();
-
-                created_at = b.created_at;
-                day = Number(created_at.split(' ')[0]);
-                month = created_at.split(' ')[1];
-                date_created = new Date(2025, months.current[month], day);
-                let milliseconds_b : number = date_created.getTime();
-
-                if(milliseconds_a < milliseconds_b)
-                    return 1;
-                else 
-                    return -1;
-
-            })
-            setAllBookmarks(bookmarks);
-        }
-        else if(sort === 'recently visited'){
-            const bookmarks = [...allBookmarks];
-            bookmarks.sort((a, b) => {
-                const lastTimeVisitedA : number = a.last_time_visited;
-                const lastTimeVisitedB : number = b.last_time_visited;
-
-                if(lastTimeVisitedA < lastTimeVisitedB)
-                    return 1;
-                else    
-                    return -1;
-                
-            });
-            setAllBookmarks(bookmarks);
-        }
-        else if(sort === 'most visited'){
-            const bookmarks = [...allBookmarks];
-            bookmarks.sort((a, b) => {
-                const viewsA = a.views;
-                const viewsB = b.views;
-
-                if(viewsA < viewsB)
-                    return 1;
-                else
-                    return -1;
-            })
-            setAllBookmarks(bookmarks);
-        }
-
-    }, [sort])
-
 
     return(
         <section className={styles.container}>

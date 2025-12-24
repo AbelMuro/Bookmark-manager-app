@@ -23,6 +23,8 @@ body{
     --hover-dark-cancel-button: #002c2c;
     --active-dark-cancel-button: #003131;
 
+    --focus-dark: #B1B9B9;
+    --focus-light: #014745;
 }
 
 

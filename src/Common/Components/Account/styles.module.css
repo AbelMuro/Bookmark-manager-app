@@ -6,8 +6,9 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
 }
-
 
 .account_image{
     width: 40px;

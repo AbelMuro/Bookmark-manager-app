@@ -8,10 +8,20 @@
     border-radius: 8px;
     cursor: pointer;
     background-color: transparent;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
 }
 
 .button.dark{
     border: 1px solid #004241;
+}
+
+.button.dark:focus{
+    outline-color: var(--focus-dark);
+}
+
+.button.light:focus{
+    outline-color: var(--focus-light);
 }
 
 .button.light{

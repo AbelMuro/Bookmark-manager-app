@@ -3,7 +3,6 @@ import {ChangeTheme} from '~/Common/functions';
 import {useTypedDispatch, useTypedSelector} from '~/Store';
 import * as styles from './styles.module.css';
 
-
 function ThemeButton() {
     const dispatch = useTypedDispatch();
     const theme = useTypedSelector(state  => state.theme.theme);

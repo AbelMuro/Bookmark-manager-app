@@ -14,6 +14,8 @@
     color: white;
     border: 1px solid #004241;
     cursor: pointer;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
 }
 
 .button > span{
@@ -26,6 +28,14 @@
 
 .button:active{
     background-color: var(--active-green-button);
+}
+
+.button.light:focus{
+    outline-color: var(--focus-light)
+}
+
+.button.dark:focus{
+    outline-color: var(--focus-dark);
 }
 
 .close{

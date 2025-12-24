@@ -9,6 +9,8 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
 }
 
 .theme_light, .theme_dark{
@@ -64,4 +66,13 @@
 
 .selected.light{
     background-color: white;
+}
+
+
+.theme.light:focus{
+    outline-color: var(--focus-light)
+}
+
+.theme.dark:focus{
+    outline-color: var(--focus-dark);
 }
