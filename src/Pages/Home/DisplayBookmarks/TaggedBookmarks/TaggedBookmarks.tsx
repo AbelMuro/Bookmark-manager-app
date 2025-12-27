@@ -88,7 +88,7 @@ function TaggedBookmarks({bookmarks} : Props) {
     }, [sort, taggedBookmarks])
     
     return allBookmarks.length === 0 ? 
-        <NoBookmarksMessage message='No tagged bookmarks match your query'/> 
+        <NoBookmarksMessage message='No tagged bookmarks'/> 
         : 
         allBookmarks.map((bookmark : BookmarkType) => {
             const title = bookmark.title;

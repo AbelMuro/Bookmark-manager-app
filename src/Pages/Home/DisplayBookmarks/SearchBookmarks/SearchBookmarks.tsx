@@ -77,6 +77,9 @@ function SearchBookmarks({bookmarks} : Props) {
             })
             setAllBookmarks(allBookmarks);
         }
+        else{
+            setAllBookmarks(searchBookmarks);
+        }
     }, [sort, searchBookmarks]);
     
 
