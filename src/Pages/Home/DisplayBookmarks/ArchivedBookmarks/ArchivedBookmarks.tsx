@@ -10,7 +10,7 @@ type Props = {
 };
 
 function ArchivedBookmarks({bookmarks} : Props) {
-    const [allBookmarks, setAllBookmarks] = useState<Array<BookmarkType>>(bookmarks);
+    const [archivedBookmarks, setArchivedBookmarks] = useState<Array<BookmarkType>>([]);
     const sort = useTypedSelector(state => state.sort.sort);
     const months = useRef<Record<string, number>>({
         'Jan' : 0, 'Feb' : 1, 'Mar' : 2, 'Apr' : 3, 
@@ -18,9 +18,21 @@ function ArchivedBookmarks({bookmarks} : Props) {
         'Sep' : 8, 'Oct' : 9, 'Nov' : 10, 'Dec' : 11} as const);
 
     useEffect(() => {
+        const currentBookmarks : Array<BookmarkType>= [];
+
+        bookmarks.forEach((bookmark : BookmarkType) => {
+            if(!bookmark.archived) return;
+
+            currentBookmarks.push(bookmark);
+        });
+
+        setArchivedBookmarks(currentBookmarks);
+    }, [bookmarks])
+
+    useEffect(() => {
         if(sort === 'recently added'){
-            const allBookmarks = [...bookmarks];
-            allBookmarks.sort((a, b) => {
+            const currentBookmarks = [...archivedBookmarks];
+            currentBookmarks.sort((a, b) => {
                 let created_at : string = a.created_at;
                 let day : number = Number(created_at.split(' ')[0]);
                 let month : string = created_at.split(' ')[1];
@@ -38,11 +50,11 @@ function ArchivedBookmarks({bookmarks} : Props) {
                 else 
                     return -1;
             })
-            setAllBookmarks(allBookmarks);
+            setArchivedBookmarks(archivedBookmarks);
         }
         else if(sort === 'recently visited'){
-            const allBookmarks = [...bookmarks];
-            allBookmarks.sort((a, b) => {
+            const currentBookmarks = [...archivedBookmarks];
+            currentBookmarks.sort((a, b) => {
                 const lastTimeVisitedA : number = a.last_time_visited;
                 const lastTimeVisitedB : number = b.last_time_visited;
 
@@ -52,11 +64,11 @@ function ArchivedBookmarks({bookmarks} : Props) {
                     return -1;
                 
             });
-            setAllBookmarks(allBookmarks);
+            setArchivedBookmarks(currentBookmarks);
         }
         else if(sort === 'most visited'){
-            const allBookmarks = [...bookmarks];
-            allBookmarks.sort((a, b) => {
+            const currentBookmarks = [...archivedBookmarks];
+            currentBookmarks.sort((a, b) => {
                 const viewsA = a.views;
                 const viewsB = b.views;
 
@@ -65,14 +77,14 @@ function ArchivedBookmarks({bookmarks} : Props) {
                 else
                     return -1;
             })
-            setAllBookmarks(allBookmarks);
+            setArchivedBookmarks(currentBookmarks);
         }
-    }, [sort, bookmarks])
+    }, [sort, archivedBookmarks])
 
-    return allBookmarks.length === 0 ? 
+    return archivedBookmarks.length === 0 ? 
         <NoBookmarkMessage message='No archived bookmarks'/> 
         : 
-        allBookmarks.map((bookmark : BookmarkType) => {
+        archivedBookmarks.map((bookmark : BookmarkType) => {
             if(!bookmark.archived) return null;
 
             const title = bookmark.title;
