@@ -30,16 +30,9 @@ export const BookmarkContext = createContext<Context | undefined>(undefined);
 function DisplayBookmarks() {
     const theme = useTypedSelector(state  => state.theme.theme);
     const tags = useTypedSelector(state => state.tags.tags);
-    const sort = useTypedSelector(state => state.sort.sort);
-    const search = useTypedSelector(state => state.search.search);
-    const dispatch = useTypedDispatch();
     const [allBookmarks, setAllBookmarks] = useState<Array<Bookmark>>([])
     const [loading, setLoading] = useState<boolean>(false);
     const {pathname} = useLocation();
-    const months = useRef<Record<string, number>>({
-        'Jan' : 0, 'Feb' : 1, 'Mar' : 2, 'Apr' : 3, 
-        'May' : 4, 'Jun' : 5, 'Jul' : 6, 'Aug' : 7, 
-        'Sep' : 8, 'Oct' : 9, 'Nov' : 10, 'Dec' : 11} as const);
 
     const changeTitle = () => {
         if(pathname === '/home/archived')
