@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
-import { useTypedSelector } from '~/Store';
+import { useTypedSelector, useTypedDispatch } from '~/Store';
 import { ChangeTheme } from '~/Common/functions';
 import * as styles from './styles.module.css';
 
@@ -11,6 +11,7 @@ type Props = {
 function PinOrUnpin({handleOpen} : Props) {
     const theme = useTypedSelector(state => state.theme.theme);
     const {pinned, bookmarkId} = useContext(BookmarkContext);
+    const dispatch = useTypedDispatch();
 
     const handlePin = async () => {
         try{
@@ -36,6 +37,7 @@ function PinOrUnpin({handleOpen} : Props) {
         catch(error){
             const message = error.message;
             console.log(message);
+            dispatch({type: 'SHOW_POPUP', payload: message});
         }
         finally{
             handleOpen();

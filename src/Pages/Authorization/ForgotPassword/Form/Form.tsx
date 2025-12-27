@@ -29,6 +29,11 @@ function Form() {
                 console.log(result);
                 dispatch({type: 'SHOW_POPUP', payload: 'Reset link has been sent to your email'});
             }
+            else if(response.status === 402){
+                const result = await response.text();
+                console.log(result);
+                dispatch({type: 'SHOW_POPUP', payload: result});
+            }
             else{
                 const result = await response.text();
                 console.log(result);
@@ -37,6 +42,7 @@ function Form() {
         catch(error){
             const message = error.message;
             console.log(message);
+            dispatch({type: 'SHOW_POPUP', payload: message});
         }
         finally{
             setLoading(false);

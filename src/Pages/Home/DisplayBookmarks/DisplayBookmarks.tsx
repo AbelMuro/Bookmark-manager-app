@@ -33,6 +33,7 @@ function DisplayBookmarks() {
     const [allBookmarks, setAllBookmarks] = useState<Array<Bookmark>>([])
     const [loading, setLoading] = useState<boolean>(false);
     const {pathname} = useLocation();
+    const dispatch = useTypedDispatch();
 
     const changeTitle = () => {
         if(pathname === '/home/archived')
@@ -78,6 +79,7 @@ function DisplayBookmarks() {
         catch(error){
             const message = error.message;
             console.log(message);
+            dispatch({type: 'SHOW_POPUP', payload: message});
         }
         finally{
             setLoading(false);

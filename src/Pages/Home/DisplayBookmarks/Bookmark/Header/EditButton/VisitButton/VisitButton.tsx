@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import { BookmarkContext } from '~/Pages/Home/DisplayBookmarks';
 import { ChangeTheme } from '~/Common/functions';
-import { useTypedSelector } from '~/Store';
+import { useTypedSelector, useTypedDispatch } from '~/Store';
 import * as styles from './styles.module.css';
 
 type Props = {
@@ -11,6 +11,7 @@ type Props = {
 function VisitButton({handleOpen} : Props) {
     const {url, views, bookmarkId} = useContext(BookmarkContext);
     const theme = useTypedSelector(state => state.theme.theme);
+    const dispatch = useTypedDispatch();
 
     const handleUrl = async () => {
         window.open(url);
@@ -42,6 +43,7 @@ function VisitButton({handleOpen} : Props) {
         catch(error){
             const message = error.message;
             console.log(message);
+            dispatch({type: 'SHOW_POPUP', payload: message});
         }
         finally{
             handleOpen();

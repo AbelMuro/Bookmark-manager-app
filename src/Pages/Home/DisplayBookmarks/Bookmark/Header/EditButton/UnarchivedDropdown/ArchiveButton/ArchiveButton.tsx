@@ -43,6 +43,7 @@ function ArchiveOrUnarchiveButton() {
         catch(error){
             const message = error.message;
             console.log(message);
+            dispatch({type: 'SHOW_POPUP', payload: message});
         }
     }
 
