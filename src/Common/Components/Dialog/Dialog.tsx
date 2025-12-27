@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { ClipLoader } from 'react-spinners';
 import {ChangeTheme} from '~/Common/functions';
 import { useTypedSelector } from '~/Store';
 import {motion, AnimatePresence} from 'framer-motion';
@@ -16,6 +17,13 @@ type Props = {
 
 function Dialog({open, handleOpen, handleSubmit, submitButtonColor, title, desc, submit} : Props) {
     const theme = useTypedSelector(state => state.theme.theme);
+    const [loading, setLoading] = useState(false);
+
+    const handleClick = async () => {
+        setLoading(true);
+        await handleSubmit();
+        setLoading(false);
+    }
 
     return (
         <AnimatePresence>
@@ -48,10 +56,10 @@ function Dialog({open, handleOpen, handleSubmit, submitButtonColor, title, desc,
                         </button>
                         <button 
                             className={ChangeTheme(styles, 'dialog_submit', theme)} 
-                            onClick={() => handleSubmit()}
+                            onClick={handleClick}
                             style={{backgroundColor: submitButtonColor}}
                             >
-                            {submit}
+                            {loading ? <ClipLoader size='25px' color='white'/> : submit}
                         </button>
                     </div>
                 </motion.dialog>
