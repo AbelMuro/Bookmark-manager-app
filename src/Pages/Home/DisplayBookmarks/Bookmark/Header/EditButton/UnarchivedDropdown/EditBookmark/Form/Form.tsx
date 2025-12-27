@@ -62,14 +62,13 @@ function Form({setOpen} : Props) {
             }
             else{
                 const result = await response.text();
-                dispatch({type: 'SHOW_POPUP', payload: result});
+                console.log(result);
             }
 
         }
         catch(error){
             const message = error.message;
             console.log(message);
-            dispatch({type: 'SHOW_POPUP', payload: message});
         }
         finally{
             setLoading(false);

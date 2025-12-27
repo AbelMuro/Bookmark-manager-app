@@ -80,13 +80,11 @@ function DisplayBookmarks() {
             else{
                 const result = await response.text();
                 console.log(result);
-                dispatch({type: 'SHOW_POPUP', payload: result});
             }
         }
         catch(error){
             const message = error.message;
             console.log(message);
-            dispatch({type: 'SHOW_POPUP', payload: message})
         }
         finally{
             setLoading(false);

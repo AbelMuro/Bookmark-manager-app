@@ -39,7 +39,6 @@ function DeleteBookmark() {
         catch(error){
             const message = error.message;
             console.log(message);
-            dispatch({type: 'DISPLAY_POPUP', payload: message});
         }
     }
 
