@@ -63,6 +63,23 @@
     outline: none;
 }
 
+.back.light{
+    color: #051513;
+}
+
+.back.dark{
+    color: white;
+}
+
+.back.dark:hover{
+    color: rgb(182, 182, 182);
+}
+
+.back.dark:active{
+    color: rgb(119, 119, 119);
+}
+
+
 .reset_forgot, .reset_sign{
     font-family: 'manrope';
     font-size: 0.875rem;
@@ -87,11 +104,6 @@
 .reset_logo.light{
     content: url('/public/icons/logo-light-theme.svg');
 }
-
-.back.light{
-    color: #051513;
-}
-
 
 .reset.dark{
     background-color: #001f1f;
@@ -131,18 +143,6 @@
 .reset_forgot.dark > button:active,
 .reset_sign.dark > button:active{
     color: #8e8e8e;
-}
-
-.back.dark{
-    color: white;
-}
-
-.back.dark:hover{
-    color: rgb(182, 182, 182);
-}
-
-.back.dark:active{
-    color: rgb(119, 119, 119);
 }
 
 

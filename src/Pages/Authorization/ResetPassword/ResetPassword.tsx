@@ -31,7 +31,7 @@ function ResetPassword(){
                         </p>                
                     </motion.div>
                     <Form token={token}/>
-                    <button className={styles.back} type='button' onClick={handleNavigation}>
+                    <button className={ChangeTheme(styles, 'back', theme)} type='button' onClick={handleNavigation}>
                         Back to login
                     </button>
                 </motion.article>   
