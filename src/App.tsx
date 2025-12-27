@@ -11,6 +11,18 @@ import Toast from './Common/Components/Toast';
 import Home from './Pages/Home';
 import './styles.css';
 
+/* 
+    i finished deploying the front end and back end for this app
+
+    im just testing everything at this point
+
+    i already tested the authorization and the addBookmark feature.
+
+    i also want to add a few more features to the front end,
+    when there is no bookmarks, there should be a message
+
+*/
+
 function App() {
 
     return(
