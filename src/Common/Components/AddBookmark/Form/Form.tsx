@@ -58,6 +58,10 @@ function Form ({setOpen} : Props) {
                 document.dispatchEvent(event);
                 dispatch({type: 'SHOW_POPUP', payload: result});
             }
+            else if(response.status === 402){
+                const result = await response.text();
+                dispatch({type: 'SHOW_POPUP', payload: result});
+            }
             else{
                 const result = await response.text();;
                 console.log(result);
