@@ -1,4 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react';
+import NoBookmarkMessage from '~/Common/Components/NoBookmarksMessage';
 import { BookmarkContext } from '../DisplayBookmarks';
 import Bookmark from '../Bookmark';
 import type {Bookmark as BookmarkType} from '~/Common/Types';
@@ -10,6 +11,7 @@ type Props = {
 
 function AllBookmarks({bookmarks} : Props) {
     const [allBookmarks, setAllBookmarks] = useState<Array<BookmarkType>>([]);
+    const theme = useTypedSelector(state => state.theme.theme);
     const sort = useTypedSelector(state => state.sort.sort);
     const months = useRef<Record<string, number>>({
         'Jan' : 0, 'Feb' : 1, 'Mar' : 2, 'Apr' : 3, 
@@ -82,7 +84,10 @@ function AllBookmarks({bookmarks} : Props) {
         }
     }, [sort, bookmarks])
 
-    return allBookmarks.map((bookmark : BookmarkType) => {
+    return allBookmarks.length === 0 ? 
+            <NoBookmarkMessage message='You have no bookmarks'/>
+            : 
+            allBookmarks.map((bookmark : BookmarkType) => {
                 if(bookmark.archived) return null;
 
                 const title = bookmark.title;

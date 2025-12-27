@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
+import NoBookmarksMessage from '~/Common/Components/NoBookmarksMessage';
 import { useTypedSelector } from '~/Store';
 import { BookmarkContext } from '../DisplayBookmarks';
 import Bookmark from '../Bookmark';
@@ -86,7 +87,10 @@ function TaggedBookmarks({bookmarks} : Props) {
         }
     }, [sort, taggedBookmarks])
     
-    return allBookmarks.map((bookmark : BookmarkType) => {
+    return allBookmarks.length === 0 ? 
+        <NoBookmarksMessage message='No tagged bookmarks match your query'/> 
+        : 
+        allBookmarks.map((bookmark : BookmarkType) => {
             const title = bookmark.title;
             const description = bookmark.description;
             const bookmarkId = bookmark.id;

@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
+import NoBookmarkMessage from '~/Common/Components/NoBookmarksMessage';
 import { BookmarkContext } from '../DisplayBookmarks';
 import {useTypedSelector} from '~/Store';
 import Bookmark from '../Bookmark';
@@ -68,7 +69,10 @@ function ArchivedBookmarks({bookmarks} : Props) {
         }
     }, [sort, bookmarks])
 
-    return allBookmarks.map((bookmark : BookmarkType) => {
+    return allBookmarks.length === 0 ? 
+        <NoBookmarkMessage message='No archived bookmarks'/> 
+        : 
+        allBookmarks.map((bookmark : BookmarkType) => {
             if(!bookmark.archived) return null;
 
             const title = bookmark.title;

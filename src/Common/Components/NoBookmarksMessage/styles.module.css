@@ -1,0 +1,14 @@
+.empty_message{
+    font-family: 'manrope';
+    font-size: 1.7rem;
+    line-height: 140%;
+    margin: 0px
+}
+
+.empty_message.light{
+    color: #051513;
+}
+
+.empty_message.dark{
+    color: white;
+}
