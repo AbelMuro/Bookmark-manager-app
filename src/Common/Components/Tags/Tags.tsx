@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { useTypedSelector } from '~/Store';
+import { useTypedSelector, useTypedDispatch } from '~/Store';
 import {ChangeTheme} from '~/Common/functions';
 import Tag from './Tag'
 import ResetButton from './ResetButton';
@@ -7,7 +7,8 @@ import * as styles from './styles.module.css';
 
 function Tags() {
     const theme = useTypedSelector(state  => state.theme.theme);
-    const [tags, setTags] = useState<Array<[string, number]>>([])
+    const [tags, setTags] = useState<Array<[string, number]>>([]);
+    const dispatch = useTypedDispatch();
 
     const handleTags = async () => {
         try{
@@ -31,6 +32,7 @@ function Tags() {
         catch(error){
             const message = error.message;
             console.log(message);
+            dispatch({type: 'SHOW_POPUP', payload: message});
         }
     }
 
