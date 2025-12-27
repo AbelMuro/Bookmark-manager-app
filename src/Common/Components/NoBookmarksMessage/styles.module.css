@@ -2,7 +2,8 @@
     font-family: 'manrope';
     font-size: 1.7rem;
     line-height: 140%;
-    margin: 0px
+    margin: 0px;
+    grid-column: 1/3;
 }
 
 .empty_message.light{
@@ -11,4 +12,10 @@
 
 .empty_message.dark{
     color: white;
+}
+
+@media(max-width: 630px){
+    .empty_message{
+        font-size: 1.5rem;
+    }
 }
