@@ -1,7 +1,7 @@
 import React, {forwardRef} from 'react';
-import { useNavigate } from 'react-router-dom';
 import ThemeButton from './ThemeButton';
-import { useTypedSelector, useTypedDispatch } from '~/Store';
+import LogoutButton from './LogoutButton';
+import { useTypedSelector} from '~/Store';
 import {ChangeTheme} from '~/Common/functions';
 import {motion} from 'framer-motion';
 import icons from '../icons';
@@ -10,34 +10,6 @@ import * as styles from './styles.module.css';
 
 const DisplayAccount = forwardRef((_, ref : React.Ref<HTMLElement | null>) => {
     const theme = useTypedSelector(state  => state.theme.theme);
-    const dispatch = useTypedDispatch();
-    const navigate = useNavigate();
-
-    const handleLogout = async () => {
-        try{
-            const response = await fetch('https://bookmark-manager-server.netlify.app/logout', {
-                method: 'DELETE',
-                credentials: 'include',
-            });
-
-            if(response.status === 200){
-                const result = await response.text();
-                console.log(result);
-                dispatch({type: 'SHOW_POPUP', payload: 'You have successfully logged out'});
-                navigate('/');
-            }
-            else{
-                const result = await response.text();
-                console.log(result);
-            }
-
-        }
-        catch(error){
-            const message = error.message;
-            console.log(message);
-            dispatch({type: 'SHOW_POPUP', payload: message});
-        }
-    }
 
     return(
         <motion.article 
@@ -66,10 +38,7 @@ const DisplayAccount = forwardRef((_, ref : React.Ref<HTMLElement | null>) => {
                     <ThemeButton/>
                 </div>
                 <hr className={ChangeTheme(styles, 'account_line', theme)}/>
-                <button className={ChangeTheme(styles, 'account_logout', theme)} onClick={handleLogout}>
-                    <img className={ChangeTheme(styles, 'account_logout_icon', theme)}/>
-                    Logout
-                </button>
+                <LogoutButton/>
         </motion.article>
     )
 })

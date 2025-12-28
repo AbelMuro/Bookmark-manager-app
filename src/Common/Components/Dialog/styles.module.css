@@ -9,7 +9,7 @@
 
 .dialog{
     width: 450px;
-    min-height: 181px;
+    min-height: 100px;
     border-radius: 12px;
     padding: 24px;
     position: absolute;

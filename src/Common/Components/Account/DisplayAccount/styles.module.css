@@ -89,30 +89,15 @@
     letter-spacing: 0px;
 }
 
-.account_logout{
-    background-color: transparent;
-    border: none;
-    font-family: 'manrope';
-    font-size: 0.875rem;
-    line-height: 140%;
-    letter-spacing: 0px;
-    cursor: pointer;
-}
-
-.account_theme.light, .account_logout.light{
+.account_theme.light {
     color: #4C5C59;
 }
 
-.account_theme.dark, .account_logout.dark{
+.account_theme.dark{
     color: #b1b9b9;
 }
 
-
-.account_logout{
-    padding: 12px 16px;
-}
-
-.group, .account_logout{
+.group{
     display: flex;
     align-items: center;
     gap: 8px;
@@ -127,19 +112,10 @@
     mask-size: 16px 16px;
 }
 
-.account_logout_icon{
-    width: 16px;
-    height: 16px;
-    mask-image: url('./icons/icon-logout.svg');
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: 16px 16px;
-}
-
-.account_theme_icon.light, .account_logout_icon.light{
+.account_theme_icon.light{
     background-color: #4C5C59;
 }
 
-.account_theme_icon.dark, .account_logout_icon.dark{
+.account_theme_icon.dark{
     background-color: #b1b9b9;
 }
